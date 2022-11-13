@@ -5,6 +5,9 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.13",
     "@mui/styled-engine-sc": "^5.10.6",
@@ -15,6 +18,7 @@
     "bootstrap": "^5.2.2",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
+    "react-auth-kit": "^2.7.0",
     "react-bootstrap": "^2.6.0",
     "react-dom": "^18.2.0",
     "react-jwt": "^1.1.7",

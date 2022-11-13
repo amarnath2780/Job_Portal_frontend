@@ -7,6 +7,8 @@ import { AuthProvider } from './Context/AuthContext';
 import LoginProtect from './Routes/LoginProtect';
 import CaseOfReverse from './Routes/CaseOfReverse';
 import CaseOfAdmin from './Routes/CaseOfAdmin';
+import { RequireAuth } from 'react-auth-kit';
+import Register from './Pages/Register'
 
 
 function App() {
@@ -16,16 +18,14 @@ function App() {
 
         <AuthProvider>
 
-          <Routes element={<CaseOfReverse/>}>
+          <Routes>
 
             <Route path='/' element={<Home/>}/>
+            <Route path='/login' element={<LoginPage/>}/>
+            <Route path='/register' element={<Register/>}></Route>
 
           </Routes>
-          
-          <Routes element={<CaseOfReverse />}>
-          <Route path='/login' element={<LoginPage/>}/>
-          </Routes>
-
+        
           </AuthProvider>
 
       </Router>

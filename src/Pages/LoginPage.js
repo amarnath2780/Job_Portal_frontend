@@ -31,7 +31,6 @@ const [fshow,setForShow]=useState(false)
 
 
 const checkEmail=(e)=>{
-    console.log(e.target.value)
     let emails=e.target.value
     setEmail(emails)    
     
