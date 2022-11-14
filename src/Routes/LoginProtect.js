@@ -1,12 +1,13 @@
-import React,{useContext} from 'react'
-import {Navigate,Outlet}  from 'react-router-dom'
+import React, { useContext } from 'react'
 import AuthContext from '../Context/AuthContext'
+import {Navigate,Outlet,useNavigate}  from 'react-router-dom'
 
-function LoginProtect() {
-    let {authToken}=useContext(AuthContext) 
-   
-    return authToken ? <Outlet /> : <Navigate to="/login"/> 
+function CaseOfAdmin() {
+    let {user}=useContext(AuthContext)
+   const val= localStorage.getItem('adminAuth')
+    return val ? <Navigate to='/admin'></Navigate>:<Outlet/>
     }
+    
 
 
-export default LoginProtect
+export default CaseOfAdmin

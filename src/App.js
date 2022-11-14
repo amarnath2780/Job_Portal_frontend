@@ -5,10 +5,11 @@ import { BrowserRouter as Router , Route , Routes } from 'react-router-dom';
 import name from './Routes/LoginProtect';
 import { AuthProvider } from './Context/AuthContext';
 import LoginProtect from './Routes/LoginProtect';
-import CaseOfReverse from './Routes/CaseOfReverse';
-import CaseOfAdmin from './Routes/CaseOfAdmin';
+import AdminPrivetRoute from './Routes/AdminPrivetRoute';
+import PrivateRoutes from './Routes/PrivateRoutes';
 import { RequireAuth } from 'react-auth-kit';
 import Register from './Pages/Register'
+import Recruiter from './Pages/Recruiter'
 
 
 function App() {
@@ -18,9 +19,17 @@ function App() {
 
         <AuthProvider>
 
+
           <Routes>
 
-            <Route path='/' element={<Home/>}/>
+            <Route element={<PrivateRoutes/>}>
+                <Route path='/' element={<Home/>} exact/>
+           </Route>
+
+            <Route element={<AdminPrivetRoute/>}>
+                <Route path='/recruiter' element={<Recruiter/>} exact/>
+            </Route>
+
             <Route path='/login' element={<LoginPage/>}/>
             <Route path='/register' element={<Register/>}></Route>
 

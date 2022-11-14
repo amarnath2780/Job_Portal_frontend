@@ -45,24 +45,37 @@ const handleClicks = () => {
                 console.log(res.data)
                 console.log(res.data.message)
 
+                console.log('role is here', res.data.user.role);
+
                 if (res.data.token){
-                  if (!res.data.is_admin){
+                  console.log('recruiter is ' + res.data.user.role);
+                  if (res.data.user.role == 'seeker'){
                     localStorage.setItem('authToken',JSON.stringify(res.data))
                     localStorage.setItem('token',JSON.stringify(res.data.token))
                     setAuthToken(res.data)
                     setUser(res.data.token)                      
                     SetError(res.data.message)
-                    localStorage.setItem('userId',JSON.stringify(res.data.id))
-                   navigate('/')
-                  }                 
-                  else{
+                    console.log('data is here');
+                    localStorage.setItem('userId',JSON.stringify(res.data.user.user_id))
+                    navigate('/')
+                  }
+                  else if(res.data.user.role == 'recruiter'){
                     localStorage.setItem('adminAuthToken',JSON.stringify(res.data))
+                    localStorage.setItem('token',JSON.stringify(res.data.token))
+                    setAuthToken(res.data)
+                    setUser(res.data.token)                      
+                    SetError(res.data.message)
+                    localStorage.setItem('userId',JSON.stringify(res.data.user.user_id))
+                    navigate('/recruiter')
+                  }                    
+                  else{
+                    localStorage.setItem('admin',JSON.stringify(res.data))
                     localStorage.setItem('token',JSON.stringify(res.data.token))
                     setAdminAuthToken(res.data)
                     setAdmin(res.data.token)                      
                     SetError(res.data.message)
                     navigate('/admin')
-                  }
+                  };
                 }
              
               if(res.data.message){              
@@ -77,9 +90,8 @@ const handleClicks = () => {
               }
 
             }
-            )  
+            ) ; 
         }
- 
 
         
         let logOut=()=>{

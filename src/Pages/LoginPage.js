@@ -2,15 +2,22 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {useState,useContext} from 'react'
+import { useEffect , useRef} from 'react'
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom';
 import AuthContext from '../Context/AuthContext';
 import Modal from 'react-bootstrap/Modal';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import './Register.css'
+import {faCheck , faTimes , faInfoCircle} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 
-
+const USER_REGEX = /^[a-zA-Z]{2,40}$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const EMAIL_REGEX =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+const MOBILE_REGEX = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -21,26 +28,54 @@ function Login() {
 
 const  {Userlogin,errors,show,handleClose,handleCloses,opens}= useContext(AuthContext)
 
-const [email,setEmail]=useState('')
-const [password,setPassword]=useState('')
+  const userRef = useRef()
+  const fnameRef = useRef()
+  const errRef = useRef()
+
+
+const [errMsg, setErrMsg] = useState('');
+const [success, setSuccess] = useState(false);
+
+
+const [email,setemail]=useState('')
+const [validname, setValidname] = useState(false);
+const [userFocus, setUserFocus] = useState(false);
+
+
+const [pass, setPass] = useState('');
+const [validPass, setValidPass] = useState(false);
+const [passFocus, setPassFocus] = useState(false);
+
+
+/* const [password,setPassword]=useState('')
 const [mcheck,EmailChecker]=useState(false)
-const [pcheck,PasswordChecker]=useState(false)
+const [pcheck,PasswordChecker]=useState(false) */
 
 const [forgot,setForgot]=useState(1)
 const [fshow,setForShow]=useState(false)
 
 
-const checkEmail=(e)=>{
-    let emails=e.target.value
-    setEmail(emails)    
-    
-}
+useEffect(() => {
+  userRef.current.focus();
+}, []);
 
-const checkPassword=(e)=>{
-    console.log(e.target.value)
-    let pass=e.target.value
-    setPassword(pass)
-}
+
+useEffect(() => {
+  const result = EMAIL_REGEX.test(email)
+  console.log(result);
+  console.log(email);
+  setValidname(result)
+}, [email]);
+
+useEffect(() => {
+  const result = PWD_REGEX.test(pass);
+  console.log(result);
+  console.log(pass);
+  setValidPass(result)
+
+  
+}, [pass]);
+
 
 const count=0
  const loginHandler=(e)=>{
@@ -52,50 +87,88 @@ const count=0
      
      if (email.trim().length ===0 ){
       console.log('empty')
-      EmailChecker(true)
+      setErrMsg('Invalid Email or Password')
      }
      else{
-      EmailChecker(false)
-      if ( password.trim().length !==0){
+      if ( pass.trim().length !==0){
         console.log('finallll')
-        Userlogin(email,password)  
+        Userlogin(email,pass)  
         setForgot(forgot+1)
        
     
 
       }
      }
-    if ( password.trim().length ===0){
+    if ( pass.trim().length ===0){
       console.log('values')
-      PasswordChecker(true)
+      
     }else{
-      PasswordChecker(false)
     }
-     }
+    }
 
 
+
+    useEffect(() => {
+      setErrMsg('')
+    }, [email,pass]);
 
   return (
   
       <>   
+      <section className='register'>
+         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
       
   <Card style={{ backgroundColor:'',borderRadius:'2rem'}}>     
       <Card.Body>          
     
     <Form onSubmit={loginHandler} >
-      <Form.Group className="mb-3 mt-5" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control  style={{height:'4rem'}} type="text" placeholder="Enter email" name='email'  onChange={checkEmail} />
-     
-        {mcheck?<span style={{color:'red'}}>* email field is required</span>:''}
-        <Form.Text className="text-muted">        
-        </Form.Text>
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control  style={{height:'4rem'}} autoComplete="true" type="password" placeholder="Password" name='password'  onChange={checkPassword}/>
-      </Form.Group>   
-      {pcheck?<span style={{color:'red'}}>* password field is required</span>:''}
+
+    {/* emial */}
+    <label htmlFor="email">Email
+        <FontAwesomeIcon icon={faCheck} className={validname ? "valid" : "hide"} />
+        <FontAwesomeIcon icon={faTimes} className={validname || !email ? "hide" : "invalid"} />
+         </label>
+        <input type="text"
+        id='email'
+        ref={userRef} 
+        autoComplete="off"
+        onChange={(e) => setemail(e.target.value)}
+        aria-invalid={validname ? "false" : "true"}
+        aria-describedby="uidnote"
+        onFocus={()=>setUserFocus(true)}
+        onBlur={()=> setUserFocus(false)}/>
+
+        <p id="uidnote" className={userFocus && email && !validname ? "instructions" : "offscreen"}>
+            <FontAwesomeIcon icon={faInfoCircle} />
+            4 to 24 characters.<br />
+            Must begin with a letter.<br />
+            Letters, numbers, underscores, hyphens allowed.
+        </p>
+
+        {/* End email */}
+
+
+        {/* password */}
+        <label htmlFor="pass">Password
+       
+         </label>
+        <input type="password"
+        id='pass'
+        ref={userRef} 
+        autoComplete="off"
+        onChange={(e) => setPass(e.target.value)}
+        aria-invalid={validPass ? "false" : "true"}
+        aria-describedby="uidnote"
+        onFocus={()=>setPassFocus(true)}
+        onBlur={()=> setPassFocus(false)}/>
+
+       
+
+        {/* End password */}
+
+
+
+
      
     
       <div style={{textAlign:'center'}}>
@@ -115,6 +188,7 @@ const count=0
       
 </Card>
    
+</section>
   
   </>
 
