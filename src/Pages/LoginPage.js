@@ -171,16 +171,16 @@ const count=0
 
      
     
-      <div style={{textAlign:'center'}}>
-      <Button variant="dark" type="submit"  style={{width:'30%',height:'4rem'}} >
+      <div className='submit-area' style={{textAlign:'center'}}>
+      <Button className='btn' variant="dark" type="submit"   >
         Submit
-      </Button><br></br><br></br>
+      </Button>
     {opens ?  <Alert variant="filled" auto severity="error">
       {errors}
       </Alert>   : ' '}
-   {fshow?   <Link style={{textDecoration:'None',color:'black',marginTop:'2rem'}} to='/forgot_password'>forgotpassword ?</Link>:''}<br></br><br></br>
+   {fshow?   <Link style={{textDecoration:'None',color:'black',marginTop:'2rem'}} to='/forgot_password'>forgotpassword ?</Link>:''}
    
-      <Link to='/register' style={{textDecoration:'None',color:'black',marginTop:'2rem'}}> Create An Account</Link> 
+      <Link to='/register' > Create An Account</Link> 
    </div>
     </Form>
           
