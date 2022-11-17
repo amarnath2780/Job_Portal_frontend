@@ -141,10 +141,10 @@ setErrMsg('')
         password:pass,
         role:role,
     }).then((res)=>{
-        console.log(res.data,'data ann')
+        console.log(res.data,'data')
         navigate('/')
         if (res.data.error){
-          setErrMsg('Someting is wrong')
+          setErrMsg('User already exist')
           console.log(res.data.error)
          
         if(res.data.mobile){
