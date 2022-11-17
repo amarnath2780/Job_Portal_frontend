@@ -20,7 +20,6 @@ function Application() {
         
 
         <div className='Content'>
-        <h5>Application step 2 of 2</h5>
         <form action="">
             <label htmlFor="fname">First Name</label>
             <input type="text" name="fname" id="fname" />

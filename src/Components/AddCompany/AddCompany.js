@@ -20,7 +20,6 @@ function AddCompany() {
         
 
         <div className='Content'>
-        <h5>Application step 1 of 2</h5>
         <form action="">
             <label htmlFor="name">Name of the Company</label>
             <input type="text" name="name" id="name" />
