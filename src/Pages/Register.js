@@ -152,11 +152,12 @@ setErrMsg('')
             console.log('get the mobile')
   
         }
+        setErrMsg('User already exist')
       }
     })
 
 
-    setErrMsg('Someting is wrong')
+   
       console.log('successss')
     }
  
@@ -165,7 +166,7 @@ setErrMsg('')
 
   return (
 
-    <>
+    <div className='reg-app'>
     {success ? (
         <section>
             
@@ -396,7 +397,7 @@ setErrMsg('')
     </section>
   )}
 
-</>
+</div>
   )
     }
 

@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;900&display=swap');
+
+.add {
+  background: #354152;
+}
+
+@media (max-width: 600px) {
+  .container{
+  height: 50%;
+  width: 90%;
+  }
+}
+
+.container  {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 50%;
+  width: 50%;
+  background: #f2f2f2;
+  overflow: hidden;
+  border-radius: 20px;
+  display: flex;
+  cursor: pointer;
+  box-shadow: 0 0 20px 8px #d0d0d0;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #fff;
+  gap: 2rem;
+}
+
+.content {
+  position: absolute;
+
+  text-align: justify;
+  color: black;
+  padding: 40px;
+  font-family: 'Merriweather', serif;
+}
+
+.content form{
+  gap: 20px;
+}
+
+.content form .input{
+  background: linear-gradient(21deg, #10abff, #1beabd);
+  padding: 3px;
+  border-radius: 12px;
+}
+
+h1 {
+  font-weight: 900;
+  text-align: center;
+}
+
+h3 {
+  font-weight: 300;
+}
+
+.flap {
+  width: 100%;
+  height: 100%;
+}
+
+.add-company{
+  color: #000;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+  gap: 3rem;
+  padding: 0px 3rem;
+  margin-bottom: 2rem;
+}
+
+.add-company .Content{
+  flex: 1;
+}
+
+.add-company .Content form{
+  padding: 0px 4rem;
+}
+.add-company .Content form input[type=file]{
+  cursor: pointer;
+}
+.add-company .card-section .card .card-img img{
+  width: 200px;
+  height: 164px;
+  background: #000;
+  border-radius: 10px;
+}
+
+.add-company .card-section .card .card-content img{
+  width: 200px;
+  height: 175px;
+  margin: 0px 4rem;
+}
+
+.add-company .card-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.add-company .card-section .card{
+  border: 2px solid;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 0 180px #444;
+}
+
+.add-company .card-section .card .card-img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+
+
+
+
+@media screen and (max-width: 992px) {
+  .add-company .card-section{
+    display: none;
+  }
+}

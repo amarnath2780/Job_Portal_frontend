@@ -114,7 +114,7 @@ const count=0
 
   return (
   
-      <>   
+      <div class="reg-app">   
       <section className='register'>
          <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
       
@@ -190,7 +190,7 @@ const count=0
    
 </section>
   
-  </>
+  </div>
 
 
    

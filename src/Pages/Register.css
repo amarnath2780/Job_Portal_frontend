@@ -12,9 +12,6 @@ html {
     color: #fff;
 }
 
-body{
-    background-color: #354152;
-}
 
 
 .register {
@@ -24,13 +21,14 @@ body{
     border: 2px solid #fff;
 }
 
-.App {
+.reg-app {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh; 
-  padding: 1rem 0.5rem;
+  padding: 1rem 0rem;
+  background-color: #354152;
 }
 
 section {
@@ -159,3 +157,4 @@ button {
 .submit-area a:hover{
     background-color: transparent;
 }
+
