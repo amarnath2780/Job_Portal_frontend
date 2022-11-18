@@ -1,6 +1,5 @@
 import React from 'react'
 import { useEffect , useState ,useRef} from 'react'
-import Select from 'react-select';
 import logo from '../../Images/s.png';
 import art from '../../Images/art.png';
 import './SelectComapy.css'
@@ -8,7 +7,6 @@ import axios from '../../axios';
 import { useNavigate } from "react-router-dom";
 import {faCheck , faTimes , faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import Dropdown from 'react-bootstrap/Dropdown';
 
 
 const USER_REGEX = /^[a-zA-Z]{1,100}$/;
