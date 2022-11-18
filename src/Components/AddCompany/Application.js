@@ -8,17 +8,16 @@ import axios from '../../axios';
 import { useNavigate } from "react-router-dom";
 import {faCheck , faTimes , faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 const USER_REGEX = /^[a-zA-Z]{1,100}$/;
 const PWD_REGEX = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,16}$/;
+const EMAIL_REGEX =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+const MOBILE_REGEX = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
 const APLLICATION_URL='/application/';
 
-const options = [
-    { value: '1', label: 'Entrega' },
-    { value: '1', label: 'Entrega' },
-    { value: '1', label: 'Entrega' }
-  ]
+
 
 
 
@@ -29,6 +28,14 @@ function Application() {
 
   const navigate = useNavigate()
 
+  useEffect(() => {
+    listCompany()
+  }, []);
+
+  const [email, setemail] = useState('');
+  const [validname, setValidEmail] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
+
   const [fname, setFname] = useState('');
   const [validFname, setValidFname] = useState('');
   const [fnameFocus, setfnameFocus] = useState('');
@@ -36,16 +43,24 @@ function Application() {
   const [lname, setLname] = useState('');
   const [validLname, setValidLname] = useState(false);
   const [lnameFocus, setLnameFocus] = useState(false);
+
+  const [phone, setPhone] = useState('');
+  const [validPhone, setValidPhone] = useState(false);
+  const [phoneFocus, setPhoneFocus] = useState(false);
   
+  const [city, setCity] = useState('');
+  const [validCity, setValidCity] = useState(false);
+  const [cityFocus, setCityFocus] = useState(false);
+
+  const [state, setState] = useState('');
+  const [validState, setValidState] = useState(false);
+  const [stateFocus, setStateFocus] = useState(false);
+
+  const [country, setCountry] = useState('');
+  const [validCountry, setValidCountry] = useState(false);
+  const [countryFocus, setCountryFocus] = useState(false);
+
   const [company, setCompany] = useState('');
-
-
-  const [about, setAbout] = useState('');
-
-
-  const [location, setLocation] = useState('');
-  const [validLocation, setValidLocation] = useState(false);
-  const [locationFocus, setLocationFocus] = useState(false);
 
   const [pass, setPass] = useState('');
   const [validPass, setValidPass] = useState(false);
@@ -62,6 +77,11 @@ function Application() {
     const result = USER_REGEX.test(fname)
     setValidFname(result)
   }, [fname]);
+
+  useEffect(() => {
+    const result = EMAIL_REGEX.test(email)
+    setValidEmail(result)
+  }, [email]);
   
   useEffect(() => {
     const result = USER_REGEX.test(lname)
@@ -70,9 +90,25 @@ function Application() {
   }, [lname]);
 
   useEffect(() => {
-    const result = USER_REGEX.test(location)
-    setValidLocation(result)
-  }, [location]);
+    const result = MOBILE_REGEX.test(phone)
+    setValidPhone(result)
+  }, [phone]);
+
+  useEffect(() => {
+    const result = USER_REGEX.test(city)
+    setValidCity(result)
+  }, [city]);
+  
+  useEffect(() => {
+    const result = USER_REGEX.test(state)
+    setValidState(result)
+  }, [state]);
+  
+  useEffect(() => {
+    const result = USER_REGEX.test(country)
+    setValidCountry(result)
+  }, [country]);
+
 
   useEffect(() => {
     const result = PWD_REGEX.test(pass);
@@ -81,7 +117,7 @@ function Application() {
 
   useEffect(() => {
   setErrMsg('')
-  }, [ pass , fname ,company, lname ,location ]);
+  }, [ fname, lname, email, phone , city , state , country , pass  ]);
 
 
   const applicationHandler=(e)=>{
@@ -91,18 +127,39 @@ function Application() {
       first_name :fname,
       last_name : lname,
       company: company,
-      loaction: location,
-      about : about,
+      email:email,
+      phone:phone,
+      city:city,
+      state:state,
+      country:country,
+      pass:pass,
+
     }).then((res)=>{
       console.log(res.data,'data is here');
       navigate('/recruiter')
 
       if (res.data.error){
-        setErrMsg('User already exist')
+        setErrMsg('Data already exist')
         console.log(res.data.error)
       }
     })
     console.log('successss')
+  }
+
+  const [companyList, setCompanyList] = useState([]);
+
+  const listCompany=()=>{
+    axios.get('/company-list/').then((res)=>{
+      console.log(res.data);
+      setCompanyList(res.data)
+    })
+  }
+
+
+
+  const handleselect=(e)=>{
+    console.log(e.target.value);
+    setCompany(e.target.value)
   }
 
 
@@ -132,49 +189,135 @@ function Application() {
             {/* End first name */}
 
 
-        {/* last name */}
-        <label htmlFor="lname">Last Name
-        <FontAwesomeIcon icon={faCheck} className={validLname ? "valid" : "hide"} />
-        <FontAwesomeIcon icon={faTimes} className={validLname || !lname ? "hide" : "invalid"} />
+          {/* last name */}
+          <label htmlFor="lname">Last Name
+          <FontAwesomeIcon icon={faCheck} className={validLname ? "valid" : "hide"} />
+          <FontAwesomeIcon icon={faTimes} className={validLname || !lname ? "hide" : "invalid"} />
+          </label>
+          <input type="text"
+          id='lname'
+          ref={userRef} 
+          autoComplete="off"
+          onChange={(e) => setLname(e.target.value)}
+          aria-invalid={validLname ? "false" : "true"}
+          aria-describedby="uidnote"
+          onFocus={()=>setLnameFocus(true)}
+          onBlur={()=> setLnameFocus(false)}/>
+          {/* end last name */}
+
+        {/* emial */}
+        <label htmlFor="email">Email
+        <FontAwesomeIcon icon={faCheck} className={validname ? "valid" : "hide"} />
+        <FontAwesomeIcon icon={faTimes} className={validname || !email ? "hide" : "invalid"} />
          </label>
         <input type="text"
-        id='lname'
+        id='email'
         ref={userRef} 
         autoComplete="off"
-        onChange={(e) => setLname(e.target.value)}
-        aria-invalid={validLname ? "false" : "true"}
+        onChange={(e) => setemail(e.target.value)}
+        required
+        aria-invalid={validname ? "false" : "true"}
         aria-describedby="uidnote"
-        onFocus={()=>setLnameFocus(true)}
-        onBlur={()=> setLnameFocus(false)}/>
-        {/* end last name */}
+        onFocus={()=>setEmailFocus(true)}
+        onBlur={()=> setEmailFocus(false)}/>
+
+        <p id="uidnote" className={emailFocus && email && !validname ? "instructions" : "offscreen"}>
+            <FontAwesomeIcon icon={faInfoCircle} />
+            4 to 24 characters.<br />
+            Must begin with a letter.<br />
+            Letters, numbers, underscores, hyphens allowed.
+        </p>
+
+        {/* End email */}
+
+        {/* Phone number */}
+        <label htmlFor="mobile">Mobile Number
+        <FontAwesomeIcon icon={faCheck} className={validPhone ? "valid" : "hide"} />
+        <FontAwesomeIcon icon={faTimes} className={validPhone || !phone ? "hide" : "invalid"} />
+         </label>
+        <input type="text"
+        id='mobile'
+        ref={userRef} 
+        autoComplete="off"
+        onChange={(e) => setPhone(e.target.value)}
+        required
+        aria-invalid={validPhone ? "false" : "true"}
+        aria-describedby="uidnote"
+        onFocus={()=>setPhoneFocus(true)}
+        onBlur={()=> setPhoneFocus(false)}/>
+
+        <p id="uidnote" className={phoneFocus && phone && !validPhone ? "instructions" : "offscreen"}>
+            <FontAwesomeIcon icon={faInfoCircle} />
+            Entre Your Country code (eg: +91) <br/>
+            Only numbers allowed.<br/>
+            must have 10 numbers
+        </p>
+
+
+        {/* End Phone number */}
 
         {/* Company */}
-        <label htmlFor="company">Select Your Company</label>
-        <Select id='company' name='company' options={options} />
+        <label htmlFor="company">Company</label>
+        <select onChange={handleselect} name="company" id="">
+          <option>Select</option>
+        {companyList ? companyList.map((item ,key)=>
+          <option key={item.id} value={item.id}>{item.company_name}</option>
+        ) : ''}
+        </select>
         {/* end Company */}
 
+        {/* city */}
+        <label htmlFor="city">City
+            <FontAwesomeIcon icon={faCheck} className={validCity ? "valid" : "hide"} />
+            <FontAwesomeIcon icon={faTimes} className={validCity || !city ? "hide" : "invalid"} />
+            </label>
+            <input type="text"
+            id='city'
+            ref={userRef} 
+            autoComplete="off"
+            onChange={(e) => setCity(e.target.value)}
+            required
+            aria-invalid={validCity ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={()=>setCityFocus(true)}
+            onBlur={()=> setCityFocus(false)}/>
+        {/* end city */}
 
-        {/* Loaction */}
-        <label htmlFor="pass">Loaction
-        <FontAwesomeIcon icon={faCheck} className={validLocation ? "valid" : "hide"} />
-        <FontAwesomeIcon icon={faTimes} className={validLocation || !location ? "hide" : "invalid"} />
-         </label>
-        <input type="text"
-        id='loaction'
-        ref={userRef} 
-        autoComplete="off"
-        onChange={(e) => setLocation(e.target.value)}
-        aria-invalid={validLocation ? "false" : "true"}
-        aria-describedby="uidnote"
-        onFocus={()=>setLocationFocus(true)}
-        onBlur={()=> setLocationFocus(false)}/>
-        {/* END loaction */}
 
-        {/* about */}
-        <label htmlFor="founder">About</label>
-        <textarea rows="10"></textarea>
-        {/* end about */}
+        {/* state */}
+        <label htmlFor="state">State
+            <FontAwesomeIcon icon={faCheck} className={validState ? "valid" : "hide"} />
+            <FontAwesomeIcon icon={faTimes} className={validState || !state ? "hide" : "invalid"} />
+            </label>
+            <input type="text"
+            id='state'
+            ref={userRef} 
+            autoComplete="off"
+            onChange={(e) => setState(e.target.value)}
+            required
+            aria-invalid={validState ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={()=>setStateFocus(true)}
+            onBlur={()=> setStateFocus(false)}/>
 
+        {/* end state */}
+
+        {/* country */}
+        <label htmlFor="country">State
+            <FontAwesomeIcon icon={faCheck} className={validCountry ? "valid" : "hide"} />
+            <FontAwesomeIcon icon={faTimes} className={validCountry || !country ? "hide" : "invalid"} />
+            </label>
+            <input type="text"
+            id='country'
+            ref={userRef} 
+            autoComplete="off"
+            onChange={(e) => setCountry(e.target.value)}
+            required
+            aria-invalid={validCountry ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={()=>setCountryFocus(true)}
+            onBlur={()=> setCountryFocus(false)}/>
+        {/* end country */}
 
         {/* password */}
         <label htmlFor="pass">Security Code
@@ -183,6 +326,7 @@ function Application() {
          </label>
         <input type="password"
         id='pass'
+        name='pass'
         ref={userRef} 
         autoComplete="off"
         onChange={(e) => setPass(e.target.value)}
@@ -201,7 +345,7 @@ function Application() {
         {/* End password */}
 
 
-        <button disabled={ !validPass ||  !validFname  ||!validLname  || !validLocation  ? true : false}>Sign Up</button>
+        <button type='submit' disabled={ !validPass ||  !validFname  ||!validLname  ||!validname ||!validPhone ||!validCity ||!validState ||!validCountry  ? true : false}>Sign Up</button>
         </form>
         </div>
 
