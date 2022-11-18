@@ -11,7 +11,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 const USER_REGEX = /^[a-zA-Z]{1,100}$/;
 const PWD_REGEX = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,16}$/;
-
+const IMAGE_TYPE = /[^\\s]+(.*?)\\.(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/;
 
 
 
@@ -32,8 +32,8 @@ function AddCompany() {
   const [nameFocus, setNameFocus] = useState('');
 
   const [category, setCategory] = useState('');
-  const [logo, setlogo] = useState('');
-  const [ceoImg, setCeoImg] = useState('');
+
+  const [logo, setlogo] = useState([]);
 
   const [about, setAbout] = useState('');
   const [validAbout, setValidAbout] = useState('');
@@ -67,10 +67,6 @@ function AddCompany() {
     setValidName(result)
   }, [name]);
 
-  useEffect(() => {
-    const result = USER_REGEX.test(about)
-    setValidAbout(result)
-  }, [about]);
 
   useEffect(() => {
     const result = USER_REGEX.test(founder)
@@ -98,6 +94,8 @@ function AddCompany() {
 
 
     const applicationHandler=(e)=>{
+
+      
       e.preventDefault()
   
       axios.post('/add-company/' , {
@@ -135,6 +133,7 @@ function AddCompany() {
     console.log(e.target.value);
     setCategory(e.target.value)
   }
+  
 
 
   return (
@@ -171,15 +170,7 @@ function AddCompany() {
             </select>
             {/* end Category */}
 
-            {/* logo */}
-            <label htmlFor="logo">Upload Company Logo
-            </label>
-            <input type="file"
-            id='logo'
-            name='logo'
-            onChange={(e) => setlogo(e.target.value)}/>
-
-            {/* End logo  */}
+            
 
             {/* Founder name */}
             <label htmlFor="name">Founder
@@ -215,25 +206,10 @@ function AddCompany() {
             onFocus={()=>setCeoFocus(true)}
             onBlur={()=> setCeoFocus(false)}/>
 
-            {/* End CEO's Name  */}
-
-
-            {/* CEO's Image */}
-            <label htmlFor="ceo_img">Upload CEO's Image
-            </label>
-            <input type="file"
-            id='ceo_img'
-            name='ceo_img'
-            autoComplete="off"
-            onChange={(e) => setCeoImg(e.target.value)}
-            required/>
-
-            {/* End CEO's Image  */}
+            {/* End CEO's Name  */}   
 
             {/* About  */}
             <label htmlFor="name">About
-            <FontAwesomeIcon icon={faCheck} className={validAbout ? "valid" : "hide"} />
-            <FontAwesomeIcon icon={faTimes} className={validAbout || !about ? "hide" : "invalid"} />
             </label>
             <textarea
             id='name'
