@@ -7,6 +7,8 @@ import axios from '../../axios';
 import { useNavigate } from "react-router-dom";
 import {faCheck , faTimes , faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 
 const USER_REGEX = /^[a-zA-Z]{1,100}$/;
@@ -115,6 +117,7 @@ function AddCompany() {
           console.log(res.data.error)
         }
       })
+      setErrMsg('Data already exist')
       console.log('successss')
     }
 
@@ -142,6 +145,8 @@ function AddCompany() {
 
         <div className='Content'>
         <form action="" onSubmit={applicationHandler}>
+        {errMsg ? <Stack sx={{ width: '100%' }} spacing={2}>
+        <Alert severity="error">{errMsg}</Alert></Stack> : ''}
             {/* First name */}
             <label htmlFor="name">Company Name
             <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />

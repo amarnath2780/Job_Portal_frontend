@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useEffect , useState ,useRef} from 'react'
 import logo from '../../Images/s.png';
 import art from '../../Images/art.png';
@@ -7,6 +7,10 @@ import axios from '../../axios';
 import { useNavigate } from "react-router-dom";
 import {faCheck , faTimes , faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+
+
 
 
 const USER_REGEX = /^[a-zA-Z]{1,100}$/;
@@ -23,7 +27,6 @@ function Application() {
 
   const userRef = useRef()
   const errRef = useRef()
-
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -137,10 +140,14 @@ function Application() {
       navigate('/recruiter')
 
       if (res.data.error){
-        setErrMsg('Data already exist')
+        setErrMsg('Security code is not Valid')
         console.log(res.data.error)
       }
+      if(res.data.message == 'created successfully'){
+        console.log('not it iss')
+      }
     })
+    setErrMsg('Data Aleady exists');
     console.log('successss')
   }
 
@@ -153,8 +160,6 @@ function Application() {
     })
   }
 
-
-
   const handleselect=(e)=>{
     console.log(e.target.value);
     setCompany(e.target.value)
@@ -162,12 +167,14 @@ function Application() {
 
 
 
+
   return (
     <div className='add-company'>
-        <p  ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+        
         <div className='Content'>
         <form onSubmit={applicationHandler} >
-
+        {errMsg ? <Stack sx={{ width: '100%' }} spacing={2}>
+      <Alert severity="error">{errMsg}</Alert></Stack> : ''}
             {/* First name */}
             <label htmlFor="fname">First Name
             <FontAwesomeIcon icon={faCheck} className={validFname ? "valid" : "hide"} />

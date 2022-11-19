@@ -1,0 +1,40 @@
+.status-bar{
+    color: #000;
+}
+
+.status{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #000;
+    margin-top: 2rem;
+    color: #fff;
+    padding: 18px 0px;
+    box-shadow: rgb(0 0 0 / 43%) 0px 31px 41px, rgb(0 0 0 / 22%) 0px 10px 10px;
+}
+
+.status button{
+    margin: 0;
+    padding: 3px 7px;
+    border-radius: 9px;
+    border: 2px solid #fff5f5;
+    font-weight: bolder;
+    background: #000;
+    color: #fff;
+}
+
+.status button:active{
+    background: #fff;
+    color: #000;
+}
+
+.pending-table{
+    width: 80%;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+.status-table{
+    display: flex;
+    justify-content: center;
+}

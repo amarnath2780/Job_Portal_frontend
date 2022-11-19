@@ -10,7 +10,7 @@ export const AuthProvider=({children})=>{
     // const [user, setUser] = useState([])
  let [authToken,setAuthToken]=useState(()=>localStorage.getItem('authToken')? JSON.parse(localStorage.getItem('authToken')):null)
  let [user,setUser]=useState(()=>localStorage.getItem('authToken')? jwt_decode(localStorage.getItem('authToken')):null)
-  let [admin,setAdmin]=useState(()=>localStorage.getItem('adminAuthToken')? jwt_decode(localStorage.getItem('adminAuthToken')):null)
+  let [admin,setAdmin]=useState(()=>localStorage.getItem('admin')? jwt_decode(localStorage.getItem('admin')):null)
   let [adminAuthToken,setAdminAuthToken]=useState(()=>localStorage.getItem('adminAuthToken')? JSON.parse(localStorage.getItem('adminAuthToken')):null)
     const navigate=useNavigate()
     
@@ -46,6 +46,7 @@ const handleClicks = () => {
                 console.log(res.data.message)
 
                 console.log('role is here', res.data.user.role);
+                
 
                 if (res.data.token){
                   console.log('recruiter is ' + res.data.user.role);

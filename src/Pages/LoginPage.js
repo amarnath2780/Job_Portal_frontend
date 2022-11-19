@@ -6,8 +6,6 @@ import { useEffect , useRef} from 'react'
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom';
 import AuthContext from '../Context/AuthContext';
-import Modal from 'react-bootstrap/Modal';
-import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import './Register.css'
 import {faCheck , faTimes , faInfoCircle} from '@fortawesome/free-solid-svg-icons'

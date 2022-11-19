@@ -5,11 +5,12 @@ import { BrowserRouter as Router , Route , Routes } from 'react-router-dom';
 import { AuthProvider } from './Context/AuthContext';
 import AdminPrivetRoute from './Routes/AdminPrivetRoute';
 import PrivateRoutes from './Routes/PrivateRoutes';
+import CaseOfAdmin from './Routes/CaseOfAdmin'
 import Register from './Pages/Register'
 import Recruiter from './Pages/Recruiter'
 import NewCompany from './Pages/NewCompany';
 import Applications from './Pages/Applications';
-
+import Admin from './Pages/Admin';
 
 function App() {
   return (
@@ -26,6 +27,11 @@ function App() {
             <Route element={<PrivateRoutes/>}>
                 <Route path='/' element={<Home/>} exact/>
            </Route>
+
+           <Route element={<CaseOfAdmin/>}>
+              <Route path='/admin' element={<Admin/>} />
+           </Route>
+
 
             <Route element={<AdminPrivetRoute/>}>
                 <Route path='/recruiter' element={<Recruiter/>} exact/>
