@@ -1,12 +1,21 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Navbar from '../Components/Navbar'
 import './Css/Recruiter.css'
 import {useDispatch ,useSelector} from 'react-redux'
 import { AuthProvider } from '../Context/AuthContext';
 import { Link } from "react-router-dom";
+import AuthContext from '../Context/AuthContext';
 
 function Recruiter() {
 
+
+  const  {Userlogin,errors,show,handleClose,applied,user,setApplied,opens}= useContext(AuthContext)
+
+  useEffect(() => {
+
+    console.log(user);
+    
+  }, []);
 
   return (
     <div className='recruiter'>

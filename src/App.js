@@ -3,6 +3,7 @@ import LoginPage from './Pages/LoginPage'
 import Home from './Pages/Home'
 import { BrowserRouter as Router , Route , Routes } from 'react-router-dom';
 import { AuthProvider } from './Context/AuthContext';
+import { UserProvider } from './Context/UserContext';
 import AdminPrivetRoute from './Routes/AdminPrivetRoute';
 import PrivateRoutes from './Routes/PrivateRoutes';
 import CaseOfAdmin from './Routes/CaseOfAdmin'
@@ -18,33 +19,28 @@ function App() {
       <Router>
 
         <AuthProvider>
-
-
+        <UserProvider>
           <Routes>
+              <Route element={<PrivateRoutes/>}>
+                  <Route path='/' element={<Home/>} exact/>
+              </Route>
+
+              <Route element={<CaseOfAdmin/>}>
+                  <Route path='/admin' element={<Admin/>} />
+              </Route>
 
 
+              <Route element={<AdminPrivetRoute/>}>
+                  <Route path='/recruiter' element={<Recruiter/>} exact/>
+                  <Route path='/add-company' element={<NewCompany/>}/>
+                  <Route path='/application' element={<Applications/>}/>
+              </Route>
 
-            <Route element={<PrivateRoutes/>}>
-                <Route path='/' element={<Home/>} exact/>
-           </Route>
-
-           <Route element={<CaseOfAdmin/>}>
-              <Route path='/admin' element={<Admin/>} />
-           </Route>
-
-
-            <Route element={<AdminPrivetRoute/>}>
-                <Route path='/recruiter' element={<Recruiter/>} exact/>
-                <Route path='/add-company' element={<NewCompany/>}/>
-                <Route path='/application' element={<Applications/>}/>
-            </Route>
-
-            <Route path='/login' element={<LoginPage/>}/>
-            <Route path='/register' element={<Register/>}></Route>
-
-          </Routes>
-        
-          </AuthProvider>
+              <Route path='/login' element={<LoginPage/>}/>
+              <Route path='/register' element={<Register/>}></Route>
+            </Routes>
+          </UserProvider>
+        </AuthProvider> 
 
       </Router>
     </div>

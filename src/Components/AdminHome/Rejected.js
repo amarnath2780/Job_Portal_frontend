@@ -1,5 +1,6 @@
 import React from 'react'
 import { DataGrid } from '@mui/x-data-grid';
+import { Button } from '@mui/material';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
@@ -23,11 +24,12 @@ const columns = [
 ];
 
 
+
 const rows = [
-  { id: 1, lastName: 'oops', firstName: 'rio', age: 35 },
-  { id: 2, lastName: 'heist', firstName: 'tokyo', age: 42 },
-  { id: 3, lastName: 'heist', firstName: 'nairobi', age: 45 },
-  { id: 4, lastName: 'heist', firstName: 'denver', age: 16 },
+  { id: 1, lastName: 'Elite', firstName: 'rio', age: 35 },
+  { id: 2, lastName: 'Elite', firstName: 'tokyo', age: 42 },
+  { id: 3, lastName: 'Elite', firstName: 'nairobi', age: 45 },
+  { id: 4, lastName: 'Elite', firstName: 'denver', age: 16 },
   { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
   { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
   { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
@@ -36,7 +38,7 @@ const rows = [
 ];
 
 
-function Accepted() {
+function Rejected() {
 
   return (
     <div className='pending-table'>
@@ -53,4 +55,4 @@ function Accepted() {
   )
 }
 
-export default Accepted
+export default Rejected

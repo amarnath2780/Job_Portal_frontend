@@ -9,7 +9,7 @@ import {faCheck , faTimes , faInfoCircle} from '@fortawesome/free-solid-svg-icon
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-
+import AuthContext from '../../Context/AuthContext';
 
 
 
@@ -25,6 +25,8 @@ const APLLICATION_URL='/application/';
 
 function Application() {
 
+  const  {Userlogin,errors,show,handleClose,handleCloses,setApplied,opens}= useContext(AuthContext)
+
   const userRef = useRef()
   const errRef = useRef()
   const navigate = useNavigate()
@@ -32,6 +34,8 @@ function Application() {
   useEffect(() => {
     listCompany()
   }, []);
+
+
 
   const [email, setemail] = useState('');
   const [validname, setValidEmail] = useState(false);
@@ -86,7 +90,6 @@ function Application() {
   
   useEffect(() => {
     const result = USER_REGEX.test(lname)
-    console.log(result);
     setValidLname(result)
   }, [lname]);
 
@@ -136,29 +139,28 @@ function Application() {
       pass:pass,
 
     }).then((res)=>{
-      console.log(res.data,'data is here');
       navigate('/recruiter')
 
       if (res.data.error){
         setErrMsg('Security code is not Valid')
-        console.log(res.data.error)
       }
       if(res.data.message == 'created successfully'){
         console.log('not it iss')
       }
     })
     setErrMsg('Data Aleady exists');
-    console.log('successss')
   }
 
   const [companyList, setCompanyList] = useState([]);
 
   const listCompany=()=>{
     axios.get('/company-list/').then((res)=>{
-      console.log(res.data);
       setCompanyList(res.data)
+      
     })
   }
+
+
 
   const handleselect=(e)=>{
     console.log(e.target.value);

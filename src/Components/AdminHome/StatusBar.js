@@ -1,16 +1,33 @@
 import React ,{useState} from 'react'
 import './AdminHome.css'
 import Pending from './Pending'
+import Accepted from './Accepted'
+import Rejected from './Rejected';
 
 function StatusBar() {
 
-  const [pending, setPending] = useState(false);
+  const [pending, setPending] = useState(true);
+  const [accept, setAccept] = useState(false);
+  const [rejected, setRejected] = useState(false);
 
 
   const handlingPending=()=>{
-    setPending(true)
+    setPending(!pending)
+    setAccept(false)
+    setRejected(false)
   }
 
+  const handlingAccept=()=>{
+    setAccept(!accept)
+    setPending(false)
+    setRejected(false)
+  }
+
+  const handlingRejected=()=>{
+    setRejected(!rejected)
+    setAccept(false)
+    setPending(false)
+  }
 
   return (
     <div className='status-bar'>
@@ -20,10 +37,10 @@ function StatusBar() {
           <button onClick={handlingPending}  >Pending</button>
         </div>
         <div className='accept'>
-          <button>Accepted</button>
+          <button onClick={handlingAccept} >Accepted</button>
         </div>
         <div className='rejected'>
-          <button>Rejected</button>
+          <button onClick={handlingRejected} >Rejected</button>
         </div>
       </div>
 
@@ -31,6 +48,8 @@ function StatusBar() {
 
       <div className='status-table'>
         {pending ? <Pending/> : ''}
+        {accept ? <Accepted/> : ''}
+        {rejected ? <Rejected/> : ''}
       </div>
 
     </div>

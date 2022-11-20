@@ -60,15 +60,11 @@ useEffect(() => {
 
 useEffect(() => {
   const result = EMAIL_REGEX.test(email)
-  console.log(result);
-  console.log(email);
   setValidname(result)
 }, [email]);
 
 useEffect(() => {
   const result = PWD_REGEX.test(pass);
-  console.log(result);
-  console.log(pass);
   setValidPass(result)
 
   
@@ -78,13 +74,11 @@ useEffect(() => {
 const count=0
  const loginHandler=(e)=>{
      e.preventDefault() 
-     console.log(forgot,'forgott')
      if (forgot>2){
       setForShow(true)
      }
      
      if (email.trim().length ===0 ){
-      console.log('empty')
       setErrMsg('Invalid Email or Password')
      }
      else{

@@ -7,7 +7,6 @@ import jwt_decode from 'jwt-decode';
 const AuthContext=createContext()
 export default AuthContext;
 export const AuthProvider=({children})=>{
-    // const [user, setUser] = useState([])
  let [authToken,setAuthToken]=useState(()=>localStorage.getItem('authToken')? JSON.parse(localStorage.getItem('authToken')):null)
  let [user,setUser]=useState(()=>localStorage.getItem('authToken')? jwt_decode(localStorage.getItem('authToken')):null)
   let [admin,setAdmin]=useState(()=>localStorage.getItem('admin')? jwt_decode(localStorage.getItem('admin')):null)
@@ -15,7 +14,6 @@ export const AuthProvider=({children})=>{
     const navigate=useNavigate()
     
     const [show, setShow] = useState(false);
-
     const handleClose = () => {setShow(false)};
     const handleShow = () => {setShow(true)};
 
@@ -43,10 +41,7 @@ const handleClicks = () => {
         console.log(email,password)
        await axios.post('user/login/',{email:email,password:password}).then((res)=>{
                 console.log(res.data)
-                console.log(res.data.message)
-
-                console.log('role is here', res.data.user.role);
-                
+                console.log('id is here',res.data.user.user_id);
 
                 if (res.data.token){
                   console.log('recruiter is ' + res.data.user.role);
@@ -56,7 +51,6 @@ const handleClicks = () => {
                     setAuthToken(res.data)
                     setUser(res.data.token)                      
                     SetError(res.data.message)
-                    console.log('data is here');
                     localStorage.setItem('userId',JSON.stringify(res.data.user.user_id))
                     navigate('/')
                   }
@@ -104,6 +98,7 @@ const handleClicks = () => {
             localStorage.removeItem('userId')
             localStorage.removeItem('adminAuthToken')
             localStorage.removeItem('Admintoken')
+            localStorage.removeItem('admin')
 
             setUser(null)
             setAuthToken(null)
@@ -126,9 +121,7 @@ const handleClicks = () => {
             setMobile:setMobile,   
             errors:errors,    
             adminAuthToken:adminAuthToken,
-            admin:admin,   
-            
-            
+            admin:admin,
             setShow:setShow,
             handleClose:handleClose,
             handleShow:handleShow,
