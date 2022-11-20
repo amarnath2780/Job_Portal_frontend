@@ -156,7 +156,6 @@ function Application() {
   const listCompany=()=>{
     axios.get('/company-list/').then((res)=>{
       setCompanyList(res.data)
-      
     })
   }
 
