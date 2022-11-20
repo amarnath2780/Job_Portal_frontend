@@ -12,6 +12,7 @@ import Recruiter from './Pages/Recruiter'
 import NewCompany from './Pages/NewCompany';
 import Applications from './Pages/Applications';
 import Admin from './Pages/Admin';
+import AdmAdminUserView from './Pages/AdminUserView';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
 
               <Route element={<CaseOfAdmin/>}>
                   <Route path='/admin' element={<Admin/>} />
+                  <Route path='/user-view' element={<AdmAdminUserView/>} />
               </Route>
 
 

@@ -4,6 +4,7 @@ import Pending from './Pending'
 import Accepted from './Accepted'
 import Rejected from './Rejected';
 
+
 function StatusBar() {
 
   const [pending, setPending] = useState(true);
