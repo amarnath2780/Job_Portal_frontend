@@ -1,19 +1,18 @@
 import React, { useContext, useEffect } from 'react'
 import Navbar from '../Components/Navbar'
 import './Css/Recruiter.css'
-import {useDispatch ,useSelector} from 'react-redux'
-import { AuthProvider } from '../Context/AuthContext';
+import UserContext from '../Context/UserContext'
 import { Link } from "react-router-dom";
-import AuthContext from '../Context/AuthContext';
 
 function Recruiter() {
 
 
-  const  {Userlogin,errors,show,handleClose,applied,user,setApplied,opens}= useContext(AuthContext)
+
+  const { userLoggedData ,clearUserContext } = useContext(UserContext);
+  const user = localStorage.getItem("user")
+  console.log(user);
 
   useEffect(() => {
-
-    console.log(user);
     
   }, []);
 

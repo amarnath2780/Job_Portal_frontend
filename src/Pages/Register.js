@@ -1,5 +1,5 @@
 import React, { useRef  } from 'react'
-import { useEffect , useState} from 'react'
+import { useEffect , useState, useContext} from 'react'
 import {faCheck , faTimes , faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import './Register.css'
@@ -18,6 +18,8 @@ const REGISTER_URL = '/user/signup';
 
 
 function Register() {
+
+
 
   const userRef = useRef()
   const fnameRef = useRef()
@@ -322,7 +324,7 @@ setErrMsg('')
         <FontAwesomeIcon icon={faCheck} className={validRole ? "valid" : "hide"} />
         <FontAwesomeIcon icon={faTimes} className={validRole || !role ? "hide" : "invalid"} />
          </label>
-        <input type="text"
+        {/* <input type="text"
         id='role'
         ref={userRef} 
         autoComplete="off"
@@ -336,7 +338,12 @@ setErrMsg('')
         <p id="uidnote" className={roleFocus && phone && !validRole ? "instructions" : "offscreen"}>
             <FontAwesomeIcon icon={faInfoCircle} />
             Seeker or Recruiter
-        </p>
+        </p> */}
+        <select onChange={(e) => setRole(e.target.value)} name="role" id="role">
+        <option key='' value='seeker'>Select</option>
+        <option key='seeker' value='seeker'>Seeker</option>
+        <option key='recruiter' value='recruiter'>Recruiter</option>
+        </select>
 
 
         {/* End Role */}
