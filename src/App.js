@@ -13,8 +13,10 @@ import NewCompany from './Pages/NewCompany';
 import Applications from './Pages/Applications';
 import Admin from './Pages/Admin';
 import AdmAdminUserView from './Pages/AdminUserView';
+import AdminAddSkill from './Pages/Admin/AdminAddSkill';
 
 function App() {
+  
   return (
     <div className="App">
       <Router>
@@ -29,6 +31,7 @@ function App() {
               <Route element={<CaseOfAdmin/>}>
                   <Route path='/admin' element={<Admin/>} />
                   <Route path='/user-view' element={<AdmAdminUserView/>} />
+                  <Route path='/add-view' element={<AdminAddSkill/>} />
               </Route>
 
 
