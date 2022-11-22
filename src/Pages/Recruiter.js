@@ -20,9 +20,10 @@ function Recruiter() {
     <div className='recruiter'>
       <Navbar/>
       
+      <div className='posted'>
       <h1>If your Company already listed complete the Application<Link to='/application'>Here</Link> </h1>
       <h1>If your Company not listed Add your Company<Link to='/add-company'>Here</Link> </h1>
- 
+      </div>
       
     </div>
   )

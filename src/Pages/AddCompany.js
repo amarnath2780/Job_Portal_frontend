@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../Components/Navbar'
+import AdminNav from '../Components/AdminNav'
 import SelectComany from '../Components/AddCompany/SelectComany'
 
 function AddCompany() {
   return (
     <div >
-      <Navbar/>
+      <AdminNav/>
       <SelectComany/>
     </div>
   )

@@ -161,3 +161,9 @@ select{
     letter-spacing: 1.5px;
     text-align: center;
 }
+
+.posted{
+    display: flex;
+    align-items: center;
+    margin-top: 9rem;
+}

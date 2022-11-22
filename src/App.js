@@ -3,7 +3,6 @@ import LoginPage from './Pages/LoginPage'
 import Home from './Pages/Home'
 import { BrowserRouter as Router , Route , Routes } from 'react-router-dom';
 import { AuthProvider } from './Context/AuthContext';
-import { UserProvider } from './Context/UserContext';
 import AdminPrivetRoute from './Routes/AdminPrivetRoute';
 import PrivateRoutes from './Routes/PrivateRoutes';
 import CaseOfAdmin from './Routes/CaseOfAdmin'
@@ -22,7 +21,6 @@ function App() {
       <Router>
 
         <AuthProvider>
-        <UserProvider>
           <Routes>
               <Route element={<PrivateRoutes/>}>
                   <Route path='/' element={<Home/>} exact/>
@@ -30,7 +28,7 @@ function App() {
 
               <Route element={<CaseOfAdmin/>}>
                   <Route path='/admin' element={<Admin/>} />
-                  <Route path='/user-view' element={<AdmAdminUserView/>} />
+                  <Route path='/Users' element={<AdmAdminUserView/>} />
                   <Route path='/add-view' element={<AdminAddSkill/>} />
               </Route>
 
@@ -44,7 +42,6 @@ function App() {
               <Route path='/login' element={<LoginPage/>}/>
               <Route path='/register' element={<Register/>}></Route>
             </Routes>
-          </UserProvider>
         </AuthProvider> 
 
       </Router>

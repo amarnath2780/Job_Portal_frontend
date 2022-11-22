@@ -1,48 +1,63 @@
-import React from 'react'
+import React , { useEffect, useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
-
-const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'First name', width: 130 },
-  { field: 'lastName', headerName: 'Last name', width: 130 },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 90,
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-  },
-];
+import axios from '../../axios';
 
 
-const rows = [
-  { id: 1, lastName: 'oops', firstName: 'rio', age: 35 },
-  { id: 2, lastName: 'heist', firstName: 'tokyo', age: 42 },
-  { id: 3, lastName: 'heist', firstName: 'nairobi', age: 45 },
-  { id: 4, lastName: 'heist', firstName: 'denver', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
+
+
+
 
 
 function Accepted() {
+
+  const columns = [
+    { field: 'id', headerName: 'First Name', width: 150 },
+    { field: 'last_name', headerName: 'Last name', width: 120 },
+    { field: 'email', headerName: 'email', width: 250 },
+    { field: 'phone', headerName: 'Phone number', width: 180 },
+    { field: 'company', headerName: 'Role', width: 100,
+    description: 'This column has a value getter and is not sortable.',
+    sortable: false, },
+    { field: 'status', headerName: 'Status', width: 130,
+    description: 'This column has a value getter and is not sortable.',
+    sortable: false, },
+    
+  ];
+
+  const [acceped, setacceped] = useState([]);
+
+  useEffect(() => {
+   AccepedList()
+  }, []);
+
+  const AccepedList=()=>{
+    axios.get('/accepted-app/').then((res)=>{
+      setacceped(res.data);
+    })
+  }
+
+
+  const rowData = acceped?.map(acceped => 
+    {
+      return {
+        id : acceped?.id,
+        first_name : acceped?.first_name,
+        last_name : acceped?.last_name,
+        email: acceped?.email,
+        phone:acceped?.phone,
+        company:acceped?.company,
+        city:acceped?.city,
+        state:acceped?.state,
+        country:acceped?.country,
+        status:acceped?.status,
+      }
+    })
 
   return (
     <div className='pending-table'>
         <div style={{ height: 400, width: '100%' }}>
             <DataGrid
-                rows={rows}
+                rows={rowData}
                 columns={columns}
                 pageSize={5}
                 rowsPerPageOptions={[5]}

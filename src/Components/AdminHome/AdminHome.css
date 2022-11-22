@@ -38,3 +38,8 @@
     display: flex;
     justify-content: center;
 }
+
+.btn-pending{
+    padding: 0 11px;
+    margin: 0;
+}

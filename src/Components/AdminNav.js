@@ -11,20 +11,20 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import AuthContext from '../Context/AuthContext';
-import axios  from '../axios'
+import { Link, useNavigate } from "react-router-dom";
 
 
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Users', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard'];
 
-function Navbar() {
+function AdminNav() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const {logOut , user} = React.useContext(AuthContext);
+  const navigate = useNavigate()
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -95,9 +95,22 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
+                <div
+                style={{display: "flex", flexDirection: "column"}}>
+                  <button
+                  style={{textDecoration:"none", border:"none" , padding:"0px 3px" , background:"none", margin:"none"}}
+                  onClick={(e)=>{
+                    e.preventDefault()
+                    navigate(`/${page}`)
+                  }}
+                  >
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">
+                  {page}
+                  </Typography>
                 </MenuItem>
+                </button>
+                </div>
               ))}
             </Menu>
           </Box>
@@ -155,13 +168,21 @@ function Navbar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={()=> navigate(settings.route)}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
+
+              <MenuItem  onClick={(e)=>{
+                navigate('/user-view')
+              }}>
+                  <Typography textAlign="center">Users</Typography>
+              </MenuItem>
+
               {val? <MenuItem  onClick={logOut}>
                   <Typography textAlign="center">Logout</Typography>
               </MenuItem> : '' }
+              
             </Menu>
           </Box>
         </Toolbar>
@@ -169,4 +190,4 @@ function Navbar() {
     </AppBar>
   );
 }
-export default Navbar;
+export default AdminNav;
