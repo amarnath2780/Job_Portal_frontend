@@ -16,7 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 
-const pages = ['Users', 'Pricing', 'Blog'];
+const pages = ['Users', 'Admin', 'Skill'];
 const settings = ['Profile', 'Account', 'Dashboard'];
 
 function AdminNav() {
@@ -99,6 +99,7 @@ function AdminNav() {
                 style={{display: "flex", flexDirection: "column"}}>
                   <button
                   style={{textDecoration:"none", border:"none" , padding:"0px 3px" , background:"none", margin:"none"}}
+                  key={page.id}
                   onClick={(e)=>{
                     e.preventDefault()
                     navigate(`/${page}`)
@@ -135,14 +136,24 @@ function AdminNav() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+                <div
+                style={{display: "flex", flexDirection: "column"}}>
+                  <button
+                  style={{textDecoration:"none", border:"none", color:"#fff" , padding:"0px 3px" , background:"none", margin:"none"}}
+                  key={page.id}
+                  onClick={(e)=>{
+                    e.preventDefault()
+                    navigate(`/${page}`)
+                  }}
+                  >
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                  {page}
+                  </Typography>
+                </MenuItem>
+                </button>
+                </div>
+              ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

@@ -13,6 +13,7 @@ import Applications from './Pages/Applications';
 import Admin from './Pages/Admin';
 import AdmAdminUserView from './Pages/AdminUserView';
 import AdminAddSkill from './Pages/Admin/AdminAddSkill';
+import ListSkill from './Pages/Admin/ListSkill';
 
 function App() {
   
@@ -30,6 +31,7 @@ function App() {
                   <Route path='/admin' element={<Admin/>} />
                   <Route path='/Users' element={<AdmAdminUserView/>} />
                   <Route path='/add-view' element={<AdminAddSkill/>} />
+                  <Route path='/Skill' element={<ListSkill/>} />
               </Route>
 
 
