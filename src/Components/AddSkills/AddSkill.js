@@ -80,7 +80,7 @@ useEffect(() => {
     {errMsg ? <Stack sx={{ width: '100%' }} spacing={2}>
       <Alert severity="error">{errMsg}</Alert></Stack> : ''}
             <div className='add-company-select'>
-                <label htmlFor="company">Company</label>
+                <label htmlFor="company">Skill</label>
                 <TextField
                 id="outlined-name"
                 label=""

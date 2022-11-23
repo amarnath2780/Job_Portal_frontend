@@ -1,17 +1,49 @@
 import React, { useEffect, useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import axios from '../../axios';
+import ResponsiveDialog from './Popup';
 
-const columns = [
-  { field: 'id', headerName: 'Id', width: 150 },
-  { field: 'skill_name', headerName: 'Skill', width: 120 },
-  { field: 'department', headerName: 'Department Id', width: 250 },
 
-  
-];
 
 
 function AllSkills() {
+
+
+  const [passid, setPassid] = useState('');
+
+  const columns = [
+  { field: 'id', headerName: 'Id', width: 150 },
+  { field: 'skill_name', headerName: 'Skill', width: 120 },
+  { field: 'department', headerName: 'Department Id', width: 250 },
+  {field: 'accept', headerName: 'Accept', width: 250 , 
+    renderCell: (cellvalues) => {
+      return (
+        <button
+        style={{border:"none",background:"none"}}
+        className='btn-pending'
+         onClick={(e)=>{
+          setPassid(cellvalues.row.id);
+         }}>
+          <ResponsiveDialog id={passid}/>
+        </button>
+      )
+    }
+    },
+    {field: 'reject', headerName: 'Reject', width: 250 , 
+    renderCell: (cellvalues) => {
+      return (
+        <button
+        className='btn-pending'
+         onClick={(e)=>{
+          console.log(cellvalues)
+         }}>
+          Remove
+        </button>
+      )
+    }
+    },
+  
+];
 
   const [skill, setSkill] = useState([]);
 

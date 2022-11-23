@@ -178,14 +178,14 @@ function AdminNav() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={()=> navigate(settings.route)}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem  onClick={(e)=>{
+                navigate('/add-view/')
+              }}>
+                  <Typography textAlign="center">Add Option</Typography>
+              </MenuItem>
 
               <MenuItem  onClick={(e)=>{
-                navigate('/user-view')
+                navigate('/Users/')
               }}>
                   <Typography textAlign="center">Users</Typography>
               </MenuItem>

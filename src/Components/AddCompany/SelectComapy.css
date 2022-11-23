@@ -139,6 +139,14 @@ h3 {
   margin-top: 3rem;
 }
 
+.card-box .card-button-cat{
+  background: #000;
+  color: #fff;
+  border: 3px solid #000;
+  border-radius: 13px;
+  margin-top: 0rem;
+}
+
 .card-title{
   font-weight: bolder;
   text-align: start;

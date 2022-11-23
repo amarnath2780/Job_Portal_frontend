@@ -65,7 +65,7 @@ useEffect(() => {
             value={name}
             onChange={handleChange}
             />
-            <button className='card-button' type='submit'>Submit</button>
+            <button className='card-button-cat' type='submit'>Submit</button>
     </Card>
         
     </form>
