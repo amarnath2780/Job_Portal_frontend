@@ -3,11 +3,29 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
 import axios from '../../axios';
 import CategoryPopup from './CategoryPopup';
+import DepartmentPopup from './DepartmentPopup'
+import Backdrop from '@mui/material/Backdrop';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
+import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
-
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #cc0e15',
+  boxShadow: 24,
+  color : "#cc0e15",
+  p: 4,
+};
 
 
 function ListCategory() {
@@ -15,6 +33,10 @@ function ListCategory() {
   const [passid, setPassid] = useState('');
 
   const [category, setCategory] = useState([]);
+
+
+  const naviagte = useNavigate()
+
 
 
   const columns = [
@@ -30,19 +52,6 @@ function ListCategory() {
             setPassid(cellvalues.row.id);
            }}>
             <CategoryPopup id={passid}/>
-          </button>
-        )
-      }
-      },
-      {field: 'reject', headerName: 'Reject', width: 250 , 
-      renderCell: (cellvalues) => {
-        return (
-          <button
-          className='btn-pending'
-           onClick={(e)=>{
-            console.log(cellvalues)
-           }}>
-            Remove
           </button>
         )
       }
@@ -68,6 +77,7 @@ function ListCategory() {
 
   return (
     <div className='pending-table'>
+
         <div style={{ height: 400, width: '100%' }}>
             <DataGrid
                 rows={rowData}
