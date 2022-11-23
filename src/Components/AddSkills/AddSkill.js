@@ -9,8 +9,14 @@ import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 
 
-function AddCategory() {
+function AddSkill() {
     const errRef = useRef()
+    const [category, setCategory] = useState([]);
+    const [cat, setcat] = useState('');
+
+    useEffect(() => {
+        listCompany()
+      }, []);
 
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
@@ -24,17 +30,31 @@ function AddCategory() {
 
 const addCategory=(e)=>{
     e.preventDefault()
-    axios.post('/add-category/',{
-        category_name:name,
+    axios.post('/add-skill/',{
+        skill_name:name,
+        department:cat,
     }).then((res)=>{
         console.log(res.data);
         navigate('/Skill')
         if (res.data.error){
           setErrMsg('User already exist')
-          console.log(res.data.errors)
       }
       setErrMsg('Category already exist')
     })
+}
+
+
+const handleCategory=(e)=>{
+    setcat(e.target.value)
+  }
+
+
+
+
+const listCompany=()=>{
+  axios.get('/list-department/').then((res)=>{
+    setCategory(res.data)
+  })
 }
 
 useEffect(() => {
@@ -55,16 +75,28 @@ useEffect(() => {
     <div className='pending-table'>
 
     <form action="" onSubmit={addCategory}>
-        <p className='card-title'>Add Company Category</p>
+        <p className='card-title'>Add New Skills</p>
     <Card className='card-box' sx={{ minWidth: 275 }}>
     {errMsg ? <Stack sx={{ width: '100%' }} spacing={2}>
       <Alert severity="error">{errMsg}</Alert></Stack> : ''}
-            <TextField
-            id="outlined-name"
-            label=""
-            value={name}
-            onChange={handleChange}
-            />
+            <div className='add-company-select'>
+                <label htmlFor="company">Company</label>
+                <TextField
+                id="outlined-name"
+                label=""
+                value={name}
+                onChange={handleChange}
+                />
+            </div>
+            <div className='add-company-select'>
+            <label htmlFor="company">Company</label>
+                <select onChange={handleCategory}  name="company" id="">
+                    <option>Select</option>
+                    {category ? category.map((item ,key)=>
+                    <option key={item.id} value={item.id} >{item.department_name}</option>
+                    ) : ''}
+                </select>
+            </div>
             <button className='card-button' type='submit'>Submit</button>
     </Card>
         
@@ -75,4 +107,4 @@ useEffect(() => {
   )
 }
 
-export default AddCategory
+export default AddSkill

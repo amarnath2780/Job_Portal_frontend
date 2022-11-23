@@ -1,30 +1,32 @@
 import React ,{useState} from 'react'
 import '../AdminHome/AdminHome.css'
 import AddCategory from './AddCategory'
+import AddSkill from './AddSkill'
+import AddDepartment from './AddDepartment'
 
 
 function SkillsStatusBar() {
 
   const [category, setCategory] = useState(true);
-  const [recruiter, setRecruiter] = useState(false);
+  const [skill, setSkill] = useState(false);
   const [spams, setSpam] = useState(false);
 
 
   const handlingCategoryr=()=>{
     setCategory(!category)
-    setRecruiter(false)
+    setSkill(false)
     setSpam(false)
   }
 
   const handlingRecruiter=()=>{
-    setRecruiter(!recruiter)
+    setSkill(!skill)
     setCategory(false)
     setSpam(false)
   }
 
   const handlingSpam=()=>{
     setSpam(!spams)
-    setRecruiter(false)
+    setSkill(false)
     setCategory(false)
   }
 
@@ -47,8 +49,8 @@ function SkillsStatusBar() {
 
       <div className='status-table'>
         {category ? <AddCategory/> : ''}
-        {recruiter ? '' : ''}
-        {spams ? '' : ''}
+        {skill ? <AddSkill/> : ''}
+        {spams ? <AddDepartment/> : ''}
       </div>
 
     </div>
