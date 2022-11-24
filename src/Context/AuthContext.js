@@ -43,9 +43,9 @@ const handleClicks = () => {
        await axios.post('user/login/',{email:email,password:password}).then((res)=>{
                 console.log(res.data)
                 console.log('id is here',res.data.user.user_id);
-
                 if (res.data.token){
                   console.log('recruiter is ' + res.data.user.role);
+                  
                   if (res.data.user.role == 'seeker'){
                     localStorage.setItem('authToken',JSON.stringify(res.data))
                     localStorage.setItem('token',JSON.stringify(res.data.token))
@@ -62,7 +62,7 @@ const handleClicks = () => {
                     setUser(res.data.token)                      
                     SetError(res.data.message)
                     localStorage.setItem('userId',JSON.stringify(res.data.user.user_id))
-                    navigate('/recruiter')
+                    navigate('/page')
                   }                    
                   else{
                     localStorage.setItem('admin',JSON.stringify(res.data))
@@ -100,6 +100,7 @@ const handleClicks = () => {
             localStorage.removeItem('adminAuthToken')
             localStorage.removeItem('Admintoken')
             localStorage.removeItem('admin')
+            localStorage.removeItem('Role')
 
             setUser(null)
             setAuthToken(null)
@@ -129,7 +130,6 @@ const handleClicks = () => {
             show:show,
             handleCloses:handleCloses,
             opens:opens,
-
            
           
           

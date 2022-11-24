@@ -3,6 +3,7 @@ import '../AdminHome/AdminHome.css'
 import AllSkills from './AllSkills'
 import ListCategory from './ListCategory'
 import ListDepartment from './ListDepartment'
+import Request from './Request'
 
 
 
@@ -11,22 +12,33 @@ function ListSkillStatusBar() {
   const [skill, setSkill] = useState(true);
   const [category, setCategory] = useState(false);
   const [department, setDepartment] = useState(false);
+  const [req, setReq] = useState(false);
 
 
   const handlingSkill=()=>{
     setSkill(!skill)
     setCategory(false)
     setDepartment(false)
+    setReq(false)
   }
 
   const handlingCategory=()=>{
     setCategory(!category)
     setSkill(false)
     setDepartment(false)
+    setReq(false)
   }
 
   const handlingDepartment=()=>{
     setDepartment(!department)
+    setCategory(false)
+    setSkill(false)
+    setReq(false)
+  }
+  
+  const handlingRequest=()=>{
+    setReq(!req)
+    setDepartment(false)
     setCategory(false)
     setSkill(false)
   }
@@ -44,6 +56,9 @@ function ListSkillStatusBar() {
         <div className='rejected'>
           <button onClick={handlingDepartment} >Department</button>
         </div>
+        <div className='rejected'>
+          <button onClick={handlingRequest} >Request</button>
+        </div>
       </div>
 
 
@@ -52,6 +67,7 @@ function ListSkillStatusBar() {
         {skill ? <AllSkills/> : ''}
         {category ? <ListCategory/> : ''}
         {department ? <ListDepartment/> : ''}
+        {req ? <Request/> : ''}
       </div>
 
     </div>

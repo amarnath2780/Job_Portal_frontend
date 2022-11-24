@@ -14,10 +14,10 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import AuthContext from '../Context/AuthContext';
 import axios  from '../axios'
+import { Link, useNavigate } from "react-router-dom";
 
 
-
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['page', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard'];
 
 function Navbar() {
@@ -25,6 +25,8 @@ function Navbar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const {logOut , user} = React.useContext(AuthContext);
+
+  const navigate = useNavigate()
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -121,15 +123,25 @@ function Navbar() {
             Trabajo
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+          {pages.map((page) => (
+                <div
+                style={{display: "flex", flexDirection: "column"}}>
+                  <button
+                  style={{textDecoration:"none", border:"none", color:"#fff" , padding:"0px 3px" , background:"none", margin:"none"}}
+                  key={page.id}
+                  onClick={(e)=>{
+                    e.preventDefault()
+                    navigate(`/${page}`)
+                  }}
+                  >
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                  {page}
+                  </Typography>
+                </MenuItem>
+                </button>
+                </div>
+              ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -154,11 +166,18 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+              <MenuItem onClick={(e)=>{
+                navigate('/post-job/')
+              }}>
+                  <Typography textAlign="center">Post Post</Typography>
+              </MenuItem>
+              
+              <MenuItem onClick={(e)=>{
+                navigate('/request-add/')
+              }}>
+                  <Typography textAlign="center">Request</Typography>
                 </MenuItem>
-              ))}
+
               {val? <MenuItem  onClick={logOut}>
                   <Typography textAlign="center">Logout</Typography>
               </MenuItem> : '' }

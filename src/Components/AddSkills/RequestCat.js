@@ -24,11 +24,11 @@ function AddCategory() {
 
 const addCategory=(e)=>{
     e.preventDefault()
-    axios.post('/add-category/',{
+    axios.post('/req-cat/',{
         category_name:name,
     }).then((res)=>{
         console.log(res.data);
-        navigate('/Skill')
+        navigate('/page')
         if (res.data.error){
           setErrMsg('User already exist')
           console.log(res.data.errors)
@@ -52,10 +52,10 @@ useEffect(() => {
   return (
 
     
-    <div className='pending-table'>
+    <div className='pending-table' style={{width:"100%" , padding:"2px 20%"}}>
 
     <form action="" onSubmit={addCategory}>
-        <p className='card-title'>Add Company Category</p>
+        <p className='card-title'>Request to add Category</p>
     <Card className='card-box' sx={{ minWidth: 275 }}>
     {errMsg ? <Stack sx={{ width: '100%' }} spacing={2}>
       <Alert severity="error">{errMsg}</Alert></Stack> : ''}
@@ -65,7 +65,7 @@ useEffect(() => {
             value={name}
             onChange={handleChange}
             />
-            <button className='card-button' type='submit'>Submit</button>
+            <button className='card-button' style={{marginTop: "0rem"}} type='submit'>Submit</button>
     </Card>
         
     </form>

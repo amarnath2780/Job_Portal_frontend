@@ -139,7 +139,7 @@ function Application() {
       pass:pass,
 
     }).then((res)=>{
-      navigate('/recruiter')
+      navigate('/page')
 
       if (res.data.error){
         setErrMsg('Security code is not Valid')

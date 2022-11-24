@@ -4,12 +4,9 @@ import './Css/Recruiter.css'
 import UserContext from '../Context/UserContext'
 import { Link } from "react-router-dom";
 
+
 function Recruiter() {
-
-
-
-  const { userLoggedData ,clearUserContext } = useContext(UserContext);
-  const user = localStorage.getItem("user")
+  const user = localStorage.getItem("userId")
   console.log(user);
 
   useEffect(() => {

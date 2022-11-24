@@ -14,6 +14,8 @@ import Admin from './Pages/Admin';
 import AdmAdminUserView from './Pages/AdminUserView';
 import AdminAddSkill from './Pages/Admin/AdminAddSkill';
 import ListSkill from './Pages/Admin/ListSkill';
+import PostJob from './Pages/PostJob';
+import AddRequest from './Pages/AddRequest';
 
 function App() {
   
@@ -36,9 +38,11 @@ function App() {
 
 
               <Route element={<AdminPrivetRoute/>}>
-                  <Route path='/recruiter' element={<Recruiter/>} exact/>
+                  <Route path='/page' element={<Recruiter/>} exact/>
                   <Route path='/add-company' element={<NewCompany/>}/>
                   <Route path='/application' element={<Applications/>}/>
+                  <Route path='/post-job' element={<PostJob/>}/>
+                  <Route path='/request-add' element={<AddRequest/>}/>
               </Route>
 
               <Route path='/login' element={<LoginPage/>}/>
