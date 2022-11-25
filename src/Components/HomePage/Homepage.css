@@ -1,0 +1,35 @@
+.Fliter-bar{
+    color:#000;
+    margin-top: 3rem;
+}
+#fullWidth{
+    border: 2px solid;
+}
+
+.job-view{
+    color: #000;
+}
+
+.job-details{
+    color: #000;
+}
+
+.job-View-set{
+    display: flex;
+    justify-content: center;
+    padding: 1px 3rem;
+    margin-top: 2rem;
+}
+
+.job-view .card img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    margin: 31px 15px;
+}
+
+.job-view .card{
+    display:flex;
+    gap: 1rem;
+    
+}
