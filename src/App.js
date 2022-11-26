@@ -16,6 +16,7 @@ import AdminAddSkill from './Pages/Admin/AdminAddSkill';
 import ListSkill from './Pages/Admin/ListSkill';
 import PostJob from './Pages/PostJob';
 import AddRequest from './Pages/AddRequest';
+import Profile from './Pages/User/Profile';
 
 function App() {
   
@@ -27,6 +28,7 @@ function App() {
           <Routes>
               <Route element={<PrivateRoutes/>}>
                   <Route path='/' element={<Home/>} exact/>
+                  <Route path='/profile' element={<Profile/>} exact/>
               </Route>
 
               <Route element={<CaseOfAdmin/>}>
