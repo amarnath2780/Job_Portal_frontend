@@ -17,6 +17,7 @@ import ListSkill from './Pages/Admin/ListSkill';
 import PostJob from './Pages/PostJob';
 import AddRequest from './Pages/AddRequest';
 import Profile from './Pages/User/Profile';
+import RecruiterProfilepage from './Pages/Recruiter/RecruiterProfilepage';
 
 function App() {
   
@@ -45,6 +46,7 @@ function App() {
                   <Route path='/application' element={<Applications/>}/>
                   <Route path='/post-job' element={<PostJob/>}/>
                   <Route path='/request-add' element={<AddRequest/>}/>
+                  <Route path='/recruiter-profile' element={<RecruiterProfilepage/>}/>
               </Route>
 
               <Route path='/login' element={<LoginPage/>}/>

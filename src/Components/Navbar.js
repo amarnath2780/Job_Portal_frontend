@@ -178,6 +178,12 @@ function Navbar() {
                   <Typography textAlign="center">Request</Typography>
                 </MenuItem>
 
+              <MenuItem onClick={(e)=>{
+                navigate('/recruiter-profile/')
+              }}>
+                  <Typography textAlign="center">Profile</Typography>
+                </MenuItem>
+
               {val? <MenuItem  onClick={logOut}>
                   <Typography textAlign="center">Logout</Typography>
               </MenuItem> : '' }

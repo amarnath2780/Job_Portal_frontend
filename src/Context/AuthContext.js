@@ -49,6 +49,7 @@ const handleClicks = () => {
                   if (res.data.user.role == 'seeker'){
                     localStorage.setItem('authToken',JSON.stringify(res.data))
                     localStorage.setItem('token',JSON.stringify(res.data.token))
+                    localStorage.setItem('profile_id', JSON.stringify(res.data.profile_id))
                     setAuthToken(res.data)
                     setUser(res.data.token)                      
                     SetError(res.data.message)
@@ -58,6 +59,7 @@ const handleClicks = () => {
                   else if(res.data.user.role == 'recruiter'){
                     localStorage.setItem('adminAuthToken',JSON.stringify(res.data))
                     localStorage.setItem('token',JSON.stringify(res.data.token))
+                    localStorage.setItem('profile_id', JSON.stringify(res.data.profile_id))
                     setAuthToken(res.data)
                     setUser(res.data.token)                      
                     SetError(res.data.message)
@@ -101,6 +103,7 @@ const handleClicks = () => {
             localStorage.removeItem('Admintoken')
             localStorage.removeItem('admin')
             localStorage.removeItem('Role')
+            localStorage.removeItem('profile_id')
 
             setUser(null)
             setAuthToken(null)

@@ -15,11 +15,7 @@ import Checkbox from '@mui/material/Checkbox';
 
 
 
-const USER_REGEX = /^[a-zA-Z]{1,100}$/;
-const PWD_REGEX = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,16}$/;
-const EMAIL_REGEX =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-const MOBILE_REGEX = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
-const APLLICATION_URL=/application/
+const USER_REGEX = /^(?!\s*$).+/;
 const NUMBER_REGEX = /^[0-9\b]+$/
 const EMPTY_REGEX = /^(?!\s*$).+/
 
@@ -30,7 +26,7 @@ const EMPTY_REGEX = /^(?!\s*$).+/
 function Application() {
 
   const  {Userlogin,errors,show,handleClose,handleCloses,setApplied,opens}= useContext(AuthContext)
-
+  const user_id = localStorage.getItem("userId")
   const userRef = useRef()
   const errRef = useRef()
   const navigate = useNavigate()
@@ -154,7 +150,8 @@ function Application() {
 
     axios.post('/post-job/' , {
         job_title:title,
-        company: company,
+        company_id: company,
+        recruiter:user_id,
         min_salary:min_sal,
         max_salary:max_sal,
         salary_type:sal_type,
@@ -166,7 +163,7 @@ function Application() {
         vacancy:seat,
         urgent:checked,
     }).then((res)=>{
-      navigate('/recruiter')
+      navigate('/page')
 
       if (res.data.error){
         setErrMsg('Security code is not Valid')
@@ -182,6 +179,7 @@ function Application() {
 
   const listCompany=()=>{
     axios.get('/company-list/').then((res)=>{
+      console.log(res.data);
       setCompanyList(res.data)
     })
   }

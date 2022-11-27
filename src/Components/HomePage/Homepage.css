@@ -87,3 +87,32 @@
     background: #fff;
     font-weight: bolder;
 }
+
+
+.job-cards{
+    width: 100%;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.job-cards .job-card{
+    display: flex;
+    justify-content: start;
+    margin-bottom: 2rem;
+}
+
+
+.job-cards .job-card .card  .card-first{
+    padding-right: 2rem;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.job-cards .job-card  .card-content{
+    padding-left: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

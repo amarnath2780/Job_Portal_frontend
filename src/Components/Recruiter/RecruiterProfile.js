@@ -4,11 +4,11 @@ import axios from '../../axios';
 import EditIcon from '@mui/icons-material/Edit';
 
 
-function ProfilePage() {
+function RecruiterProfile() {
     const user = localStorage.getItem("userId")
     const profile_id = localStorage.getItem("profile_id")
     console.log(user);
-    console.log(profile_id)
+    console.log(profile_id);
 
     const [profile, setprofile] = useState([]);
     const [details, setDetails] = useState([]);
@@ -24,7 +24,7 @@ function ProfilePage() {
     }, []);
 
     const userProfile=()=>{
-        axios.get(`/view-profile/?id=${profile_id}`).then((res)=>{
+        axios.get(`/recruiter-profile/?id=${profile_id}`).then((res)=>{
             setprofile(res.data)
           })
     }
@@ -32,7 +32,6 @@ function ProfilePage() {
 
     const userdetails=()=>{
         axios.get(`/user-details/?id=${user}`).then((res)=>{
-            console.log(res.data);
             setDetails(res.data)
           })
     }
@@ -49,7 +48,7 @@ function ProfilePage() {
         formData.append('country' , country)
 
         e.preventDefault()
-        let url = `/update-profile/?id=${profile_id}`
+        let url = `/update-profile/?id=${user}`
         axios.put(url , formData).then((res)=>{
             refreshPage()
           })
@@ -106,4 +105,4 @@ function ProfilePage() {
   )
 }
 
-export default ProfilePage
+export default RecruiterProfile
