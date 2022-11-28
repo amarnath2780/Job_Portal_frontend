@@ -63,14 +63,14 @@ export default function CategoryPopup({id}) {
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">
-          {"Edit The Skills"}
+          {"Edit The Category"}
         </DialogTitle>
         <DialogContent>
         <form action="" onSubmit={handleEdit}>
-                <p className='card-title'>Add New Skills {id}</p>
+                <p className='card-title'>Edit Category  {id}</p>
             <Card className='card-box' sx={{ minWidth: 275 }}>
                     {/* emial */}
-                    <label htmlFor="name">Skill Name
+                    <label htmlFor="name">Category Name
                     </label>
                     <input type="text"
                     id='name'

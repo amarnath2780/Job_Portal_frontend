@@ -54,7 +54,7 @@ function JobView() {
             <button
             style={{border:"none",background:"none"}}
             className='btn-pending'>
-            <Apply id={item.id}/>
+            <Apply id={item.id} recruiter={item.recruiter.email} company={item.company_id.id}/>
         </button>
             </div>
 

@@ -19,13 +19,19 @@ import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 
 
-export default function Apply({id}) {
+export default function Apply({id , recruiter ,company}) {
+
+
+  const user_id = localStorage.getItem("userId")
+  const profile_id = localStorage.getItem("profile_id")
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
-  const [skill, setSkill] = useState('');
-  const [department, setDepartment] = useState('');
-  const [dep, setDep] = useState('');
+  const [Fname, setFName] = useState('');
+  const [Lname, setLName] = useState('');
+  const [email, setEmail] = useState('');
+  const [file, setFile] = useState('');
+  const [num, setNum] = useState('');
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -34,41 +40,47 @@ export default function Apply({id}) {
   const navigate = useNavigate()
 
    useEffect(() => {
-        listCompany()
+      
       }, []);
+
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleEdit=(cellvalues)=>{
-    console.log(cellvalues.row);
-    axios.put(`edit-skill/?id=${id}`,{
-        skill_name :skill,
-        department: dep,
-  }).then((res)=>{
-      console.log(res.data);
-      navigate('Skill/')
-      if (res.data.error){
-        console.log(res.data.errors)
-    }
-  })
+
+  function refreshPage() {
+    window.location.reload(false);
   }
 
-  const listCompany=()=>{
-  axios.get('/list-department/').then((res)=>{
-    setDepartment(res.data)
-  })
+
+
+  const applyJob=(e)=>{
+    const formData = new FormData()
+    formData.append('job_id' , id)
+    formData.append('seeker_id' , profile_id)
+    formData.append('company_id' , company)
+    formData.append('recruiter' , recruiter)
+    formData.append('resume' , file)
+    formData.append('first_name' , Fname)
+    formData.append('last_name' , Lname)
+    formData.append('email' , email)
+    formData.append('phone' , num)
+
+    e.preventDefault()
+    let url = 'apply-job/'
+    axios.post(url , formData).then((res)=>{
+        refreshPage()
+        console.log(res.data);
+      })
 }
 
-const handleDepartment=(e)=>{
-    setDep(e.target.value)
-  }
+
 
   return (
     <div>
       <Button variant="contained" endIcon={<SendIcon />} onClick={handleClickOpen}>
-        Edit
+        Apply
       </Button>
       <Dialog
         fullScreen={fullScreen}
@@ -79,31 +91,60 @@ const handleDepartment=(e)=>{
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">
-          {"Edit The Skills"}
+          {"Apply for the Job"}
         </DialogTitle>
         <DialogContent>
-        <form action="" onSubmit={handleEdit}>
-                <p className='card-title'>Add New Skills {id}</p>
-            <Card className='card-box' sx={{ minWidth: 275 }}>
+        <form action="" onSubmit={applyJob}>
+                <p className='card-title'>apply</p>
+            <Card className='' sx={{ minWidth: 275 }}>
                     {/* emial */}
-                    <label htmlFor="name">Skill Name
+                    <label htmlFor="name">
+                      First Name 
                     </label>
                     <input type="text"
                     id='name'
                     autoComplete="off"
-                    onChange={(e) => setSkill(e.target.value)}
+                    onChange={(e) => setFName(e.target.value)}
+                    required/>
+
+                    <label htmlFor="name">
+                      Last Name
+                    </label>
+                    <input type="text"
+                    id='name'
+                    autoComplete="off"
+                    onChange={(e) => setLName(e.target.value)}
+                    required/>
+
+                    <label htmlFor="name">
+                      Email
+                    </label>
+                    <input type="text"
+                    id='name'
+                    autoComplete="off"
+                    onChange={(e) => setEmail(e.target.value)}
+                    required/>
+
+                    <label htmlFor="name">
+                      Phone
+                    </label>
+                    <input type="text"
+                    id='name'
+                    autoComplete="off"
+                    onChange={(e) => setNum(e.target.value)}
                     required/>
 
 
-                <div className='add-company-select'>
-                    <label htmlFor="company">Company</label>
-                        <select onChange={handleDepartment}  name="company" id="">
-                            <option>Select</option>
-                            {department ? department.map((item ,key)=>
-                            <option key={item.id} value={item.id} >{item.department_name}</option>
-                            ) : ''}
-                        </select>
-                </div>
+
+                  <label htmlFor="name">
+                      Resume
+                    </label>
+                    <input type="file"
+                    id='name'
+                    autoComplete="off"
+                    onChange={(e) => setFile(e.target.files[0])}
+                    required/>
+
                     <button className='card-button' type='submit'>Submit</button>
             </Card>
                 

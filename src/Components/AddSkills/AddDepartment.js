@@ -78,7 +78,7 @@ useEffect(() => {
     <div className='pending-table'>
 
     <form action="" onSubmit={addCategory}>
-        <p className='card-title'>Add New Skills</p>
+        <p className='card-title'>Add New Department</p>
     <Card className='card-box' sx={{ minWidth: 275 }}>
     {errMsg ? <Stack sx={{ width: '100%' }} spacing={2}>
       <Alert severity="error">{errMsg}</Alert></Stack> : ''}

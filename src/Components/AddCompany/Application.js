@@ -309,7 +309,7 @@ function Application() {
         {/* end state */}
 
         {/* country */}
-        <label htmlFor="country">State
+        <label htmlFor="country">Country
             <FontAwesomeIcon icon={faCheck} className={validCountry ? "valid" : "hide"} />
             <FontAwesomeIcon icon={faTimes} className={validCountry || !country ? "hide" : "invalid"} />
             </label>

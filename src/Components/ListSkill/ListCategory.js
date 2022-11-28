@@ -42,7 +42,7 @@ function ListCategory() {
   const columns = [
     { field: 'id', headerName: 'ID', width: 130 },
     { field: 'category_name', headerName: 'Category name', width: 300 },
-    {field: 'accept', headerName: 'Accept', width: 250 , 
+    {field: 'accept', headerName: 'Edit', width: 250 , 
       renderCell: (cellvalues) => {
         return (
           <button

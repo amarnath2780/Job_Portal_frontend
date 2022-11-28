@@ -48,7 +48,7 @@ function ListDepartment() {
     { field: 'id', headerName: 'Id', width: 150 },
     { field: 'department_name', headerName: 'Department Name', width: 350 },
     { field: 'category', headerName: 'Category_id', width: 200 },
-    {field: 'accept', headerName: 'Accept', width: 250 , 
+    {field: 'accept', headerName: 'Edit', width: 250 , 
         renderCell: (cellvalues) => {
           return (
             <button
@@ -62,7 +62,7 @@ function ListDepartment() {
           )
         }
         },
-        {field: 'reject', headerName: 'Reject', width: 250 , 
+        {field: 'reject', headerName: 'Remove', width: 250 , 
         renderCell: (cellvalues) => {
           return (
             <button

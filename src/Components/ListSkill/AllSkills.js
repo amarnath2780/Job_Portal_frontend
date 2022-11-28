@@ -43,7 +43,7 @@ function AllSkills() {
   { field: 'id', headerName: 'Id', width: 150 },
   { field: 'skill_name', headerName: 'Skill', width: 120 },
   { field: 'department', headerName: 'Department Id', width: 250 },
-  {field: 'accept', headerName: 'Accept', width: 250 , 
+  {field: 'accept', headerName: 'Edit', width: 250 , 
     renderCell: (cellvalues) => {
       return (
         <button
@@ -57,7 +57,7 @@ function AllSkills() {
       )
     }
     },
-    {field: 'reject', headerName: 'Reject', width: 250 , 
+    {field: 'reject', headerName: 'Remove', width: 250 , 
     renderCell: (cellvalues) => {
       return (
         <button

@@ -28,7 +28,7 @@ const addCategory=(e)=>{
         category_name:name,
     }).then((res)=>{
         console.log(res.data);
-        navigate('/page')
+        navigate('/post-job/')
         if (res.data.error){
           setErrMsg('User already exist')
           console.log(res.data.errors)

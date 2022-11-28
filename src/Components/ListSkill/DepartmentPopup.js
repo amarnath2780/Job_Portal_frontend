@@ -79,14 +79,14 @@ const handleDepartment=(e)=>{
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">
-          {"Edit The Skills"}
+          {"Edit The Department"}
         </DialogTitle>
         <DialogContent>
         <form action="" onSubmit={handleEdit}>
-                <p className='card-title'>Add New Skills {id}</p>
+                <p className='card-title'>Edit Department {id}</p>
             <Card className='card-box' sx={{ minWidth: 275 }}>
                     {/* emial */}
-                    <label htmlFor="name">Skill Name
+                    <label htmlFor="name">Department Name
                     </label>
                     <input type="text"
                     id='name'
@@ -96,7 +96,7 @@ const handleDepartment=(e)=>{
 
 
                 <div className='add-company-select'>
-                    <label htmlFor="company">Company</label>
+                    <label htmlFor="company">Category</label>
                         <select onChange={handleDepartment}  name="company" id="">
                             <option>Select</option>
                             {categroy ? categroy.map((item ,key)=>
