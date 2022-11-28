@@ -18,6 +18,8 @@ import PostJob from './Pages/PostJob';
 import AddRequest from './Pages/AddRequest';
 import Profile from './Pages/User/Profile';
 import RecruiterProfilepage from './Pages/Recruiter/RecruiterProfilepage';
+import SingleJob from './Context/JobContext'
+import JobDetails from './Components/HomePage/JobDetails';
 
 function App() {
   
@@ -26,10 +28,12 @@ function App() {
       <Router>
 
         <AuthProvider>
+        <SingleJob>
           <Routes>
               <Route element={<PrivateRoutes/>}>
                   <Route path='/' element={<Home/>} exact/>
                   <Route path='/profile' element={<Profile/>} exact/>
+                  <Route path='/job-details' element={<JobDetails/>} exact/>
               </Route>
 
               <Route element={<CaseOfAdmin/>}>
@@ -46,12 +50,13 @@ function App() {
                   <Route path='/application' element={<Applications/>}/>
                   <Route path='/post-job' element={<PostJob/>}/>
                   <Route path='/request-add' element={<AddRequest/>}/>
-                  <Route path='/recruiter-profile' element={<RecruiterProfilepage/>}/>
+                  <Route path='/profile' element={<RecruiterProfilepage/>}/>
               </Route>
 
               <Route path='/login' element={<LoginPage/>}/>
               <Route path='/register' element={<Register/>}></Route>
             </Routes>
+            </SingleJob>
         </AuthProvider> 
 
       </Router>

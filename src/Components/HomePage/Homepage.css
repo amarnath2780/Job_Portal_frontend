@@ -97,7 +97,7 @@
 
 .job-cards .job-card{
     display: flex;
-    justify-content: start;
+    justify-content: space-evenly;
     margin-bottom: 2rem;
 }
 

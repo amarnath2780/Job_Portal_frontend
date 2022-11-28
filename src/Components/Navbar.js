@@ -179,7 +179,7 @@ function Navbar() {
                 </MenuItem>
 
               <MenuItem onClick={(e)=>{
-                navigate('/recruiter-profile/')
+                navigate('/profile/')
               }}>
                   <Typography textAlign="center">Profile</Typography>
                 </MenuItem>
