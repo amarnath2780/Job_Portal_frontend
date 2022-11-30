@@ -94,9 +94,14 @@ function ListDepartment() {
       }
     })
 
+    function refreshPage() {
+      window.location.reload(false);
+    }
+
  const handleDelete=()=>{
   axios.get(`/delete-department/?id=${passid}`).then((res)=>{
     setOpen(false)
+    refreshPage()
   })
  }
 

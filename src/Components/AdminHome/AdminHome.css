@@ -43,3 +43,9 @@
     padding: 0 11px;
     margin: 0;
 }
+
+
+.apply-form{
+    display: flex;
+    flex-direction: column;
+}

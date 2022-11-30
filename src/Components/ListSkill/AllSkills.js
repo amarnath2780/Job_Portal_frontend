@@ -39,6 +39,10 @@ function AllSkills() {
   };
   const handleClose = () => setOpen(false);
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   const columns = [
   { field: 'id', headerName: 'Id', width: 150 },
   { field: 'skill_name', headerName: 'Skill', width: 120 },
@@ -82,7 +86,6 @@ function AllSkills() {
 
   const skillList=()=>{
     axios.get('/list-skills/').then((res)=>{
-      console.log(res.data);
       setSkill(res.data)
     })
   }
@@ -100,6 +103,7 @@ function AllSkills() {
     const handleDelete=()=>{
       axios.get(`/delete-skill/?id=${passid}`).then((res)=>{
         setOpen(false)
+        refreshPage()
       })
      }
     

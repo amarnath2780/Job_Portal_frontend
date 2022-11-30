@@ -15,10 +15,62 @@ import AdbIcon from '@mui/icons-material/Adb';
 import AuthContext from '../Context/AuthContext';
 import axios  from '../axios'
 import { Link, useNavigate } from "react-router-dom";
+import { styled, alpha } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
 
 
-const pages = ['page', 'Pricing', 'Blog'];
+const pages = ['Page', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard'];
+
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: '100%',
+  marginRight: "20px",
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+    marginRight: "25px",
+    border: "2px solid #616161",
+    borderRadius: "34px",
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '12ch',
+      '&:focus': {
+        width: '20ch',
+      },
+    },
+  },
+}));
+
+
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -46,7 +98,7 @@ function Navbar() {
   const val= localStorage.getItem('token')
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "#0a0a0a" }}>
+    <AppBar className='navbar' position="static" sx={{ bgcolor: "#fff"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -67,7 +119,7 @@ function Navbar() {
             TrabaJo
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none'} }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -97,14 +149,15 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem className='navbar-list' style={{borderRadius: '26px'}} key={page} onClick={handleCloseNavMenu}>
+                  <Typography className='navbar-buttons' textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
           
           <Typography
+            id='navbar-logo'
             variant="h5"
             noWrap
             component="a"
@@ -134,8 +187,8 @@ function Navbar() {
                     navigate(`/${page}`)
                   }}
                   >
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
+                <MenuItem style={{borderRadius: '26px'}} className='navbar-list' key={page} onClick={handleCloseNavMenu}>
+                  <Typography  className='navbar-buttons' style={{fontWeight: '800',fontSize: '20px'}} textAlign="center">
                   {page}
                   </Typography>
                 </MenuItem>
@@ -143,6 +196,16 @@ function Navbar() {
                 </div>
               ))}
           </Box>
+          
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -166,6 +229,7 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
+
               <MenuItem onClick={(e)=>{
                 navigate('/post-job/')
               }}>

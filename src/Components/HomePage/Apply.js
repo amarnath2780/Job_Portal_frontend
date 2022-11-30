@@ -96,7 +96,7 @@ export default function Apply({id , recruiter ,company}) {
         <DialogContent>
         <form action="" onSubmit={applyJob}>
                 <p className='card-title'>apply</p>
-            <Card className='' sx={{ minWidth: 275 }}>
+            <Card className='apply-form' sx={{ minWidth: 275 }}>
                     {/* emial */}
                     <label htmlFor="name">
                       First Name 

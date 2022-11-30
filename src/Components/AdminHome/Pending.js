@@ -17,6 +17,10 @@ function Pending() {
   const [pending, setPending] = useState([]);
   const [show, setShow] = useState(true);
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
 
   const handleReject=(cellvalues)=>{
     console.log(cellvalues.row);
@@ -33,6 +37,7 @@ function Pending() {
   }).then((res)=>{
       console.log(res.data);
       setShow(false)
+      refreshPage()
       if (res.data.error){
         console.log(res.data.errors)
     }
@@ -56,6 +61,7 @@ function Pending() {
   }).then((res)=>{
       console.log(res.data);
       setShow(false)
+      refreshPage()
       if (res.data.error){
         console.log(res.data.errors)
     }

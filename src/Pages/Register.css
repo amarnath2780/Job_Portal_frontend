@@ -4,12 +4,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: #000
 }
 
 html {
     font-family: 'Nunito', sans-serif;
     font-size: 22px;
-    color: #fff;
 }
 
 
@@ -51,7 +51,7 @@ form {
 }
 
 a, a:visited {
-    color: #fff;
+    color: #000;
 }
 
 input[type="text"],
@@ -166,4 +166,9 @@ select{
     display: flex;
     align-items: center;
     margin-top: 9rem;
+}
+
+
+label, button {
+    margin-top: 0rem;
 }

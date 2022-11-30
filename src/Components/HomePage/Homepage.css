@@ -8,6 +8,7 @@
 
 .job-view{
     color: #000;
+    flex: 3;
 }
 
 .job-details{
@@ -17,8 +18,8 @@
 .job-View-set{
     display: flex;
     justify-content: center;
-    padding: 1px 3rem;
-    margin-top: 2rem;
+    padding: 3rem 2rem;
+    background: #e5e5e5;
 }
 
 .job-view .card img{
@@ -33,9 +34,6 @@
     gap: 1rem;
     
 }
-
-
-
 
 .profile-page {
     display: flex;
@@ -116,3 +114,71 @@
     justify-content: center;
     flex-direction: column;
 }
+.navbar{
+    color: #445578;
+}
+.navbar-buttons{
+    color: #445578;
+}
+.navbar-list{
+    border-radius: 26px;
+}
+
+.filtersContainer{
+    flex: 1 1;
+    margin-right: 25px;
+    background: #fff;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.filtersContainer .filterHeading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 9px;
+    font-size: 19px;
+    font-family: monospace;
+    gap: 11px;
+}
+
+.filtersContainer .filters .filterContainers .filter-heading{
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 10px;
+    align-items: center;
+    font-size: 17px;
+    font-family: monospace;
+    padding-bottom: 5px;
+    font-family: monospace;
+}
+.filtersContainer .filters .filterContainers button{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+.filtersContainer hr{
+    width: 85%;
+    margin: 5px 23px;
+}
+.filtersContainer .filters .filterContainers{
+    background: #d7d7d7;
+}
+
+.filtersContainer .filters .filterContainers .filterOpen .chckBoxCont{
+    display: flex;
+    font-size: 17px;
+    text-align: center;
+    align-items: center;
+    gap: 16px;
+    padding: 4px 2rem;
+}
+
+
+
+
+@media screen and (max-width: 602px) {
+    #navbar-logo{
+      display: none;
+    }
+  }
