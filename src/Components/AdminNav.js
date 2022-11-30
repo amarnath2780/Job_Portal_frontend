@@ -44,7 +44,7 @@ function AdminNav() {
   const val= localStorage.getItem('token')
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "#0a0a0a" }}>
+    <AppBar position="static" sx={{ bgcolor: "#fff" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography

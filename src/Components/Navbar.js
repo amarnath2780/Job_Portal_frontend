@@ -20,7 +20,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
 
-const pages = ['Page', 'Pricing', 'Blog'];
+const pages = ['Page', 'Pricing' , 'Jobs'];
 const settings = ['Profile', 'Account', 'Dashboard'];
 
 const Search = styled('div')(({ theme }) => ({

@@ -2,7 +2,15 @@ import React, { useContext, useEffect, useState } from 'react'
 import Paper from '@mui/material/Paper';
 import axios from '../../axios';
 import Apply from './Apply';
+import JobDetails from './JobDetails'
 import { JobContext } from '../../Context/JobContext';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import DescriptionIcon from '@mui/icons-material/Description';
+import HistoryIcon from '@mui/icons-material/History';
+
+
 
 function JobView() {
 
@@ -25,41 +33,63 @@ function JobView() {
   return (
     <div className='job-view'>
       <div className='job-cards'>
-
+        
             {job ? job.map((item ,key)=>
-            <Paper className='job-card' key={item.id} elevation={6} >
-            <div style={{width:" 16rem"}} className='card'>
-                <img src="https://images.pexels.com/photos/7130457/pexels-photo-7130457.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" />
-                <div className='card-first'>
-                    <p style={{}}>Company : {item.company_id.company_name}</p>
-                    {item.state ? <p>state:  {item.state}  </p> :""}
-                    {item.country ? <p>country:  {item.country}  </p> :""}
+            <>
+            <Paper className='paper' elevation={8} >
+                <div className="jobTupleHeader">
+                    <div className="job-info">
+                        <a href="">{item.job_title}</a>
+                        <div className="company-info">
+                            <a href="">{item.company_id.company_name}</a>
+                        </div>
+                        <ul>
+                            <li className="experience">
+                                <WorkOutlineIcon className='icons'/>
+                                <span title="1-5 Yrs " class="ellipsis fleft fs12 lh16 expwdth">{item.experience}Yrs</span>
+                            </li>
+                            <li className="salary">
+                                <CurrencyRupeeIcon className='icons'/>
+                                <span title="Not disclosed " class="ellipsis fleft fs12 lh16 ">{item.max_salary}</span>
+                            </li>
+                            <li className="place">
+                                <LocationOnIcon className='icons'/>
+                                <span title="Noida " class="ellipsis fleft fs12 lh16 locWdth">{item.state}</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div className="rec-img">
+                        <img class="compImg fright" alt="company" src="https://img.naukimg.com/logo_images/groups/v1/4589801.gif"/>
+                    </div>
                 </div>
-            </div>
-            <hr />
-            <div className='card-content' >
-                <h4>{item.job_title}</h4>
-
-                <h6>Job  Description</h6>
-                <div style={{display:"flex"}}>
-                    {item.min_salary ? <p>₹{item.min_salary} - </p> : ''}
-                    {item.max_salary ? <p>₹ {item.max_salary}</p> : ''}
+                <div className="job-description">
+                    <DescriptionIcon className='icon'/>
+                    {item.short_discription}
                 </div>
-                <p>{item.job_type}</p>
-                <p style={{fontSize: '10px'}}>{item.full_discription}</p>
-            </div>
 
+                <div className="jobTupleFooter">
+                    <div className='footer-button'>
+                        <button
+                            style={{border:"none",background:"none"}}
+                            className='btn-pending'>
+                            <Apply id={item.id} recruiter={item.recruiter.email} company={item.company_id.id}/>
+                        </button>
+                        <button
+                            style={{border:"none",background:"none"}}
+                            className='btn-pending'>
+                            <JobDetails id={item.id} recruiter={item.recruiter.email} company={item.company_id.id}/>
+                        </button>
+                    </div>
+                    <div className='job-type'>
+                        <HistoryIcon className='icon'/>
+                        <span class="fleft fw500">5 Days Ago</span>
+                    </div>
+                </div>
 
-            <div>
-            <button
-            style={{border:"none",background:"none"}}
-            className='btn-pending'>
-            <Apply id={item.id} recruiter={item.recruiter.email} company={item.company_id.id}/>
-        </button>
-            </div>
-
-            
+                
             </Paper>
+            </>
             ) : ''} 
       </div>
     </div>

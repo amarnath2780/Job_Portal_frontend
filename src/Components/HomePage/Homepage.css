@@ -8,7 +8,7 @@
 
 .job-view{
     color: #000;
-    flex: 3;
+    flex: 2;
 }
 
 .job-details{
@@ -130,6 +130,7 @@
     background: #fff;
     text-align: center;
     border-radius: 10px;
+    padding: 6px 3px;
 }
 
 .filtersContainer .filterHeading{
@@ -151,6 +152,7 @@
     font-family: monospace;
     padding-bottom: 5px;
     font-family: monospace;
+    cursor: pointer;
 }
 .filtersContainer .filters .filterContainers button{
     padding: 0;
@@ -162,7 +164,8 @@
     margin: 5px 23px;
 }
 .filtersContainer .filters .filterContainers{
-    background: #d7d7d7;
+    background: #eeeded;
+    margin: 1px 9px;
 }
 
 .filtersContainer .filters .filterContainers .filterOpen .chckBoxCont{
@@ -173,6 +176,91 @@
     gap: 16px;
     padding: 4px 2rem;
 }
+
+.job-view .job-cards .jobTupleHeader{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 31px;
+}
+
+.job-view .job-cards .jobTupleHeader a{
+    text-decoration: none;
+}
+
+.job-view .job-cards .jobTupleHeader ul{
+    display: flex;
+    font-size: 14px;
+    list-style-type: none;
+}
+.job-view .job-cards .jobTupleHeader ul li{
+    display: flex;
+    justify-content: center;
+    margin: 1px 7px;
+    align-items: center;
+    margin-top: 18px;
+}
+.job-view .job-cards .jobTupleHeader ul li .icons{
+    font-size: 22px;
+}
+.job-view .job-cards .jobTupleHeader .rec-img img{
+    width: 5rem;
+}
+.job-view .job-cards .job-description{
+    font-size: 17px;
+    display: flex;
+    gap: 7px;
+    padding-left: 23px;
+}
+.job-view .job-cards .job-description .icon{
+    font-size: 22px;
+}
+.job-view .job-cards .jobTupleFooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 23px;
+}
+.job-view .job-cards .jobTupleFooter .job-type{
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-right: 27px;
+    background: #d7d7d7;
+    padding: 3px 7px;
+    border-radius: 5px;
+}
+.job-view .job-cards .jobTupleFooter .job-type .icon{
+    font-size: 12px;
+}
+.paper{
+    padding: 30px 27px;
+    margin-bottom: 2.3rem;
+}
+
+.job-view .job-cards .jobTupleHeader .job-info .company-info{
+    font-size: 14px;
+    margin-top: 7px;
+}
+.details-portion{
+    display: flex;
+    justify-content: center;
+    padding: 20px 20px;
+}
+.details-portion p{
+    background: #cbcbcb;
+    padding: 6px 28px;
+    border-radius: 7px;
+    font-size: 17px;
+}
+.details-part{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
 
 
 

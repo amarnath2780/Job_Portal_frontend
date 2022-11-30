@@ -54,7 +54,7 @@ function Filter() {
                     setWorkMode(!workMode)
                 }}>
                 <div className="filter-heading" >
-                    <span class="fw500">Work mode</span>
+                    <span class="fw500">Department</span>
                     <div className="filter-heading-icon">
                         <ArrowDropDownIcon/>
                     </div>
@@ -86,7 +86,7 @@ function Filter() {
                     setWorkMode(!workMode)
                 }}>
                 <div className="filter-heading" >
-                    <span class="fw500">Work mode</span>
+                    <span class="fw500">Category</span>
                     <div className="filter-heading-icon">
                         <ArrowDropDownIcon/>
                     </div>
@@ -119,7 +119,7 @@ function Filter() {
                     setWorkMode(!workMode)
                 }}>
                 <div className="filter-heading" >
-                    <span class="fw500">Work mode</span>
+                    <span class="fw500">State</span>
                     <div className="filter-heading-icon">
                         <ArrowDropDownIcon/>
                     </div>
