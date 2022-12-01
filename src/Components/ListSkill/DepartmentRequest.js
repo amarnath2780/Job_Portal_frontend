@@ -26,12 +26,12 @@ const style = {
 };
 
 
-function Request() {
+function DepartmentRequest() {
 
 
   const [passid, setPassid] = useState('');
   const [category, setCategory] = useState('');
-  const [cat, setCat] = useState([]);
+  const [dep, setDep] = useState('');
   const naviagte = useNavigate()
 
   const [open, setOpen] = React.useState(false);
@@ -42,7 +42,9 @@ function Request() {
 
   const columns = [
   { field: 'id', headerName: 'Id', width: 150 },
-  { field: 'category_name', headerName: 'Category', width: 320 },
+  { field: 'department', headerName: 'Department Name', width: 220 },
+  { field: 'category_id', headerName: 'Category Id', width: 320 },
+  { field: 'category', headerName: 'Category', width: 320 },
    {field: 'reject', headerName: 'Accept', width: 250 , 
     renderCell: (cellvalues) => {
       return (
@@ -50,7 +52,8 @@ function Request() {
         className='btn-pending'
         onClick={()=>{
           setPassid(cellvalues.row.id)
-          setCategory(cellvalues.row.category_name)
+          setCategory(cellvalues.row.category_id)
+          setDep(cellvalues.row.department)
           setOpen(true)
          }}>
           Accept
@@ -60,53 +63,45 @@ function Request() {
     },
 ];
 
-  const [skill, setSkill] = useState([]);
+  const [department, setDepartmentl] = useState([]);
  
 
   useEffect(() => {
-    CategoryList()
-    SkillList()
+    DepartmentList()
   }, []);
 
-  const CategoryList=()=>{
-    axios.get('/request-category/').then((res)=>{
-      setCat(res.data)
-    })
-  }
-
-  const SkillList=()=>{
-    axios.get('/request-skill/').then((res)=>{
+  const DepartmentList=()=>{
+    axios.get('/request-department/').then((res)=>{
       console.log(res.data);
-      
+      setDepartmentl(res.data)
     })
   }
 
-  const rowData = cat?.map(cat => 
+  const rowData = department?.map(department => 
     {
       return {
-        id : cat?.id,
-        category_name : cat?.category_name,
+        id : department?.id,
+        department : department?.department_name,
+        category_id : department?.category_id.id,
+        category : department?.category_id.category_name,
       }
     })
 
     function refreshPage() {
-      window.location.reload(false);
-    }
+        window.location.reload(false);
+      }
 
-
-
-    const handelCategoryAdd=()=>{
-      axios.post(`/req-accept/?id=${passid}`,{
-        category_name : category,
-  }).then((res)=>{
+    const acceptDepartment=()=>{
+      axios.post(`/accept-department/?id=${passid}`,{
+        category:category,
+        department_name : dep,
+    }).then((res)=>{
         console.log(res.data);
         setOpen(false)
         refreshPage()
-        naviagte('/Skill')
+        naviagte('/requests')
       })
      }
-
-     
 
     
 
@@ -132,7 +127,7 @@ function Request() {
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
               Do you really want to Add the Category<br/>
-              <button onClick={handelCategoryAdd} style={{border:"2px solid #cc0e15", color:"#fff" , background:"#000"}}>
+              <button onClick={acceptDepartment} style={{border:"2px solid #cc0e15", color:"#fff" , background:"#000"}}>
                 Accept
               </button>
             </Typography>
@@ -157,4 +152,4 @@ function Request() {
   )
 }
 
-export default Request
+export default DepartmentRequest

@@ -20,6 +20,7 @@ import Profile from './Pages/User/Profile';
 import RecruiterProfilepage from './Pages/Recruiter/RecruiterProfilepage';
 import SingleJob from './Context/JobContext'
 import JobDetails from './Components/HomePage/JobDetails';
+import ListRequest from './Pages/Admin/ListRequest';
 
 function App() {
   
@@ -41,6 +42,7 @@ function App() {
                   <Route path='/Users' element={<AdmAdminUserView/>} />
                   <Route path='/add-view' element={<AdminAddSkill/>} />
                   <Route path='/Skill' element={<ListSkill/>} />
+                  <Route path='/requests' element={<ListRequest/>}/>
               </Route>
 
 

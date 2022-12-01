@@ -9,7 +9,7 @@ import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 
 
-function AddCategory() {
+function RequestSkill() {
     const errRef = useRef()
 
     const [errMsg, setErrMsg] = useState('');
@@ -100,4 +100,4 @@ const handleCategory=(e)=>{
   )
 }
 
-export default AddCategory
+export default RequestSkill

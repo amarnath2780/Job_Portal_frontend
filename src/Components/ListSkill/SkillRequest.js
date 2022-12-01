@@ -26,12 +26,12 @@ const style = {
 };
 
 
-function Request() {
+function SkillRequest() {
 
 
   const [passid, setPassid] = useState('');
-  const [category, setCategory] = useState('');
-  const [cat, setCat] = useState([]);
+  const [department, setDepatment] = useState('');
+  const [skill_name, setSkill_name] = useState('');
   const naviagte = useNavigate()
 
   const [open, setOpen] = React.useState(false);
@@ -42,15 +42,19 @@ function Request() {
 
   const columns = [
   { field: 'id', headerName: 'Id', width: 150 },
-  { field: 'category_name', headerName: 'Category', width: 320 },
+  { field: 'skill_name', headerName: 'Skill Name', width: 220 },
+  { field: 'department_id', headerName: 'Department Id', width: 220 },
+  { field: 'department', headerName: 'Department', width: 220 },
    {field: 'reject', headerName: 'Accept', width: 250 , 
     renderCell: (cellvalues) => {
       return (
         <button
         className='btn-pending'
         onClick={()=>{
+          console.log(cellvalues);
           setPassid(cellvalues.row.id)
-          setCategory(cellvalues.row.category_name)
+          setDepatment(cellvalues.row.department_id)
+          setSkill_name(cellvalues.row.skill_name)
           setOpen(true)
          }}>
           Accept
@@ -64,28 +68,22 @@ function Request() {
  
 
   useEffect(() => {
-    CategoryList()
     SkillList()
   }, []);
 
-  const CategoryList=()=>{
-    axios.get('/request-category/').then((res)=>{
-      setCat(res.data)
-    })
-  }
-
   const SkillList=()=>{
     axios.get('/request-skill/').then((res)=>{
-      console.log(res.data);
-      
+      setSkill(res.data)
     })
   }
 
-  const rowData = cat?.map(cat => 
+  const rowData = skill?.map(skill => 
     {
       return {
-        id : cat?.id,
-        category_name : cat?.category_name,
+        id : skill?.id,
+        skill_name : skill?.skill_name,
+        department_id : skill?.department_id.id,
+        department : skill?.department_id.department_name,
       }
     })
 
@@ -94,19 +92,17 @@ function Request() {
     }
 
 
-
-    const handelCategoryAdd=()=>{
-      axios.post(`/req-accept/?id=${passid}`,{
-        category_name : category,
+    const handleSkillAdd=()=>{
+      axios.post(`/accept-skill/?id=${passid}`,{
+        department : department,
+        skill_name: skill_name,
   }).then((res)=>{
         console.log(res.data);
         setOpen(false)
         refreshPage()
-        naviagte('/Skill')
+        naviagte('/requests')
       })
      }
-
-     
 
     
 
@@ -128,11 +124,11 @@ function Request() {
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Accept "{category}"
+              Accept 
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
               Do you really want to Add the Category<br/>
-              <button onClick={handelCategoryAdd} style={{border:"2px solid #cc0e15", color:"#fff" , background:"#000"}}>
+              <button onClick={handleSkillAdd} style={{border:"2px solid #cc0e15", color:"#fff" , background:"#000"}}>
                 Accept
               </button>
             </Typography>
@@ -157,4 +153,4 @@ function Request() {
   )
 }
 
-export default Request
+export default SkillRequest

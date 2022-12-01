@@ -9,7 +9,7 @@ import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 
 
-function AddCategory() {
+function RequestDepartment() {
     const errRef = useRef()
     const [category, setCategory] = useState([]);
     const [cat, setcat] = useState('');
@@ -106,4 +106,4 @@ useEffect(() => {
   )
 }
 
-export default AddCategory
+export default RequestDepartment
