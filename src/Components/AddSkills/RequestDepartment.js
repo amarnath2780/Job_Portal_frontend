@@ -35,8 +35,9 @@ function RequestDepartment() {
 
 const addCategory=(e)=>{
     e.preventDefault()
-    axios.post('/req-cat/',{
-        category_name:name,
+    axios.post('/req-depart/',{
+      department_name:name,
+      category:cat,
     }).then((res)=>{
         console.log(res.data);
         navigate('/post-job/')
@@ -79,7 +80,7 @@ useEffect(() => {
     {errMsg ? <Stack sx={{ width: '100%' }} spacing={2}>
       <Alert severity="error">{errMsg}</Alert></Stack> : ''}
             <div className='add-company-select'>
-                <label htmlFor="company">Department Name</label>
+                <label htmlFor="company">Department Name </label>
                 <TextField
                 id="outlined-name"
                 label=""

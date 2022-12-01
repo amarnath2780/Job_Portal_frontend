@@ -71,7 +71,7 @@ function DepartmentRequest() {
   }, []);
 
   const DepartmentList=()=>{
-    axios.get('/request-department/').then((res)=>{
+    axios.get('/request-departments/').then((res)=>{
       console.log(res.data);
       setDepartmentl(res.data)
     })
@@ -82,7 +82,7 @@ function DepartmentRequest() {
       return {
         id : department?.id,
         department : department?.department_name,
-        category_id : department?.category_id.id,
+        category_id : department?.category.id,
         category : department?.category_id.category_name,
       }
     })

@@ -16,7 +16,7 @@ function RequestSkill() {
     const [success, setSuccess] = useState(false);
     const [name, setName] = React.useState('');
     const [department, setDepartment] = useState([]);
-    const [cat, setcat] = useState('');
+    const [depart, setDepart] = useState('');
 
     const handleChange = (event) => {
       setName(event.target.value);
@@ -30,8 +30,9 @@ function RequestSkill() {
 
 const addCategory=(e)=>{
     e.preventDefault()
-    axios.post('/req-cat/',{
-        category_name:name,
+    axios.post('/req-skill/',{
+        skill_name :name,
+        department_id:depart,
     }).then((res)=>{
         console.log(res.data);
         navigate('/post-job/')
@@ -50,7 +51,8 @@ const listCompany=()=>{
 }
 
 const handleCategory=(e)=>{
-  setcat(e.target.value)
+  console.log(e.target.value);
+  setDepart(e.target.value)
 }
 
 
