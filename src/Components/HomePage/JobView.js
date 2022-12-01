@@ -12,23 +12,27 @@ import HistoryIcon from '@mui/icons-material/History';
 
 
 
-function JobView() {
+function JobView({job}) {
 
-    const [job, setJob] = useState([]);
+    // const [job, setJob] = useState([]);
 
 
-    useEffect(() => {
-        allJobs()
-    }, []);
+    // useEffect(() => {
+    //     allJobs()
+    // }, []);
 
     const {setJobDetails} = useContext(JobContext);
 
-    const allJobs =()=> {
-        axios.get('/all-jobs/').then((res)=>{
-            console.log(res.data);
-            setJob(res.data)
-        })
-    }
+    // const allJobs =()=> {
+    //     axios.get(`search-filter/?search=${search}`).then((res)=>{
+    //         console.log(res.data);
+    //         setJob(res.data)
+    //         allJobs()
+    //     })
+    // }
+
+
+    
 
   return (
     <div className='job-view'>

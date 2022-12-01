@@ -50,6 +50,10 @@ form {
     padding-bottom: 1rem;
 }
 
+.search form {
+    padding-bottom: 0rem;
+}
+
 a, a:visited {
     color: #000;
 }

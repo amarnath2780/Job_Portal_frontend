@@ -18,6 +18,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
+import JobView from '../Components/HomePage/JobView'
 
 
 const pages = ['Page', 'Pricing' , 'Jobs'];
@@ -72,7 +73,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
-function Navbar() {
+function Navbar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -96,6 +97,14 @@ function Navbar() {
   };
 
   const val= localStorage.getItem('token')
+
+
+  const [search, setSearch] = React.useState('');
+
+  const handleSubmit =(e) =>{
+    e.preventDefault()
+    props.onData(search)
+  }
 
   return (
     <AppBar className='navbar' position="static" sx={{ bgcolor: "#fff"}}>
@@ -197,14 +206,21 @@ function Navbar() {
               ))}
           </Box>
           
-          <Search>
+          <Search className='search'>
             <SearchIconWrapper>
-              <SearchIcon />
+              <SearchIcon for="icon"/>
             </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
+            <form onSubmit={handleSubmit}>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+                onChange={(e)=>{
+                  console.log(e.target.value);
+                  setSearch(e.target.value)
+                }}
+              />
+              <button type='submit' name='icon' id='icon' style={{display:"none"}}></button>
+            </form>
           </Search>
 
           <Box sx={{ flexGrow: 0 }}>
