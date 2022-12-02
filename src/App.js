@@ -22,6 +22,7 @@ import SingleJob from './Context/JobContext'
 import JobDetails from './Components/HomePage/JobDetails';
 import ListRequest from './Pages/Admin/ListRequest';
 import Login from './Pages/Login/Login';
+import Otp from './Pages/Login/Otp';
 
 function App() {
   
@@ -58,6 +59,7 @@ function App() {
 
               <Route path='/login' element={<Login/>}/>
               <Route path='/register' element={<Register/>}></Route>
+              <Route path='/verify' element={<Otp/>}></Route>
             </Routes>
             </SingleJob>
         </AuthProvider> 

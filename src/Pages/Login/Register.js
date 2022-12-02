@@ -29,6 +29,8 @@ const REGISTER_URL = '/user/signup';
 
 function Register() {
 
+     const  {Userlogin,errors,setMobile,mobile}= useContext(AuthContext)
+
     const userRef = useRef()
     const fnameRef = useRef()
     const errRef = useRef()
@@ -145,7 +147,7 @@ function Register() {
             role:role,
         }).then((res)=>{
             console.log(res.data,'data')
-            navigate('/')
+            navigate('/verify')
             if (res.data.error){
               setErrMsg('User already exist')
               console.log(res.data.error)
@@ -304,7 +306,10 @@ function Register() {
                                     id='mobile'
                                     ref={userRef} 
                                     autoComplete="off"
-                                    onChange={(e) => setPhone(e.target.value)}
+                                    onChange={(e)=>{
+                                        setPhone(e.target.value)
+                                        setMobile(e.target.value)
+                                    }}
                                     required
                                     aria-invalid={validPhone ? "false" : "true"}
                                     aria-describedby="uidnote"
