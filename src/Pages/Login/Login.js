@@ -26,7 +26,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 function Login() {
 
-    const  {Userlogin,errors,opens}= useContext(AuthContext)
+    const  {Userlogin,opens,errors}= useContext(AuthContext)
 
     const userRef = useRef()
     const fnameRef = useRef()
@@ -72,6 +72,9 @@ function Login() {
      if (forgot>2){
       setForShow(true)
      }
+     if (forgot>=2){
+        setErrMsg('User is not Varified')
+     }
      
      if (email.trim().length ===0 ){
       setErrMsg('Invalid Email or Password')
@@ -81,6 +84,7 @@ function Login() {
         console.log('finallll')
         Userlogin(email,pass)  
         setForgot(forgot+1)
+        
       }
     }
     if ( pass.trim().length === 0){
@@ -107,7 +111,7 @@ function Login() {
                         <div className="header_content">
                             <h1 class="header__content__heading ">Sign in</h1>
                             <p class="header__content__subheading ">Stay updated on your professional world</p>
-                            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                            <p style={{color:"#fa2121" , paddingTop: "1rem"}} ref={errRef} className={errMsg ? "" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         </div>
 
                         <form onSubmit={loginHandler} className="login_form">

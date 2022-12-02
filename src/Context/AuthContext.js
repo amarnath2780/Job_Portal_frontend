@@ -42,6 +42,7 @@ const handleClicks = () => {
         console.log(email,password)
        await axios.post('user/login/',{email:email,password:password}).then((res)=>{
                 console.log(res.data)
+                
                 console.log('id is here',res.data.user.user_id);
                 if (res.data.token){
                   console.log('recruiter is ' + res.data.user.role);
