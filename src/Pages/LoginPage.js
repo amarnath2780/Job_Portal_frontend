@@ -116,7 +116,7 @@ const count=0
     <Form onSubmit={loginHandler} >
 
     {/* emial */}
-    <label htmlFor="email">Email
+        <label htmlFor="email">Email
         <FontAwesomeIcon icon={faCheck} className={validname ? "valid" : "hide"} />
         <FontAwesomeIcon icon={faTimes} className={validname || !email ? "hide" : "invalid"} />
          </label>
@@ -181,6 +181,9 @@ const count=0
 </Card>
    
 </section>
+
+
+
   
   </div>
 

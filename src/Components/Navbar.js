@@ -206,7 +206,7 @@ function Navbar(props) {
               ))}
           </Box>
           
-          <Search className='search'>
+          <Search className='search' style={{color:"#000"}}>
             <SearchIconWrapper>
               <SearchIcon for="icon"/>
             </SearchIconWrapper>

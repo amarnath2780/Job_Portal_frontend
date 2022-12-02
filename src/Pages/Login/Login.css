@@ -1,0 +1,130 @@
+.alternate-signin-container .or-separator::after, .alternate-signin-container .or-separator::before {
+    content: "";
+    width: 50%;
+    height: 1px;
+    background-color: rgba(0,0,0,0.15);
+}
+
+.Login-page a{
+    text-decoration: none;
+}
+.login-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-layout {
+    width: 400px;
+    -webkit-box-shadow: 0 4px 30px rgb(0 0 0 / 50%);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 50%);
+    padding: 24px;
+    border-radius: 8px;
+    margin: 0 auto;
+    background: var(--color-background-container, #fff);
+}
+
+.card-layout .organic-div .header_content .header__content__heading {
+    font-size: 32px;
+    display: flex;
+}
+
+.card-layout .organic-div .header_content .header__content__subheading {
+    font-size: 13px;
+    margin-top: 3px;
+}
+
+.card-layout .organic-div  form{
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0px;
+}
+.form__input--floating {
+    position: relative;
+    background-color: #fff;
+    margin-top: 20px;
+}
+
+.form__input--floating>input {
+    line-height: 1.33333;
+    font-weight: 400;
+    color: rgba(0,0,0,0.9);
+    position: relative;
+    z-index: 1;
+    height: 52px;
+    width: 100%;
+    border: 1px solid;
+    border-radius: 4px !important;
+}
+
+.form__input--floating>select {
+    line-height: 1.33333;
+    font-weight: 400;
+    color: rgba(0,0,0,0.9);
+    position: relative;
+    z-index: 1;
+    height: 52px;
+    width: 100%;
+    border: 1px solid;
+    border-radius: 4px !important;
+}
+
+.btn__tertiary--medium {
+    margin: 23px 0px;
+    font-size: 16px;
+}
+
+.btn__tertiary--medium  span:hover{
+    background: #000;
+    color: #fff;
+    padding: 4px 11px;
+    border-radius: 14px;
+}
+
+.card-layout .organic-div .login_form .login_form_action{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-layout .organic-div .login_form .login_form_action button{
+    width: 100%;
+    border-radius: 33px;
+    color: #fff;
+    background: #0a66c2;
+    border: 2px solid #fff;
+}
+.card-layout .organic-div .login_form .login_form_action button:hover{
+    background: #016196;
+}
+.card-layout .organic-div  .snapple-seperator{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-layout .organic-div .google_signup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-layout .organic-div .google_signup button{
+    background: #fff;
+    width: 100%;
+    border-radius: 33px;
+    margin-top: 0.5rem;
+    padding: 6px 2px;
+    border: 1px solid #000;
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
+    font-size: 19px;
+    align-items: center;
+    gap: 13px;
+}
+
+
+
+
+#logoImg{
+    width: 9rem;
+}

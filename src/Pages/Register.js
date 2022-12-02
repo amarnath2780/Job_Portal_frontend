@@ -31,12 +31,9 @@ function Register() {
   const [validname, setValidname] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
 
-
   const [fname, setfname] = useState('');
   const [validFname, setValidFname] = useState(false);
   const [FnameFocus, setFnameFocus] = useState(false);
-
-
 
   const [mname, setMname] = useState('');
   const [validMname, setValidMname] = useState(false);

@@ -6,7 +6,7 @@ import { AuthProvider } from './Context/AuthContext';
 import AdminPrivetRoute from './Routes/AdminPrivetRoute';
 import PrivateRoutes from './Routes/PrivateRoutes';
 import CaseOfAdmin from './Routes/CaseOfAdmin'
-import Register from './Pages/Register'
+import Register from './Pages/Login/Register'
 import Recruiter from './Pages/Recruiter'
 import NewCompany from './Pages/NewCompany';
 import Applications from './Pages/Applications';
@@ -21,6 +21,7 @@ import RecruiterProfilepage from './Pages/Recruiter/RecruiterProfilepage';
 import SingleJob from './Context/JobContext'
 import JobDetails from './Components/HomePage/JobDetails';
 import ListRequest from './Pages/Admin/ListRequest';
+import Login from './Pages/Login/Login';
 
 function App() {
   
@@ -55,7 +56,7 @@ function App() {
                   <Route path='/profile' element={<RecruiterProfilepage/>}/>
               </Route>
 
-              <Route path='/login' element={<LoginPage/>}/>
+              <Route path='/login' element={<Login/>}/>
               <Route path='/register' element={<Register/>}></Route>
             </Routes>
             </SingleJob>

@@ -4,7 +4,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: #000
 }
 
 html {
@@ -12,6 +11,9 @@ html {
     font-size: 22px;
 }
 
+.css-1061a19-MuiPaper-root-MuiAppBar-root{
+    color: none;
+}
 
 
 .register {
