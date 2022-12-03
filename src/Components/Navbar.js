@@ -215,7 +215,6 @@ function Navbar(props) {
                 placeholder="Search…"
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={(e)=>{
-                  console.log(e.target.value);
                   setSearch(e.target.value)
                 }}
               />

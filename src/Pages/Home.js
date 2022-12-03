@@ -11,8 +11,19 @@ function Home() {
   const [search, setSearch] = useState('');
   const [job, setJob] = useState([]);
 
+  const profile_id = localStorage.getItem("profile_id")
+
+  /* Filter Values */
+  const [filter, setFilter] = useState({});
+
   const getData = (data) =>{
     axios.get(`search-filter/?search=${data}`).then((res)=>{
+      setJob(res.data)
+  })
+  }
+
+  const getFilter = (data) =>{
+    axios.get(`filter-job/?category=${data.category}&department=${data.department}&level=${data.level}&experience=&job_type=${data.type}`).then((res)=>{
       console.log(res.data);
       setJob(res.data)
   })
@@ -24,7 +35,7 @@ function Home() {
 
 
   const allJobs =()=> {
-    axios.get(`search-filter/?search=${search}`).then((res)=>{
+    axios.get(`filter-job/?category=&department=&level=&experience=&job_type=`).then((res)=>{
         console.log(res.data);
         setJob(res.data)
     })
@@ -36,7 +47,7 @@ function Home() {
     <div>
       <Navbar onData={getData}/>
       <div className='job-View-set'>
-        <Filter/>
+        <Filter onFilter={getFilter}/>
         <JobView job={job}/>
       </div>
     </div>
