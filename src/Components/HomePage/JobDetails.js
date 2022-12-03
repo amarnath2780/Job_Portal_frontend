@@ -53,7 +53,6 @@ export default function Apply({id , recruiter ,company}) {
 
   const singleJob =()=> {
     axios.get(`/job/?id=${id}`).then((res)=>{
-        console.log(res.data);
         setJob(res.data)
     })
 }

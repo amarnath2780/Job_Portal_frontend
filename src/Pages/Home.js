@@ -10,6 +10,7 @@ function Home() {
 
   const [search, setSearch] = useState('');
   const [job, setJob] = useState([]);
+  const [userCategory, setUserCategory] = useState('');
 
   const profile_id = localStorage.getItem("profile_id")
 
@@ -24,23 +25,22 @@ function Home() {
 
   const getFilter = (data) =>{
     axios.get(`filter-job/?category=${data.category}&department=${data.department}&level=${data.level}&experience=&job_type=${data.type}`).then((res)=>{
-      console.log(res.data);
       setJob(res.data)
   })
   }
 
   useEffect(() => {
-    allJobs()
+    UserCategory()
   }, []);
 
-
-  const allJobs =()=> {
-    axios.get(`filter-job/?category=&department=&level=&experience=&job_type=`).then((res)=>{
-        console.log(res.data);
+  const UserCategory=()=>{
+    axios.get(`view-profile/?id=${profile_id}`).then((res)=>{
+      setUserCategory(res.data.category)
+      axios.get(`filter-job/?category=${res.data.category}&department=&level=&experience=&job_type=`).then((res)=>{
         setJob(res.data)
     })
-}
-
+  })
+  }
 
 
   return (

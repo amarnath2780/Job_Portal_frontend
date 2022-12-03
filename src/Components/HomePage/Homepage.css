@@ -261,6 +261,30 @@
 }
 
 
+.filters #filter-button{
+    padding: 11px 0px;
+    margin: 14px 50px;
+    color: #fff;
+    border: 2px solid #fff;
+    background: #000;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-family: monospace;
+    text-align: center;
+    cursor: pointer;
+}
+
+.filters #filter-button:hover{
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #000;
+}
+
+.filters #filter-button:active{
+    color: #445578;
+    background: #cbcbcb;
+    border: 2px solid #fff;
+}
 
 
 

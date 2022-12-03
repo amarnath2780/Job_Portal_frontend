@@ -60,7 +60,7 @@ function Filter(props) {
         
         <div className="filters">
         <form onSubmit={handleFilter}>
-            <button type='submit'>Filter</button>
+            <button id='filter-button' type='submit'>Filter</button>
         <div className="filterContainers">
                 <button style={{background:"none" , textDecoration:"none" , border:"none"}} onClick={()=>{
                     setWorkMode(!workMode)
