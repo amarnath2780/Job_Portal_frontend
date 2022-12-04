@@ -23,6 +23,7 @@ import JobDetails from './Components/HomePage/JobDetails';
 import ListRequest from './Pages/Admin/ListRequest';
 import Login from './Pages/Login/Login';
 import Otp from './Pages/Login/Otp';
+import PosedJob from './Pages/Recruiter/PosedJob';
 
 function App() {
   
@@ -54,7 +55,8 @@ function App() {
                   <Route path='/application' element={<Applications/>}/>
                   <Route path='/post-job' element={<PostJob/>}/>
                   <Route path='/request-add' element={<AddRequest/>}/>
-                  <Route path='/profile' element={<RecruiterProfilepage/>}/>
+                  <Route path='/rec-profile' element={<RecruiterProfilepage/>}/>
+                  <Route path='/post' element={<PosedJob/>}/>
               </Route>
 
               <Route path='/login' element={<Login/>}/>

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react'
-import Navbar from '../Components/Navbar'
 import './Css/Recruiter.css'
 import UserContext from '../Context/UserContext'
 import { Link } from "react-router-dom";
+import ReNavbar from '../Components/ReNavbar';
 
 
 function Recruiter() {
@@ -15,7 +15,7 @@ function Recruiter() {
 
   return (
     <div className='recruiter'>
-      <Navbar/>
+      <ReNavbar/>
       
       <div className='posted'>
       <h1>If your Company already listed complete the Application<Link to='/application'>Here</Link> </h1>

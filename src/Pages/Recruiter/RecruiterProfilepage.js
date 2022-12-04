@@ -1,11 +1,12 @@
 import React from 'react'
-import Navbar from '../../Components/Navbar'
 import RecruiterProfile from '../../Components/Recruiter/RecruiterProfile';
+import ReNavbar from '../../Components/ReNavbar';
 
 function RecruiterProfilepage() {
   return (
     <div>
-      <Navbar/>
+
+      <ReNavbar/>
       <RecruiterProfile/>
     </div>
   )

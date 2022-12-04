@@ -21,7 +21,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import JobView from '../Components/HomePage/JobView'
 
 
-const pages = ['Home', 'Pricing' , 'Jobs'];
+const pages = ['Page', 'Profile' , 'Post'];
 const settings = ['Profile', 'Account', 'Dashboard'];
 
 const Search = styled('div')(({ theme }) => ({
@@ -73,7 +73,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
-function Navbar(props) {
+function ReNavbar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -97,14 +97,6 @@ function Navbar(props) {
   };
 
   const val= localStorage.getItem('token')
-
-
-  const [search, setSearch] = React.useState('');
-
-  const handleSubmit =(e) =>{
-    e.preventDefault()
-    props.onData(search)
-  }
 
   return (
     <AppBar className='navbar' position="static" sx={{ bgcolor: "#fff"}}>
@@ -205,22 +197,6 @@ function Navbar(props) {
                 </div>
               ))}
           </Box>
-          
-          <Search className='search' style={{color:"#000"}}>
-            <SearchIconWrapper>
-              <SearchIcon for="icon"/>
-            </SearchIconWrapper>
-            <form onSubmit={handleSubmit}>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-                onChange={(e)=>{
-                  setSearch(e.target.value)
-                }}
-              />
-              <button type='submit' name='icon' id='icon' style={{display:"none"}}></button>
-            </form>
-          </Search>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -244,8 +220,21 @@ function Navbar(props) {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
+
               <MenuItem onClick={(e)=>{
-                navigate('/profile/')
+                navigate('/post-job/')
+              }}>
+                  <Typography textAlign="center">Post Post</Typography>
+              </MenuItem>
+              
+              <MenuItem onClick={(e)=>{
+                navigate('/request-add/')
+              }}>
+                  <Typography textAlign="center">Request</Typography>
+                </MenuItem>
+
+              <MenuItem onClick={(e)=>{
+                navigate('/rec-profile/')
               }}>
                   <Typography textAlign="center">Profile</Typography>
                 </MenuItem>
@@ -260,4 +249,4 @@ function Navbar(props) {
     </AppBar>
   );
 }
-export default Navbar;
+export default ReNavbar;

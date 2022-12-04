@@ -1,11 +1,11 @@
 import React from 'react'
 import AddCompany from '../Components/AddCompany/AddCompany'
-import Navbar from '../Components/Navbar'
+import ReNavbar from '../Components/ReNavbar'
 
 function NewCompany() {
   return (
     <div>
-      <Navbar/>
+      <ReNavbar/>
       <AddCompany/>
     </div>
   )

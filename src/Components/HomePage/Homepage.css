@@ -40,12 +40,14 @@
     justify-content: center;
     margin-top: 3rem;
     margin-bottom: 3rem;
+    font-family: monospace;
 }
 
 .profile-page .profile-img img{
     width: 8rem;
     height: 8rem;
     border-radius: 100%
+    
 }
 
 
@@ -55,13 +57,14 @@
     padding-bottom: 2rem;
 }
 .profile-page .profile-content {
-    padding: 1px 3rem;
+    padding: 2px 34px;
 }
 
 .profile-page .profile-img{
     display: flex;
     justify-content: center;
     padding-top: 2rem;
+    align-items: end;
 }
 
 .profile-page .profile-img label{
@@ -77,13 +80,19 @@
 
 
 .profile-page .profile-content .profile-update button{
-    margin: 0;
-    padding: 4px 23px;
-    border-radius: 20px;
-    border: 3px solid #000;
-    color: #000;
-    background: #fff;
-    font-weight: bolder;
+    width: 100%;
+    border-radius: 33px;
+    color: #fff;
+    background: #0a66c2;
+    border: 2px solid #fff;
+}
+
+.profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 17px;
 }
 
 

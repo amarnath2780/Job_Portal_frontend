@@ -1,0 +1,28 @@
+.posted-job-details{
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 9px;
+    gap: 20px;
+}
+
+.posted-job-details .job-view{
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+}
+
+.posted-job-details .job-view .job-cards .paper{
+    cursor: pointer;
+}
+
+.MuiDataGrid-main {
+    width: 770px;
+}
+
+#resume{
+    text-decoration: none;
+    background: #b40d0d;
+    padding: 7px 17px;
+    border-radius: 10px;
+    color: #fff;
+    border: none;
+}

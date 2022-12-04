@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../Components/Navbar'
 import JobForm from '../Components/PostJob/JobForm'
+import ReNavbar from '../Components/ReNavbar'
 
 function PostJob() {
   return (
     <div>
-      <Navbar/>
+      <ReNavbar/>
       <JobForm/>
     </div>
   )

@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from '../Components/Navbar'
 import RequestCat from '../Components/AddSkills/RequestCat'
 import RequestStatusBar from '../Components/AddSkills/RequestStatusBar'
+import ReNavbar from '../Components/ReNavbar'
 
 function AddRequest() {
   return (
     <div style={{color:"#000"}}>
-      <Navbar/>
+      <ReNavbar/>
       <RequestStatusBar/>
     </div>
   )
