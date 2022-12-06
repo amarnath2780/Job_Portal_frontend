@@ -2,31 +2,61 @@ import React, { useEffect, useState } from 'react'
 import Paper from '@mui/material/Paper';
 import axios from '../../axios';
 import EditIcon from '@mui/icons-material/Edit';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 function RecruiterProfile() {
     const user = localStorage.getItem("userId")
     const profile_id = localStorage.getItem("profile_id")
-    console.log(user);
-    console.log(profile_id);
-
+    
+    const [snack, setsnack] = useState(false);
     const [profile, setprofile] = useState([]);
     const [details, setDetails] = useState([]);
     const [state, setState] = useState('');
     const [country, setCountry] = useState('');
     const [Img, setImg] = useState();
+    const [cat, setCat] = useState([]);
+    const [categoryValue, setcategoryValue] = useState('');
+    const [message, setMessage] = useState('');
+
 
     const BASEURL =`http://127.0.0.1:8000${profile.profie_pic}`
 
     useEffect(() => {
         userProfile()
         userdetails()
+        ListCategory()
     }, []);
+
+    const handleCloseSnack = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setsnack(false);
+    };
+
+    const handleClose = () => setsnack(false);
 
     const userProfile=()=>{
         axios.get(`/recruiter-profile/?id=${profile_id}`).then((res)=>{
             setprofile(res.data)
+            setState(res.data.state)
+            setCountry(res.data.country)
+            setcategoryValue(res.data.category.id)
+
           })
+    }
+
+    const ListCategory=()=>{
+        axios.get('/list-category/').then((res)=>{
+            setCat(res.data)
+        })
     }
 
 
@@ -43,14 +73,17 @@ function RecruiterProfile() {
     const profileUpdate=(e)=>{
         const formData = new FormData()
         formData.append('profie_pic' , Img)
-        formData.append('seeker' , user)
+        formData.append('recruiter' , user)
         formData.append('state' , state)
         formData.append('country' , country)
+        formData.append('category' , categoryValue)
 
         e.preventDefault()
-        let url = `/update-profile/?id=${user}`
+        let url = `/updata-reqruiter-profile/?id=${profile_id}`
         axios.put(url , formData).then((res)=>{
             refreshPage()
+            setMessage(res.data.message);
+            setsnack(true);
           })
     }
 
@@ -82,15 +115,15 @@ function RecruiterProfile() {
                             <label htmlFor="">About</label>
                             <textarea type="text" name="" id="" />
                             <label htmlFor="">Category</label>
-                            <select name="" id="">
-                                <option value="">Someting</option>
-                                <option value="">Full stack</option>
-                                <option value="">Backend</option>
+                            <select name="" id="" placeholder={categoryValue} onChange={(e)=>setcategoryValue(e.target.value)}>
+                            {cat ? cat.map((item,key)=>
+                                <option value={item.id}>{item.category_name}</option>
+                                ):''}
                             </select>
                             <label htmlFor="">State</label>
-                            <input type="text" name="" id="" onChange={(e) => setState(e.target.value)}  defaultValue={profile.state}/>
+                            <input type="text" name="" id="" onChange={(e) => setState(e.target.value)}  placeholder={state}/>
                             <label htmlFor="">Country</label>
-                            <input type="text" name="" id="" onChange={(e) => setCountry(e.target.value)} defaultValue={profile.country}/>
+                            <input type="text" name="" id="" onChange={(e) => setCountry(e.target.value)} placeholder={country}/>
                             
                             <div className='update-button'>
                                 <button type='submit'>update</button>
@@ -101,6 +134,13 @@ function RecruiterProfile() {
             </div> 
             </form>
         </Paper>
+
+
+        <Snackbar open={snack} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleCloseSnack} severity="success" sx={{ width: '100%' }}>
+        {message}
+         </Alert>
+         </Snackbar>
     </div>
   )
 }
