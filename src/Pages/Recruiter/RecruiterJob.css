@@ -14,7 +14,7 @@
     cursor: pointer;
 }
 
-.MuiDataGrid-main {
+#applied-job-table .MuiDataGrid-main {
     width: 770px;
 }
 
@@ -26,3 +26,27 @@
     color: #fff;
     border: none;
 }
+
+#decline{
+    background: #fe0000;
+    border: none;
+    color: #fff;
+    border-radius: 9px;
+    padding: 5px 18px;
+}
+
+#shorlist{
+    text-decoration: none;
+    background: #105a75;
+    padding: 7px 17px;
+    border-radius: 10px;
+    color: #fff;
+    border: none;
+}
+
+
+@media screen and (max-width: 1000px) {
+    #applied-job-table .MuiDataGrid-main {
+        width: 304px;
+    }
+  }

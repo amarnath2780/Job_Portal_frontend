@@ -25,6 +25,7 @@ export default function Apply({id , recruiter ,company}) {
 
   const user_id = localStorage.getItem("userId")
   const profile_id = localStorage.getItem("profile_id")
+  console.log(profile_id , recruiter , company);
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));

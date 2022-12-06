@@ -44,10 +44,13 @@ function ListAppliedUsers({job}) {
   const naviagte = useNavigate()
 
   const [open, setOpen] = useState(false);
+  const [decline, setDecline] = useState(false);
   const handleOpen = () => {
     setOpen(true)
   };
   const handleClose = () => setOpen(false);
+
+  const handleCloseDecline = () => setDecline(false);
 
   function refreshPage() {
     window.location.reload(false);
@@ -80,7 +83,7 @@ function ListAppliedUsers({job}) {
     renderCell: (cellvalues) => {
       return (
         <button
-        id='resume'
+        id='shorlist'
         className='btn-pending'
         onClick={()=>{
           console.log(cellvalues.row);
@@ -89,6 +92,22 @@ function ListAppliedUsers({job}) {
           setOpen(true)
          }}>
           Short-list
+        </button>
+      )
+    }
+    },
+    {field: 'reject', headerName: 'Decline', width: 250 , 
+    renderCell: (cellvalues) => {
+      return (
+        <button
+        id='decline'
+        className='btn-pending'
+        onClick={()=>{
+          setAppliedjobId(cellvalues.row.id)
+          setSeekerId(cellvalues.row.seeker_id)
+          setDecline(true)
+         }}>
+          Decline
         </button>
       )
     }
@@ -141,45 +160,84 @@ function ListAppliedUsers({job}) {
 
     const handleDelete=()=>{
       axios.post(`shortlist/?id=${appliedJobId}&uid=${seekerId}`).then((res)=>{
-        setMessage(res.data.message);
         setOpen(false)
         setsnack(true);
         refreshPage()
+        setMessage(res.data.message);
       })
      }
-    
+     
+    const handleDeline=()=>{
+       axios.post(`decline-job-request/?id=${appliedJobId}&uid=${seekerId}`).then((res)=>{
+         setOpen(false)
+         setsnack(true);
+         refreshPage()
+         setMessage(res.data.message);
+       })
+    }
 
   return (
     <div className='pending-table'>
 
-
 <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        open={open}
-        onClose={handleClose}
+        open={decline}
+        onClose={handleCloseDecline}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
       >
-        <Fade in={open}>
+        <Fade in={decline}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Shortlisting Application
+              Decline The Application
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              Do you really want to Shortlist The User<br/>
-              <button onClick={handleDelete} style={{border:"2px solid #cc0e15", color:"#fff" , background:"#000"}}>
-                Shortlist
+              Do you really want to Reject The Application<br/>
+              <button onClick={handleDeline} style={{border:"2px solid #cc0e15", color:"#fff" , background:"#000"}}>
+                Reject
               </button>
             </Typography>
           </Box>
         </Fade>
   </Modal>
+
+
+
+
+
+
+
+    <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <Fade in={open}>
+              <Box sx={style}>
+                <Typography id="transition-modal-title" variant="h6" component="h2">
+                  Shortlisting Application
+                </Typography>
+                <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+                  Do you really want to Shortlist The User<br/>
+                  <button onClick={handleDelete} style={{border:"2px solid #cc0e15", color:"#fff" , background:"#000"}}>
+                    Shortlist
+                  </button>
+                </Typography>
+              </Box>
+            </Fade>
+      </Modal>
       <Paper elevation={12} >
-        <div style={{ height: 500, width: 1300 , position:"fixed" }}>
+        <div id='applied-job-table' style={{ height: 500, width: 1300 , position:"fixed" }}>
             <DataGrid
                 rows={rowData}
                 columns={columns}
