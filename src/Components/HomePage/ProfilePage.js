@@ -8,8 +8,7 @@ import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 function ProfilePage() {
     const user = localStorage.getItem("userId")
     const profile_id = localStorage.getItem("profile_id")
-    console.log(user);
-    console.log(profile_id)
+
 
     const [profile, setprofile] = useState([]);
     const [details, setDetails] = useState([]);
@@ -58,17 +57,21 @@ function ProfilePage() {
 
     const userdetails=()=>{
         axios.get(`/user-details/?id=${user}`).then((res)=>{
-            console.log(res.data);
             setDetails(res.data)
           })
     }
 
     const UserCategory=()=>{
         axios.get(`view-profile/?id=${profile_id}`).then((res)=>{
+            setCategeryValue(res.data.category.id);
+            setDepartmentValue(res.data.department.id);
+            setExperince(res.data.experince);
+            setlevel(res.data.level)
+            setState(res.data.state)
+            setCountry(res.data.country)
             setUserProfiles(res.data)
-         
       })
-      }
+    }
 
     function refreshPage() {
         window.location.reload(false);
@@ -123,33 +126,33 @@ function ProfilePage() {
 
                             <label htmlFor="">Category</label>
 
-                            <select name="" id="" onChange={(e)=>setCategeryValue(e.target.value)}>
+                            <select name="" id="" placeholder={categeryValue} onChange={(e)=>setCategeryValue(e.target.value)}>
                             {cat ? cat.map((item,key)=>
                                 <option value={item.id}>{item.category_name}</option>
                                 ):''}
                             </select>
                             
                             <label htmlFor="">Department</label>
-                            <select name="" id="" onChange={(e)=>setDepartmentValue(e.target.value)}>
+                            <select name="" id="" placeholder={departmentValue} onChange={(e)=>setDepartmentValue(e.target.value)}>
                                 {dep ? dep.map((item,key)=>
                                 <option value={item.id}>{item.department_name}</option>
                                 ):''}
                             </select>
 
                             <label htmlFor="">Level</label>
-                            <select name="" id="" onChange={(e)=>setlevel(e.target.value)}>
+                            <select name="" id="" placeholder={level} onChange={(e)=>setlevel(e.target.value)}>
                                 <option value="fresher">Fresher</option>
                                 <option value="intermediate">Intermediate</option>
                                 <option value="professional">Proffessional</option>
                             </select>
 
                             <label htmlFor="">Experince</label>
-                            <input type="text" name="" id="" onChange={(e) => setExperince(e.target.value)}  f/>
+                            <input type="text" name="" id="" placeholder={experince} onChange={(e) => setExperince(e.target.value)}  f/>
 
                             <label htmlFor="">State</label>
-                            <input type="text" name="" id="" onChange={(e) => setState(e.target.value)}  defaultValue={profile.state}/>
+                            <input type="text" name="" id=""  onChange={(e) => setState(e.target.value)}  placeholder={state}/>
                             <label htmlFor="">Country</label>
-                            <input type="text" name="" id="" onChange={(e) => setCountry(e.target.value)} defaultValue={profile.country}/>
+                            <input type="text" name="" id="" onChange={(e) => setCountry(e.target.value)} placeholder={country}/>
                             
                             <div className='update-button'>
                                 <button type='submit'>update</button>

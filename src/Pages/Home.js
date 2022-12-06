@@ -38,7 +38,7 @@ function Home() {
   const UserCategory=()=>{
     axios.get(`view-profile/?id=${profile_id}`).then((res)=>{
       setUserCategory(res.data.category)
-      axios.get(`filter-job/?category=${res.data.category}&department=&level=&experience=&job_type=`).then((res)=>{
+      axios.get(`filter-job/?category=${res.data.category.id}&department=&level=&experience=&job_type=`).then((res)=>{
         setJob(res.data)
     })
   })

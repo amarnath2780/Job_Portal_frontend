@@ -25,7 +25,6 @@ export default function Apply({id , recruiter ,company}) {
 
   const user_id = localStorage.getItem("userId")
   const profile_id = localStorage.getItem("profile_id")
-  console.log(profile_id , recruiter , company);
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
@@ -42,7 +41,7 @@ export default function Apply({id , recruiter ,company}) {
   const navigate = useNavigate()
 
    useEffect(() => {
-      
+    UserDetails()
       }, []);
 
 
@@ -55,6 +54,15 @@ export default function Apply({id , recruiter ,company}) {
     window.location.reload(false);
   }
 
+  const [userDetails, setUserDetails] = useState([]);
+
+  const UserDetails=()=>{
+    axios.get(`user-details/?id=${user_id}`).then((res)=>{
+      setUserDetails(res.data);
+    })
+  }
+
+
 
 
   const applyJob=(e)=>{
@@ -64,10 +72,10 @@ export default function Apply({id , recruiter ,company}) {
     formData.append('company_id' , company)
     formData.append('recruiter' , recruiter)
     formData.append('resume' , file)
-    formData.append('first_name' , Fname)
-    formData.append('last_name' , Lname)
-    formData.append('email' , email)
-    formData.append('phone' , num)
+    formData.append('first_name' , userDetails.first_name)
+    formData.append('last_name' , userDetails.last_name)
+    formData.append('email' , userDetails.email)
+    formData.append('phone' , userDetails.phone_number)
 
     e.preventDefault()
     let url = 'apply-job/'
@@ -76,6 +84,8 @@ export default function Apply({id , recruiter ,company}) {
         console.log(res.data);
       })
 }
+
+
 
 
 
@@ -100,41 +110,41 @@ export default function Apply({id , recruiter ,company}) {
                 <p className='card-title'><u>Apply Form</u></p>
             <Card className='apply-form' sx={{ minWidth: 275 , gap: '21px' }}>
                     {/* emial */}
-                    <label htmlFor="name">
+                    {/* <label htmlFor="name">
                       First Name 
                     </label>
                     <input type="text"
                     id='name'
                     autoComplete="off"
                     onChange={(e) => setFName(e.target.value)}
-                    required/>
+                    required/> */}
 
-                    <label htmlFor="name">
+                    {/* <label htmlFor="name">
                       Last Name
                     </label>
                     <input type="text"
                     id='name'
                     autoComplete="off"
                     onChange={(e) => setLName(e.target.value)}
-                    required/>
+                    required/> */}
 
-                    <label htmlFor="name">
+                    {/* <label htmlFor="name">
                       Email
                     </label>
                     <input type="text"
                     id='name'
                     autoComplete="off"
                     onChange={(e) => setEmail(e.target.value)}
-                    required/>
+                    required/> */}
 
-                    <label htmlFor="name">
+                    {/* <label htmlFor="name">
                       Phone
                     </label>
                     <input type="text"
                     id='name'
                     autoComplete="off"
                     onChange={(e) => setNum(e.target.value)}
-                    required/>
+                    required/> */}
 
 
 
