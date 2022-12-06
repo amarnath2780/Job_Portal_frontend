@@ -170,9 +170,9 @@ function Login() {
                                 <span class="or-text">or</span>
                             </div>
 
-                        <div className="google_signup">
+                        {/* <div className="google_signup">
                             <button><GoogleIcon/> Login with Google</button>
-                        </div>
+                        </div> */}
 
                         <div className="google_signup">
                             <button><AddCircleIcon/><Link to='/register' >Create a Account</Link></button>

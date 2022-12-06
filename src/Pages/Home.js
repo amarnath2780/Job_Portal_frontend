@@ -5,6 +5,7 @@ import Filter from '../Components/HomePage/Filter';
 import Navbar from '../Components/Navbar';
 import JobDetails from '../Components/HomePage/JobDetails';
 import axios from '../axios';
+import bannerImages from '../Images/banner.png'
 
 function Home() {
 
@@ -31,6 +32,7 @@ function Home() {
 
   useEffect(() => {
     UserCategory()
+    BannerImg()
   }, []);
 
   const UserCategory=()=>{
@@ -42,10 +44,31 @@ function Home() {
   })
   }
 
+  const [banner, setBanner] = useState('');
+
+
+
+  const BannerImg=()=>{
+    axios.get('/banner/?id=1').then((res)=>{
+      console.log(res.data);
+      setBanner(res.data)
+  })
+  }
+
+  const BANNER_URL = `http://127.0.0.1:8000${banner.image}`
+
 
   return (
     <div>
-      <Navbar onData={getData}/>
+      <div style={{position: 'fixed', width:'100%'}}>
+      <Navbar onData={getData} style={{position: 'fixed'}}/>
+      </div>
+        <div className="home-page-banner">
+          <div className="banner-image">
+            <img src={BANNER_URL} style={{width: '100%' ,marginTop: '30px'}} alt="" />
+          </div>
+        </div>
+
       <div className='job-View-set'>
         <Filter onFilter={getFilter}/>
         <JobView job={job}/>

@@ -76,50 +76,71 @@ export default function Apply({id , recruiter ,company}) {
           {"Detail of the Job"}
         </DialogTitle>
         <DialogContent>
-          <div className='details'>
-            <h1>{job.job_title}</h1>
-            <div className="details-part">
-            <div className="details-portion">
-              <p>Job Type : {job.job_type}</p>
-            </div>
-            <div className="details-portion">
-              <p>Job Level : {job.level}</p>
-            </div>
-            <div className="details-portion">
-              <p>Max Salary : {job.max_salary}</p>
-            </div>
-            <div className="details-portion">
-             <p>Min Salary : {job.min_salary}</p>
-            </div>
+
+        <div className="job-details">
+                <div className="job-details-head">
+                  <div className="Header-title-container">
+                        <h1>{job.job_title}</h1>
+                  </div>
+                  <div className="jobsearch-CompanyInfoContainer">
+                    <div className="company">
+                      <p><span>www.jubna.com</span></p>
+                    </div>
+                    <div className="company-location">
+                      <p><span>{job.state}, {job.country}</span></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="JobComponent-description">
+                  <div className="JobDescriptionSection">
+                    <div className="jobDetailsSection">
+                      <div className="JobDescriptionSection-title">
+                        <h2>Job details</h2>
+                      </div>
+                      <div className="JobDescriptionSection-sectionItem">
+                        <div className="JobDescriptionSection-sectionItemKey-title">
+                          <p><u>Job Type</u></p>
+                        </div>
+                        <div className="JobDescriptionSection-sectionItemKey-content">
+                          <p>{job.job_type}</p>
+                          <p>{job.level}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <hr />
+                    <h2>Full Job Description</h2>
+
+                    <div className="jobDescriptionText">
+                      <p>Job Description :</p>
+                      <p>{job.full_discription}.</p>
+                      
+                      <p id='p'>Job Types: Full-time, Regular / Permanent</p>
+                      <p id='p'>Salary: ₹{job.max_salary} - ₹{job.min_salary}  {job.salary_type}</p>
+
+                      <p id='p'>Experience:</p>
+                      <ul id='ul'>
+                        <li>{job.experience} years Preferred</li>
+                      </ul>
+                    </div>
+
+                    <hr />
+
+                    <h2>Hiring Insights</h2>
+
+                    <div className="hiring-insights">
+                      <p>Hiring  <b>{job.vacancy}</b> candidate for this role</p>
+                    </div>
+                    <div className="hiring-insights">
+                     {job.urgent ? <p>Urgently hiring</p> : ''} 
+                    </div>
+                  </div>
+                </div>
             </div>
 
-            <div className="details-part">
-            <div className="details-portion">
-              <p>Experience : {job.experience}</p>
-            </div>
-            <div className="details-portion">
-              <p>State : {job.state}</p>
-            </div>
-            <div className="details-portion">
-              <p>Country : {job.country}</p>
-            </div>
-            <div className="details-portion">
-              <p>Vacancy :  {job.vacancy}</p>
-            </div>
-            </div>
-            <div className="details-portion">
-              <p>{job.full_discription}</p>
-            </div>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-          </div>
+
+
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose}>

@@ -132,11 +132,15 @@ h3 {
 }
 
 .card-box .card-button{
-  background: #000;
+  width: 100%;
+  border-radius: 33px;
   color: #fff;
-  border: 3px solid #000;
-  border-radius: 13px;
-  margin-top: 3rem;
+  background: #0a66c2;
+  border: 2px solid #fff;
+}
+
+.card-box .card-button:hover{
+  background: #016196;
 }
 
 .card-box .card-button-cat{
@@ -162,6 +166,20 @@ h3 {
   border: 2px solid #000;
   padding: 1px 7px;
 }
+
+.card-box .card-box-form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.css-pwngrv-MuiPaper-root-MuiCard-root{
+  display: flex;
+  flex-direction: column;
+}
+
 
 @media screen and (max-width: 992px) {
   .add-company .card-section{

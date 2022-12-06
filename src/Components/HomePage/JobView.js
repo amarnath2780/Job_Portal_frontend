@@ -32,7 +32,6 @@ function JobView({job}) {
     // }
 
 
-    
 
   return (
     <div className='job-view'>
@@ -63,9 +62,7 @@ function JobView({job}) {
                         </ul>
                     </div>
 
-                    <div className="rec-img">
-                        <img class="compImg fright" alt="company" src="https://img.naukimg.com/logo_images/groups/v1/4589801.gif"/>
-                    </div>
+
                 </div>
                 <div className="job-description">
                     <DescriptionIcon className='icon'/>

@@ -40,12 +40,12 @@ const addCategory=(e)=>{
       category:cat,
     }).then((res)=>{
         console.log(res.data);
-        navigate('/post-job/')
+        setErrMsg(res.data.message)
         if (res.data.error){
           setErrMsg('User already exist')
           console.log(res.data.errors)
       }
-      setErrMsg('Category already exist')
+      
     })
 }
 
@@ -76,9 +76,9 @@ useEffect(() => {
 
 <form action="" onSubmit={addCategory}>
         <p className='card-title'>Request to add  Department</p>
-    <Card className='card-box' sx={{ minWidth: 275 }}>
+    <Card className='card-box' style={{justifyContent: "space-evenly" ,height: '75vh'}} sx={{ minWidth: 275 }}>
     {errMsg ? <Stack sx={{ width: '100%' }} spacing={2}>
-      <Alert severity="error">{errMsg}</Alert></Stack> : ''}
+      <Alert severity="success">{errMsg}</Alert></Stack> : ''}
             <div className='add-company-select'>
                 <label htmlFor="company">Department Name </label>
                 <TextField
@@ -97,7 +97,7 @@ useEffect(() => {
                     ) : ''}
                 </select>
             </div>
-            <button className='card-button' type='submit'>Submit</button>
+            <button style={{width: '12rem'}} className='card-button' type='submit'>Submit</button>
     </Card>
         
     </form>

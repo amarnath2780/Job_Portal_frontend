@@ -17,6 +17,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import '../AddCompany/SelectComapy.css'
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
+import FolderIcon from '@mui/icons-material/Folder';
 
 
 export default function Apply({id , recruiter ,company}) {
@@ -95,8 +96,8 @@ export default function Apply({id , recruiter ,company}) {
         </DialogTitle>
         <DialogContent>
         <form action="" onSubmit={applyJob}>
-                <p className='card-title'>apply</p>
-            <Card className='apply-form' sx={{ minWidth: 275 }}>
+                <p className='card-title'><u>Apply Form</u></p>
+            <Card className='apply-form' sx={{ minWidth: 275 , gap: '21px' }}>
                     {/* emial */}
                     <label htmlFor="name">
                       First Name 
@@ -136,16 +137,17 @@ export default function Apply({id , recruiter ,company}) {
 
 
 
-                  <label htmlFor="name">
+                  <label htmlFor="resume">
                       Resume
                     </label>
                     <input type="file"
                     id='name'
+                    for='resume'
                     autoComplete="off"
                     onChange={(e) => setFile(e.target.files[0])}
                     required/>
 
-                    <button className='card-button' type='submit'>Submit</button>
+                    <button  className='card-button' type='submit'>Submit</button>
             </Card>
                 
             </form>
