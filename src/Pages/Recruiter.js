@@ -29,17 +29,13 @@ function Recruiter() {
       
       <div className='posted'>
 
-      {profile.is_acceped ?  <p style={{color: '#fff'}}>'You can add Job Now  <Link style={{color: '#fff'}}  to='/post-job'>Here</Link>'</p> :  <div>
-        <h1 style={{color: '#fff'}}>If your Company already listed complete the Application<Link to='/application'>Here</Link> </h1>
-        <h1 style={{color: '#fff'}}>If your Company not listed Add your Company<Link to='/add-company'>Here</Link> </h1>
-        </div>}
 
-      
-       {/* {profile.is_requested ? <p style={{color: '#fff'}}>'You request is pending'</p> : 
-        <div>
-        <h1 style={{color: '#fff'}}>If your Company already listed complete the Application<Link to='/application'>Here</Link> </h1>
-        <h1 style={{color: '#fff'}}>If your Company not listed Add your Company<Link to='/add-company'>Here</Link> </h1>
-        </div>} */}
+        {profile.is_requested ? <p style={{color: '#fff'}}>'You request is pending'</p> : profile.is_acceped ?  <p style={{color: '#fff'}}>'You can add Job Now  <Link style={{color: '#fff'}}  to='/post-job'>Here</Link>'</p> : 
+          <div>
+          <h1 style={{color: '#fff'}}>If your Company already listed complete the Application<Link to='/application'>Here</Link> </h1>
+          <h1 style={{color: '#fff'}}>If your Company not listed Add your Company<Link to='/add-company'>Here</Link> </h1>
+          </div>
+        }
       </div>
       
     </div>
