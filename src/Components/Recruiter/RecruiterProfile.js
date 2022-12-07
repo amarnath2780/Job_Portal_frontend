@@ -23,6 +23,9 @@ function RecruiterProfile() {
     const [cat, setCat] = useState([]);
     const [categoryValue, setcategoryValue] = useState('');
     const [message, setMessage] = useState('');
+    const [is_requested, setIs_requested] = useState();
+    const [is_acceped, setIs_acceped] = useState();
+    const [is_rejected, setIs_rejected] = useState();
 
 
     const BASEURL =`http://127.0.0.1:8000${profile.profie_pic}`
@@ -49,7 +52,9 @@ function RecruiterProfile() {
             setState(res.data.state)
             setCountry(res.data.country)
             setcategoryValue(res.data.category.id)
-
+            setIs_requested(res.data.is_requested)
+            setIs_acceped(res.data.is_acceped)
+            setIs_rejected(res.data.is_rejected)
           })
     }
 
@@ -77,6 +82,9 @@ function RecruiterProfile() {
         formData.append('state' , state)
         formData.append('country' , country)
         formData.append('category' , categoryValue)
+        formData.append('is_requested' , is_requested)
+        formData.append('is_acceped' , is_acceped)
+        formData.append('is_rejected' , is_rejected)
 
         e.preventDefault()
         let url = `/updata-reqruiter-profile/?id=${profile_id}`
