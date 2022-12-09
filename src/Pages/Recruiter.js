@@ -16,6 +16,33 @@ function Recruiter() {
   }, []);
 
   const [profile, setprofile] = useState([]);
+  const [paid, setPaid] = useState(false);
+
+  const product={
+    description :"Its just one month plan",
+    price:20,
+  } 
+
+  const [message, setMessage] = useState('');
+
+  const handleApprove=(orderID)=>{
+    setPaid(true)
+  }
+
+  const membership = 1
+
+  const handlePayment=(order)=>{
+    if(order.status== "COMPLETED"){
+      axios.post(`/payment/?id=${profile_id}`,{
+        user: profile_id,
+        membership: membership,
+      }).then((res)=>{
+        setMessage(res.data.message)
+        console.log(res.data);
+      })
+    }
+  }
+
 
 
   const userProfile=()=>{
@@ -34,22 +61,45 @@ function Recruiter() {
         </p>
           
         <PayPalButtons style={{color:"blue" , shape:"pill" , layout:"horizontal" , tagline:'false'}}
-          createOrder={(data , actions)=>{
-            return actions.order.create({
-              purchase_units  : [
-                {
-                  description : "nothing much its just one month plan",
-                  amount: {profile_id}
-                }
-              ]
-            })
-          }}
+            createOrder={(data, actions)=>{
+              return actions.order.create({
+                purchase_units:[
+                  {
+                    description : product.description,
+                    amount:{
+                      value: product.price
+                    },
 
-          onApprove={(data, actions)=>{
-              const order =  actions.order.capture()
+                  },
+                ],
+              });
+            }}
+            onApprove = {async (data,actions)=>{
+                const order = await actions.order.capture();
+                console.log("order", order);
 
-              console.log('order', order);
-          }}
+                handlePayment(order)
+                handleApprove(data.orderID)
+
+            }}
+
+            onCancel={() => {}}
+
+            onError={(err)=>{
+              console.log('papal on error',err);
+            }}
+
+            onClick={(data, actions)=>{
+              const hasAlreadyBoughtCourse = false
+
+              if (hasAlreadyBoughtCourse) {
+                console.log('You already Bought this');
+                return actions.reject()
+              }
+              else{
+                return actions.resolve()
+              }
+            }}
 
         />
 
