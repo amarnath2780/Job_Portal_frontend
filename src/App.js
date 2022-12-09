@@ -24,10 +24,15 @@ import ListRequest from './Pages/Admin/ListRequest';
 import Login from './Pages/Login/Login';
 import Otp from './Pages/Login/Otp';
 import PosedJob from './Pages/Recruiter/PosedJob';
+import Shortlist from './Pages/Recruiter/Shortlist';
+import {PayPalScriptProvider} from '@paypal/react-paypal-js';
+
+
 
 function App() {
   
   return (
+    <PayPalScriptProvider options={{ "client-id" : "" }}>
     <div className="App">
       <Router>
 
@@ -57,6 +62,7 @@ function App() {
                   <Route path='/request-add' element={<AddRequest/>}/>
                   <Route path='/rec-profile' element={<RecruiterProfilepage/>}/>
                   <Route path='/post' element={<PosedJob/>}/>
+                  <Route path='/Shortlist' element={<Shortlist/>}/>
               </Route>
 
               <Route path='/login' element={<Login/>}/>
@@ -68,6 +74,7 @@ function App() {
 
       </Router>
     </div>
+    </PayPalScriptProvider>
   );
 }
 
