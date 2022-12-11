@@ -1,0 +1,72 @@
+.top-banner{
+    background-image: linear-gradient(90deg, rgba(1,1,9,1) 0%, rgba(1,1,9,0.6559217436974789) 0%),  url('../../Images//banner-image.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
+    color: #fff;
+}
+.top-banner .banner-section{
+    padding: 100px 10px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.top-banner .banner-section .lft{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.top-banner .banner-section .lft .sub p{
+    font-size: 50px;
+    letter-spacing: 15px;
+    font-family: fantasy;
+}
+
+.top-banner .banner-section .lft  h5{
+    font-size: 15px;
+    font-family: monospace;
+}
+
+.top-banner .banner-section .lft  p {
+    font-size: 12px;
+    font-family: fantasy;
+    letter-spacing: 3px;
+}
+
+.top-banner .banner-section .lft .flexible a{
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid;
+    padding: 11px 30px;
+    border-radius: 5px;
+}
+
+.top-banner .banner-section .lft .flexible a:active{
+    border: transparent;
+    color: transparent;
+}
+
+.services-nav-link {
+    background: #dadada;
+    width: 100%;
+    height: 107px;
+    padding-top: 29px;
+}
+.services-nav-link .services-containers{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.services-nav-link .services-containers .services-first{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 12px;
+    align-items: center;
+}
+

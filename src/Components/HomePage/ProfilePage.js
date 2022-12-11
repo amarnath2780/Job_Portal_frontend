@@ -3,7 +3,16 @@ import Paper from '@mui/material/Paper';
 import axios from '../../axios';
 import EditIcon from '@mui/icons-material/Edit';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
+
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+  
+  
 
 function ProfilePage() {
     const user = localStorage.getItem("userId")
@@ -23,10 +32,21 @@ function ProfilePage() {
     const [Img, setImg] = useState();
     const [dep, setDep] = useState([]);
     const [cat, setCat] = useState([]);
-
+    const [snack, setsnack] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [message, setMessage] = useState('');
     const [userProfiles, setUserProfiles] = useState([]);
 
     const BASEURL =`http://127.0.0.1:8000${profile.profie_pic}`
+
+    const handleCloseSnack = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setsnack(false);
+    };
+    const handleClose = () => setOpen(false);
 
     useEffect(() => {
         userProfile()
@@ -64,7 +84,7 @@ function ProfilePage() {
     const UserCategory=()=>{
         axios.get(`view-profile/?id=${profile_id}`).then((res)=>{
             setCategeryValue(res.data.category.id);
-            setDepartmentValue(res.data.department.id);
+            setDepartmentValue(res.data.department);
             setExperince(res.data.experince);
             setlevel(res.data.level)
             setState(res.data.state)
@@ -93,6 +113,8 @@ function ProfilePage() {
         axios.put(url , formData).then((res)=>{
             console.log(res.data);
             refreshPage()
+            setMessage(res.data.message)
+            setsnack(true)
         })
     }
 
@@ -163,6 +185,13 @@ function ProfilePage() {
             </div> 
             </form>
         </Paper>
+
+
+        <Snackbar open={snack} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleCloseSnack} severity="success" sx={{ width: '100%' }}>
+            {message}
+            </Alert>
+        </Snackbar>
     </div>
   )
 }

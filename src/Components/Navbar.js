@@ -21,7 +21,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import JobView from '../Components/HomePage/JobView'
 
 
-const pages = ['Home', 'Pricing' , 'Jobs'];
+const pages = ['Home', 'Profile'];
 const settings = ['Profile', 'Account', 'Dashboard'];
 
 const Search = styled('div')(({ theme }) => ({
@@ -137,7 +137,7 @@ function Navbar(props) {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
+              <MenuIcon style={{color:"#000"}} />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -158,9 +158,23 @@ function Navbar(props) {
               }}
             >
               {pages.map((page) => (
-                <MenuItem className='navbar-list' style={{borderRadius: '26px'}} key={page} onClick={handleCloseNavMenu}>
-                  <Typography className='navbar-buttons' textAlign="center">{page}</Typography>
+                <div
+                style={{display: "flex", flexDirection: "column"}}>
+                  <button
+                  style={{textDecoration:"none", border:"none", color:"#fff" , padding:"0px 3px" , background:"none", margin:"none"}}
+                  key={page.id}
+                  onClick={(e)=>{
+                    e.preventDefault()
+                    navigate(`/${page}`)
+                  }}
+                  >
+                <MenuItem style={{borderRadius: '26px'}} className='navbar-list' key={page} onClick={handleCloseNavMenu}>
+                  <Typography  className='navbar-buttons' style={{fontWeight: '800',fontSize: '20px'}} textAlign="center">
+                  {page}
+                  </Typography>
                 </MenuItem>
+                </button>
+                </div>
               ))}
             </Menu>
           </Box>

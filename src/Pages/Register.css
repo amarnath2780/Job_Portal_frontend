@@ -179,6 +179,7 @@ select{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 30px;
 }
 
 .subscription-plan .single-plans-card{
@@ -187,13 +188,51 @@ select{
     gap: 40px;
 }
 
+.subscription-plan .single-plans-card .membership-content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
 .subscription-plan .single-plans-card #inner-single-plan{
-    padding: 42px 3rem;
+    padding: 35px 30px;
     display: flex;
     flex-direction: column;
     gap: 31px;
+    max-width: 450px;
+    font-family: monospace;
+}
+.subscription-plan .single-plans-card #inner-single-plan h3{
+    text-align: center;
+}
+#already-paid{
+    padding-top: 25%;
+    font-size: 35px;
+    letter-spacing: 4px;
+    font-family: monospace;
+    color: #1ab5cd;
+}
+#already-paid a{
+    text-decoration: none;
+    color: #b10f0f;
 }
 
+
+.subscription-plan .single-plans-card #inner-single-plan .memebership-content-text{
+    width: 55%;
+}
+
+.subscription-plan .single-plans-card #inner-single-plan  .memebership-price{
+    font-size: 23px;
+}
+
+.subscription-plan .single-plans-card #inner-single-plan  .memebership-price span{
+    color: #207edf;
+}
 
 label, button {
     margin-top: 0rem;

@@ -367,4 +367,13 @@
     #navbar-logo{
       display: none;
     }
+    .filtersContainer{
+        display: none;
+    }
+    .footer-button{
+        display: flex;
+    }
+    .job-view .job-cards .jobTupleFooter .job-type {
+        display: none;
+    }
   }
