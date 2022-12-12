@@ -5,6 +5,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import ClockLoader from "react-spinners/ClockLoader";
+
 
 
 
@@ -27,6 +29,7 @@ function ProfilePage() {
     const [categeryValue, setCategeryValue] = useState('');
     const [departmentValue, setDepartmentValue] = useState('');
     const [level, setlevel] = useState('');
+    const [loading, setloading] = useState(false);
 
 
     const [Img, setImg] = useState();
@@ -54,6 +57,7 @@ function ProfilePage() {
         ListDepartment()
         ListCategory()
         UserCategory()
+        setloading(true)
     }, []);
 
     const ListDepartment=()=>{
@@ -71,6 +75,7 @@ function ProfilePage() {
     const userProfile=()=>{
         axios.get(`/view-profile/?id=${profile_id}`).then((res)=>{
             setprofile(res.data)
+            setloading(false)
           })
     }
 
@@ -119,9 +124,17 @@ function ProfilePage() {
     }
 
   return (
-    <div className='profile-page'>
-         
-        
+
+    <>
+    {loading ? 
+        <div id='loading'>
+            <ClockLoader
+            color="#3ac2e6"
+            loading={loading}
+            cssOverride={{}}
+            />
+        </div>: 
+        <div className='profile-page'>
         <Paper elevation={8}  style={{width: '410px'}}>
         <h5 style={{textAlign:"center", fontSize: '21px' , marginTop:'20px'}}>Profile page</h5>
         <form action="" onSubmit={profileUpdate}>
@@ -193,6 +206,9 @@ function ProfilePage() {
             </Alert>
         </Snackbar>
     </div>
+}
+</>
+    
   )
 }
 

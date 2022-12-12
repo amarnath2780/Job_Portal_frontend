@@ -27,6 +27,7 @@ import PosedJob from './Pages/Recruiter/PosedJob';
 import Shortlist from './Pages/Recruiter/Shortlist';
 import {PayPalScriptProvider} from '@paypal/react-paypal-js';
 import LandingPage from './Pages/LandingPage';
+import RecruiterLandingPage from './Pages/RecruiterLandingPage';
 
 
 
@@ -65,6 +66,7 @@ function App() {
                   <Route path='/rec-profile' element={<RecruiterProfilepage/>}/>
                   <Route path='/post' element={<PosedJob/>}/>
                   <Route path='/Shortlist' element={<Shortlist/>}/>
+                  <Route path='/landing' element={<RecruiterLandingPage/>}/>
               </Route>
 
               <Route path='/login' element={<Login/>}/>

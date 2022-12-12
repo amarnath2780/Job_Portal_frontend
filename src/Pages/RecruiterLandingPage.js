@@ -7,8 +7,9 @@ import Features from '../Components/Landingpage/Features'
 import BottomBanner from '../Components/Landingpage/BottomBanner'
 import Footer from '../Components/Landingpage/Footer'
 import ClockLoader from "react-spinners/ClockLoader";
+import ReNavbar from '../Components/ReNavbar'
 
-export default function LandingPage() {
+export default function RecruiterLandingPage() {
 
   const [loading, setloading] = useState(false);
 
@@ -17,7 +18,7 @@ export default function LandingPage() {
 
     setTimeout(()=>{
       setloading(false)
-    },3000)
+    },2000)
   }, []);
 
   return (
@@ -32,7 +33,7 @@ export default function LandingPage() {
       />
       </div>
      : <>
-      <Navbar/>
+      <ReNavbar/>
       <Landing/>
       <Services/>
       <ServiceAdd/>

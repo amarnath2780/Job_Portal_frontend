@@ -8,6 +8,7 @@ import {PayPalButtons} from '@paypal/react-paypal-js';
 import Paper from '@mui/material/Paper';
 import payment from '../Images/paymet.png';
 import jobs from '../Images/jobs.png';
+import RecruiterLandingPage from './RecruiterLandingPage';
 
 
 function Recruiter() {
@@ -74,11 +75,11 @@ function Recruiter() {
 
   return (
     <div className='recruiter' style={{background:"#fff"}}>
-      {profile.paid ?  <ReNavbar/> :''}
+      {profile.paid  ?  ''  : ''}
       
       <div className='posted' >
         {profile.is_requested ? <p style={{color: '#000' }}>'You request is pending'</p> :  profile.paid ? 
-              <p id='already-paid'>You can add Job Now  <Link  to='/post-job'>Here</Link></p>
+              <RecruiterLandingPage/>
         : profile.is_acceped ? 
         <div className='subscription-plan'>
               <img src={payment} alt="" />

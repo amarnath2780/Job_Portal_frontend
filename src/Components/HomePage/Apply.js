@@ -18,6 +18,7 @@ import '../AddCompany/SelectComapy.css'
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import FolderIcon from '@mui/icons-material/Folder';
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 
 
 export default function Apply({id , recruiter ,company}) {
@@ -108,55 +109,18 @@ export default function Apply({id , recruiter ,company}) {
         <DialogContent>
         <form action="" onSubmit={applyJob}>
                 <p className='card-title'><u>Apply Form</u></p>
-            <Card className='apply-form' sx={{ minWidth: 275 , gap: '21px' }}>
-                    {/* emial */}
-                    {/* <label htmlFor="name">
-                      First Name 
-                    </label>
-                    <input type="text"
-                    id='name'
-                    autoComplete="off"
-                    onChange={(e) => setFName(e.target.value)}
-                    required/> */}
-
-                    {/* <label htmlFor="name">
-                      Last Name
-                    </label>
-                    <input type="text"
-                    id='name'
-                    autoComplete="off"
-                    onChange={(e) => setLName(e.target.value)}
-                    required/> */}
-
-                    {/* <label htmlFor="name">
-                      Email
-                    </label>
-                    <input type="text"
-                    id='name'
-                    autoComplete="off"
-                    onChange={(e) => setEmail(e.target.value)}
-                    required/> */}
-
-                    {/* <label htmlFor="name">
-                      Phone
-                    </label>
-                    <input type="text"
-                    id='name'
-                    autoComplete="off"
-                    onChange={(e) => setNum(e.target.value)}
-                    required/> */}
-
-
-
+            <Card className='apply-form' sx={{ minWidth: 275 , gap: '21px' }}> 
                   <label htmlFor="resume">
                       Resume
                     </label>
                     <input type="file"
-                    id='name'
-                    for='resume'
+                    id='resume'
+                    name='resume'
+                    hidden
                     autoComplete="off"
                     onChange={(e) => setFile(e.target.files[0])}
                     required/>
+                    <label for='resume' style={{ cursor:"pointer"}} htmlFor="resume"><CloudDownloadIcon/></label>
 
                     <button  className='card-button' type='submit'>Submit</button>
             </Card>

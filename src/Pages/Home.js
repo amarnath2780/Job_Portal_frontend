@@ -6,13 +6,14 @@ import Navbar from '../Components/Navbar';
 import JobDetails from '../Components/HomePage/JobDetails';
 import axios from '../axios';
 import bannerImages from '../Images/banner.png'
+import ClockLoader from "react-spinners/ClockLoader";
 
 function Home() {
 
   const [search, setSearch] = useState('');
   const [job, setJob] = useState([]);
   const [userCategory, setUserCategory] = useState('');
-
+  const [loading, setloading] = useState(false);
   const profile_id = localStorage.getItem("profile_id")
 
   /* Filter Values */
@@ -33,6 +34,7 @@ function Home() {
   useEffect(() => {
     UserCategory()
     BannerImg()
+    setloading(true)
   }, []);
 
   const UserCategory=()=>{
@@ -40,6 +42,7 @@ function Home() {
       setUserCategory(res.data.category)
       axios.get(`filter-job/?category=${res.data.category.id}&department=&level=&experience=&job_type=`).then((res)=>{
         setJob(res.data)
+        setloading(false)
     })
   })
   }
@@ -60,6 +63,14 @@ function Home() {
 
   return (
     <div>
+      {loading ? 
+          <div id='loading'>
+          <ClockLoader
+          color="#3ac2e6"
+          loading={loading}
+          cssOverride={{}}
+        />
+        </div> : <>
       <div style={{position: 'fixed', width:'100%'}}>
       <Navbar onData={getData} style={{position: 'fixed'}}/>
       </div>
@@ -72,7 +83,7 @@ function Home() {
       <div className='job-View-set'>
         <Filter onFilter={getFilter}/>
         <JobView job={job}/>
-      </div>
+      </div></>}
     </div>
   )
 }

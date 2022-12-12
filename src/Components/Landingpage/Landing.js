@@ -14,7 +14,7 @@ function Landing() {
           <p class="tip">May Your Search For a Job, Be Shorter Than Your Resume</p>
 
           <div className="flexible">
-            <Link to='Job' >Search Jobs</Link>
+            <Link >Search Jobs</Link>
           </div>
         </div>
       </div>
