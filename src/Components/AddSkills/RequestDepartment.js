@@ -76,7 +76,7 @@ useEffect(() => {
 
 <form action="" onSubmit={addCategory}>
         <p className='card-title'>Request to add  Department</p>
-    <Card className='card-box' style={{justifyContent: "space-evenly" ,height: '75vh'}} sx={{ minWidth: 275 }}>
+    <Card className='card-box' style={{justifyContent: "center" ,height: '75vh'}} sx={{ minWidth: 275  }}>
     {errMsg ? <Stack sx={{ width: '100%' }} spacing={2}>
       <Alert severity="success">{errMsg}</Alert></Stack> : ''}
             <div className='add-company-select'>

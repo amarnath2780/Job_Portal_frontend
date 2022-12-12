@@ -64,10 +64,11 @@ input[type="text"],
 input[type="password"],
 button,
 textarea {
-  font-family: 'Nunito', sans-serif;
-  font-size: 22px;
-  padding: 0.25rem;
-  border-radius: 0.5rem;
+    font-size: 17px;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: none;
+    background: #d5d5d5;
 }
 
 label,

@@ -141,7 +141,7 @@ setErrMsg('')
         role:role,
     }).then((res)=>{
         console.log(res.data,'data')
-        navigate('/')
+        navigate('/Home')
         if (res.data.error){
           setErrMsg('User already exist')
           console.log(res.data.error)

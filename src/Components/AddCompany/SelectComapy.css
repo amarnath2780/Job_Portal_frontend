@@ -79,6 +79,9 @@ h3 {
 
 .add-company .Content form{
   padding: 0px 4rem;
+  font-size: 16px;
+  gap: 16px;
+  max-width: 550px;
 }
 .add-company .Content form input[type=file]{
   cursor: pointer;
@@ -118,9 +121,11 @@ h3 {
 }
 
 .add-company .Content form select{
-  border: 2px solid #000;
   height: 2rem;
   border-radius: 10px;
+  font-size: 15px;
+  background: #cdcdcd;
+  font-weight: 400;
 }
 
 .card-box{
@@ -163,8 +168,11 @@ h3 {
 }
 
 .add-company-select select{
-  border: 2px solid #000;
-  padding: 1px 7px;
+  height: 2rem;
+  border-radius: 10px;
+  font-size: 15px;
+  background: #cdcdcd;
+  font-weight: 400;
 }
 
 .card-box .card-box-form{

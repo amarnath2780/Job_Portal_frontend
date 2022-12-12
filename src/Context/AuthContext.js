@@ -11,7 +11,11 @@ export const AuthProvider=({children})=>{
  let [authToken,setAuthToken]=useState(()=>localStorage.getItem('authToken')? JSON.parse(localStorage.getItem('authToken')):null)
  let [user,setUser]=useState(()=>localStorage.getItem('authToken')? jwt_decode(localStorage.getItem('authToken')):null)
   let [admin,setAdmin]=useState(()=>localStorage.getItem('admin')? jwt_decode(localStorage.getItem('admin')):null)
+  let [adminToken,setadminToken]=useState(()=>localStorage.getItem('admin')? JSON.parse(localStorage.getItem('admin')):null)
+
+  let [recruiter,setRecruiter]=useState(()=>localStorage.getItem('adminAuthToken')? jwt_decode(localStorage.getItem('adminAuthToken')):null)
   let [adminAuthToken,setAdminAuthToken]=useState(()=>localStorage.getItem('adminAuthToken')? JSON.parse(localStorage.getItem('adminAuthToken')):null)
+
     const navigate=useNavigate()
     
     const [show, setShow] = useState(false);
@@ -55,14 +59,14 @@ const handleClicks = () => {
                     setUser(res.data.token)                      
                     SetError(res.data.message)
                     localStorage.setItem('userId',JSON.stringify(res.data.user.user_id))
-                    navigate('/')
+                    navigate('/Home')
                   }
                   else if(res.data.user.role == 'recruiter'){
                     localStorage.setItem('adminAuthToken',JSON.stringify(res.data))
                     localStorage.setItem('token',JSON.stringify(res.data.token))
                     localStorage.setItem('profile_id', JSON.stringify(res.data.profile_id))
-                    setAuthToken(res.data)
-                    setUser(res.data.token)                      
+                    setAdminAuthToken(res.data)
+                    setRecruiter(res.data.token)                      
                     SetError(res.data.message)
                     localStorage.setItem('userId',JSON.stringify(res.data.user.user_id))
                     navigate('/page')
@@ -70,7 +74,7 @@ const handleClicks = () => {
                   else{
                     localStorage.setItem('admin',JSON.stringify(res.data))
                     localStorage.setItem('token',JSON.stringify(res.data.token))
-                    setAdminAuthToken(res.data)
+                    setadminToken(res.data)
                     setAdmin(res.data.token)                      
                     SetError(res.data.message)
                     navigate('/admin')
@@ -123,6 +127,7 @@ const handleClicks = () => {
             Userlogin:Userlogin,
             logOut:logOut,
             authToken:authToken,
+            adminToken:adminToken,
             mobile:mobile,
             setMobile:setMobile,   
             errors:errors,    

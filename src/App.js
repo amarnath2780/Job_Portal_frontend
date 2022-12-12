@@ -42,7 +42,7 @@ function App() {
         <SingleJob>
           <Routes>
               <Route element={<PrivateRoutes/>}>
-                  <Route path='/' element={<Home/>} exact/>
+                  <Route path='/Job' element={<Home/>} exact/>
                   <Route path='/profile' element={<Profile/>} exact/>
                   <Route path='/job-details' element={<JobDetails/>} exact/>
                   <Route path='/Home' element={<LandingPage/>}/>

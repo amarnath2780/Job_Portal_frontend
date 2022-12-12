@@ -167,7 +167,7 @@ function Recruiter() {
               </div> 
         </div> 
            
-          :<div>
+          :<div id='loading' >
             <h1 style={{color: '#000'}}>If your Company already listed complete the Application<Link to='/application'>Here</Link> </h1>
             <h1 style={{color: '#000'}}>If your Company not listed Add your Company<Link to='/add-company'>Here</Link> </h1>
           </div>
