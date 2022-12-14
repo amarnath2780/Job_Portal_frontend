@@ -58,7 +58,6 @@ function AdminNav() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
               textDecoration: 'none',
             }}
           >
@@ -139,7 +138,7 @@ function AdminNav() {
                 <div
                 style={{display: "flex", flexDirection: "column"}}>
                   <button
-                  style={{textDecoration:"none", border:"none", color:"#fff" , padding:"0px 3px" , background:"none", margin:"none"}}
+                  style={{textDecoration:"none", border:"none" , padding:"0px 3px" , background:"none", margin:"none"}}
                   key={page.id}
                   onClick={(e)=>{
                     e.preventDefault()

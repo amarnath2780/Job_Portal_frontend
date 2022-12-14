@@ -21,7 +21,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import JobView from '../Components/HomePage/JobView'
 
 
-const pages = ['Home', 'Profile' , 'Job'];
+const pages = ['Profile' , 'Job'];
 const settings = ['Profile', 'Account', 'Dashboard'];
 
 const Search = styled('div')(({ theme }) => ({
@@ -199,6 +199,24 @@ function Navbar(props) {
             Trabajo
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+
+            <div
+                style={{display: "flex", flexDirection: "column"}}>
+                  <button
+                  style={{textDecoration:"none", border:"none", color:"#fff" , padding:"0px 3px" , background:"none", margin:"none"}}
+                  onClick={(e)=>{
+                    e.preventDefault()
+                    navigate(`/`)
+                  }}
+                  >
+                <MenuItem style={{borderRadius: '26px'}} className='navbar-list' onClick={handleCloseNavMenu}>
+                  <Typography  className='navbar-buttons' style={{fontWeight: '800',fontSize: '20px'}} textAlign="center">
+                    Home
+                  </Typography>
+                </MenuItem>
+                </button>
+            </div>
+
           {pages.map((page) => (
                 <div
                 style={{display: "flex", flexDirection: "column"}}>
@@ -218,15 +236,17 @@ function Navbar(props) {
                 </button>
                 </div>
               ))}
+            
           </Box>
           
-          <Search className='search' style={{color:"#000"}}>
-            <SearchIconWrapper>
-              <SearchIcon for="icon"/>
+          <Search className='search'  style={{color:"#000"}}>
+            <SearchIconWrapper >
+              <SearchIcon for="icon" htmlFor="icon" />
             </SearchIconWrapper>
             <form onSubmit={handleSubmit}>
               <StyledInputBase
                 placeholder="Search…"
+                style={{background:"none"}}
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={(e)=>{
                   setSearch(e.target.value)

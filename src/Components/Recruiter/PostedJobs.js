@@ -9,6 +9,7 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import DescriptionIcon from '@mui/icons-material/Description';
 import HistoryIcon from '@mui/icons-material/History';
+import jober from '../../Images/jober-part.png'
 
 
 
@@ -68,8 +69,8 @@ function PostedJobs(props) {
                         </ul>
                     </div>
 
-                    <div className="rec-img">
-                        <img class="compImg fright" alt="company" src="https://img.naukimg.com/logo_images/groups/v1/4589801.gif"/>
+                    <div className="rec-img"> 
+                        <img class="compImg fright" style={{width:"50px"}} alt="company" src={jober}/>
                     </div>
                 </div>
                 <div className="job-description">
@@ -79,16 +80,16 @@ function PostedJobs(props) {
 
                 <div className="jobTupleFooter">
                     <div className='footer-button'>
-                        <button
+                        {/* <button
                             style={{border:"none",background:"none"}}
                             className='btn-pending'>
                             <Apply id={item.id} recruiter={item.recruiter.email} company={item.company_id.id}/>
-                        </button>
+                        </button> */}
                     </div>
-                    <div className='job-type'>
+                    {/* <div className='job-type'>
                         <HistoryIcon className='icon'/>
                         <span class="fleft fw500">5 Days Ago</span>
-                    </div>
+                    </div> */}
                 </div>
 
                 

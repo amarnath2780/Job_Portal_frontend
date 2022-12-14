@@ -59,7 +59,7 @@ const handleClicks = () => {
                     setUser(res.data.token)                      
                     SetError(res.data.message)
                     localStorage.setItem('userId',JSON.stringify(res.data.user.user_id))
-                    navigate('/Home')
+                    navigate('/')
                   }
                   else if(res.data.user.role == 'recruiter'){
                     localStorage.setItem('adminAuthToken',JSON.stringify(res.data))

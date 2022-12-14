@@ -75,12 +75,12 @@ function JobView({job}) {
                         <button
                             style={{border:"none",background:"none"}}
                             className='btn-pending'>
-                            <Apply id={item.id} recruiter={item.recruiter.email} company={item.company_id.id}/>
+                            <Apply id={item.id} recruiter={item.recruiter_id.email} company={item.company_id.id}/>
                         </button>
                         <button
                             style={{border:"none",background:"none"}}
                             className='btn-pending'>
-                            <JobDetails id={item.id} recruiter={item.recruiter.email} company={item.company_id.id}/>
+                            <JobDetails id={item.id} recruiter={item.recruiter_id.email} company={item.company_id.id}/>
                         </button>
                     </div>
                     <div className='job-type'>

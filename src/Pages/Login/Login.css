@@ -54,6 +54,7 @@
     width: 100%;
     border: 1px solid;
     border-radius: 4px !important;
+    background: transparent;
 }
 
 .form__input--floating>select {

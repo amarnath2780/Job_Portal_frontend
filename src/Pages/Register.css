@@ -238,3 +238,10 @@ select{
 label, button {
     margin-top: 0rem;
 }
+
+
+.css-7mt4h1-MuiInputBase-root .MuiInputBase-input{
+    background: none;
+    height: 15px;
+    font-size: 17px;
+}

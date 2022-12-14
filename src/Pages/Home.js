@@ -12,7 +12,7 @@ function Home() {
 
   const [search, setSearch] = useState('');
   const [job, setJob] = useState([]);
-  const [userCategory, setUserCategory] = useState('');
+  const [userCategory, setUserCategory] = useState(1);
   const [loading, setloading] = useState(false);
   const profile_id = localStorage.getItem("profile_id")
 

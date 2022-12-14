@@ -72,7 +72,7 @@ function Otp() {
                 otp:pass,
         }).then((res)=>{
             console.log(res.data,'data')
-            navigate('/Home')
+            navigate('/')
             if (res.data.error){
               setErrMsg('User already exist')
               console.log(res.data.error)

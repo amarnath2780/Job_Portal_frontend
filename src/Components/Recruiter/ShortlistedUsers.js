@@ -13,6 +13,8 @@ import { useNavigate } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import SendOfferletter from './SendOfferletter'
+
 
 
 const style = {
@@ -60,6 +62,7 @@ function ShortlistedUsers({job , job_id}) {
   const [appliedJobId, setAppliedjobId] = useState('');
   const [seekerId, setSeekerId] = useState('');
   const [message, setMessage] = useState('');
+  const [setId, setsetId] = useState('');
 
   const columns = [
   { field: 'id', headerName: 'Id', width: 150 },
@@ -67,6 +70,17 @@ function ShortlistedUsers({job , job_id}) {
   { field: 'last_name', headerName: 'Last Name', width: 150 },
   { field: 'email', headerName: 'Last Name', width: 150 },
   { field: 'phone', headerName: 'Last Name', width: 150 },
+  {field: 'shortlist', headerName: 'Short-List', width: 250 , 
+    renderCell: (cellvalues) => {
+      onclick=((e)=>{
+        console.log(cellvalues.row.id);
+        setsetId(cellvalues.row.seeker_id);
+      })
+      return (
+          <SendOfferletter job_id={job_id} seeker_id={setId}/>
+      )
+    }
+    },
 ];
 
   const [skill, setSkill] = useState([]);
@@ -107,6 +121,7 @@ function ShortlistedUsers({job , job_id}) {
     {
       return {
         id : job?.id,
+        seeker_id : job?.seeker_id.email,
         first_name: job?.seeker_id.first_name,
         last_name: job?.seeker_id.last_name,
         phone: job?.seeker_id.phone_number,

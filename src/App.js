@@ -45,7 +45,7 @@ function App() {
                   <Route path='/Job' element={<Home/>} exact/>
                   <Route path='/profile' element={<Profile/>} exact/>
                   <Route path='/job-details' element={<JobDetails/>} exact/>
-                  <Route path='/Home' element={<LandingPage/>}/>
+                  <Route path='/' element={<LandingPage/>}/>
               </Route>
 
               <Route element={<CaseOfAdmin/>}>

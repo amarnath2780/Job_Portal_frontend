@@ -59,13 +59,17 @@ function Application() {
   const [validSal_type, setValidSal_type] = useState(false);
   const [sal_typeFocus, setSal_typeFocus] = useState(false);
   
-  const [quali, setQuali] = useState('');
+  const [quali, setQuali] = useState('1');
   const [validQuali, setValidQuali] = useState(false);
   const [qualiFocus, setQualiFocus] = useState(false);
 
   const [About, setAbout] = useState('');
   const [validAbout, setValidAbout] = useState(false);
   const [AboutFocus, setAboutFocus] = useState(false);
+
+  const [short_discription, setshort_discription] = useState('');
+  const [validshort_discription, setValidshort_discription] = useState(false);
+  const [short_discriptionFocus, setshort_discriptionFocus] = useState(false);
   
   const [state, setState] = useState('');
   const [validState, setValidState] = useState(false);
@@ -75,7 +79,7 @@ function Application() {
   const [validCountry, setValidCountry] = useState(false);
   const [countryFocus, setCountryFocus] = useState(false);
 
-  const [company, setCompany] = useState('');
+  const [company, setCompany] = useState('1');
   const [checked, setChecked] = useState(false);
 
   const [seat, setSeat] = useState('');
@@ -123,6 +127,11 @@ function Application() {
     const result = EMPTY_REGEX.test(About)
     setValidAbout(result)
   }, [About]);
+
+  useEffect(() => {
+    const result = EMPTY_REGEX.test(short_discription)
+    setValidshort_discription(result)
+  }, [short_discription]);
   
   useEffect(() => {
     const result = USER_REGEX.test(state)
@@ -142,7 +151,7 @@ function Application() {
 
   useEffect(() => {
   setErrMsg('')
-  }, [ title, min_sal, max_sal, job_type , sal_type , quali , About  ,state ,country , seat]);
+  }, [ title, min_sal, max_sal, job_type , sal_type , quali , About ,short_discription  ,state ,country , seat]);
 
 
   const applicationHandler=(e)=>{
@@ -151,13 +160,14 @@ function Application() {
     axios.post('/post-job/' , {
         job_title:title,
         company_id: company,
-        recruiter:user_id,
+        recruiter_id:user_id,
         min_salary:min_sal,
         max_salary:max_sal,
         salary_type:sal_type,
         job_type:job_type,
         qualification:quali,
         full_discription:About,
+        short_discription:short_discription,
         state:state,
         country:country,
         vacancy:seat,
@@ -324,6 +334,24 @@ function Application() {
             aria-describedby="uidnote"
             onFocus={()=>setAboutFocus(true)}
             onBlur={()=> setAboutFocus(false)}/>
+        {/* end city */}
+
+
+        {/* About */}
+        <label htmlFor="About">Short Job Discription
+            <FontAwesomeIcon icon={faCheck} className={validshort_discription ? "valid" : "hide"} />
+            <FontAwesomeIcon icon={faTimes} className={validshort_discription || !short_discription ? "hide" : "invalid"} />
+            </label>
+            <textarea type="text"
+            id='About'
+            ref={userRef} 
+            autoComplete="off"
+            onChange={(e) => setshort_discription(e.target.value)}
+            required
+            aria-invalid={validshort_discription ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={()=>setshort_discriptionFocus(true)}
+            onBlur={()=> setshort_discriptionFocus(false)}/>
         {/* end city */}
 
 
