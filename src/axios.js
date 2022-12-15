@@ -3,7 +3,7 @@ import  axios from 'axios'
 
 
 const  instance=axios.create({
-    baseURL:'http://13.230.109.14/api/'
+    baseURL:'https://timbre-shop.shop/api/'
 })
 
 export default instance
