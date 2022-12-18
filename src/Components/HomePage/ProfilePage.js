@@ -40,7 +40,7 @@ function ProfilePage() {
     const [message, setMessage] = useState('');
     const [userProfiles, setUserProfiles] = useState([]);
 
-    const BASEURL =`http://127.0.0.1:8000${profile.profie_pic}`
+    const BASEURL =`https://timbre-shop.shop${profile.profie_pic}`
 
     const handleCloseSnack = (event, reason) => {
         if (reason === 'clickaway') {

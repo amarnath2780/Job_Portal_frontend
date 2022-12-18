@@ -28,7 +28,7 @@ function RecruiterProfile() {
     const [is_rejected, setIs_rejected] = useState();
 
 
-    const BASEURL =`http://127.0.0.1:8000${profile.profie_pic}`
+    const BASEURL =`https://timbre-shop.shop${profile.profie_pic}`
 
     useEffect(() => {
         userProfile()

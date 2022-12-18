@@ -52,7 +52,7 @@ export default function AppliedJobDetails({id}) {
   })
 }
 
-  const PDF_URL = `http://127.0.0.1:8000${job.resume}`
+  const PDF_URL = `https://timbre-shop.shop${job.resume}`
 
 
   return (

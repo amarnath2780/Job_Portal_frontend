@@ -73,7 +73,7 @@ function ListAppliedUsers({job}) {
   
   {field: 'resume', headerName: 'Resume', width: 250 , 
     renderCell: (cellvalues) => {
-      const PDF_URL = `http://127.0.0.1:8000${cellvalues.row.resume}`
+      const PDF_URL = `https://timbre-shop.shop${cellvalues.row.resume}`
       return (
         <a id='resume' href={PDF_URL} target="_blank">Resume Pdf</a>
       )

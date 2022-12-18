@@ -58,7 +58,7 @@ function Home() {
   })
   }
 
-  const BANNER_URL = `http://127.0.0.1:8000${banner.image}`
+  const BANNER_URL = `https://timbre-shop.shop${banner.image}`
 
 
   return (
