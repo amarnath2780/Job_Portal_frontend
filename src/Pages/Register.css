@@ -245,3 +245,12 @@ label, button {
     height: 15px;
     font-size: 17px;
 }
+
+
+@media (min-width: 600px){
+
+    .css-ufp080{
+        border: none;   
+    }
+
+}
