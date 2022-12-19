@@ -150,7 +150,7 @@
 }
 
 .bottom-banner{
-    background-image: linear-gradient(90deg, rgba(1,1,9,1) 0%, rgba(1,1,9,0.6559217436974789) 0%),  url('../../Images/team.jpeg');
+    background-image: linear-gradient(90deg, rgba(1,1,9,1) 0%, rgba(1,1,9,0.6559217436974789) 0%),  url('https://images.pexels.com/photos/4065137/pexels-photo-4065137.jpeg?auto=compress&cs=tinysrgb&w=800');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

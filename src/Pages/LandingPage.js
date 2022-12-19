@@ -17,7 +17,7 @@ export default function LandingPage() {
 
     setTimeout(()=>{
       setloading(false)
-    },3000)
+    },1000)
   }, []);
 
   return (
