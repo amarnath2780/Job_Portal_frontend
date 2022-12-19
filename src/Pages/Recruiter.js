@@ -90,7 +90,7 @@ function Recruiter() {
 
             {memebership ? memebership.map((item, key)=>
               <Paper elevation={8}  id="inner-single-plan">
-                <img src={jobs} style={{height:"200px" , width:"350px"}} alt="" />
+                <img src='https://w7.pngwing.com/pngs/547/853/png-transparent-recruitment-business-sourcing-leadership-recruiter-center-company-text-service-thumbnail.png' style={{height:"200px" , width:"350px"}} alt="" />
                 <h3>Purchase {item.title} Plan</h3>
 
                 <div className="membership-content">
