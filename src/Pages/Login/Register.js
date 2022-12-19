@@ -18,7 +18,7 @@ import axios from '../../axios';
 import { useNavigate } from "react-router-dom";
 
 
-const USER_REGEX = /^[a-zA-Z]{2,40}$/;
+const USER_REGEX = /^[a-zA-Z]{2,80}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 const MOBILE_REGEX = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
