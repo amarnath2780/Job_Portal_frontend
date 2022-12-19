@@ -34,7 +34,7 @@ import RecruiterLandingPage from './Pages/RecruiterLandingPage';
 function App() {
   
   return (
-    <PayPalScriptProvider options={{ "client-id" : process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
+    <PayPalScriptProvider options={{ "client-id" : 'AUugT-5i52e7UicWcpxO0Kam6S8rOhEIHUIr9tO5LoeaZwn4PuC6u8HsB8fQ8p2M9M6QGun7hCqa263x' }}>
     <div className="App">
       <Router>
 
