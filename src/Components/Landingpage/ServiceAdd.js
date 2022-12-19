@@ -16,7 +16,7 @@ function ServiceAdd() {
             </div>
             <div className="justify">
                 <div className="cell">
-                    <img src={add1} alt="" style={{width:"160px"}} />
+                    <img src='https://images.pexels.com/photos/3205567/pexels-photo-3205567.jpeg?auto=compress&cs=tinysrgb&w=800' alt="" style={{width:"160px"}} />
                     <div className="sub">
                         <p>Bypass Forgotten iPhone/iPad Passcode </p>
                     </div>
@@ -24,7 +24,7 @@ function ServiceAdd() {
                 </div>
 
                 <div className="cell">
-                    <img src={add2} alt="" style={{width:"160px"}} />
+                    <img src='https://images.pexels.com/photos/4226122/pexels-photo-4226122.jpeg?auto=compress&cs=tinysrgb&w=800' alt="" style={{width:"160px"}} />
                     <div className="sub">
                         <p>Bypass Forgotten iPhone/iPad Passcode </p>
                     </div>
@@ -32,7 +32,7 @@ function ServiceAdd() {
                 </div>
 
                 <div className="cell">
-                    <img src={add3} alt="" style={{width:"160px"}} />
+                    <img src='https://images.pexels.com/photos/4065158/pexels-photo-4065158.jpeg?auto=compress&cs=tinysrgb&w=800' alt="" style={{width:"160px"}} />
                     <div className="sub">
                         <p>Bypass Forgotten iPhone/iPad Passcode </p>
                     </div>

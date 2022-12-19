@@ -86,6 +86,8 @@ function RecruiterProfile() {
         formData.append('is_acceped' , is_acceped)
         formData.append('is_rejected' , is_rejected)
 
+       
+
         e.preventDefault()
         let url = `/updata-reqruiter-profile/?id=${profile_id}`
         axios.put(url , formData).then((res)=>{

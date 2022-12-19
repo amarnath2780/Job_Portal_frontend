@@ -113,6 +113,8 @@ function ProfilePage() {
         formData.append('level' , level)
         formData.append('experince' , experince)
 
+        console.log(formData);
+
         e.preventDefault()
         let url = `/update-profile/?id=${profile_id}`
         axios.put(url , formData).then((res)=>{
