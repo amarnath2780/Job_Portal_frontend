@@ -164,7 +164,6 @@ function Application() {
 
 
   const handleselect=(e)=>{
-    console.log(e.target.value);
     setCompany(e.target.value)
   }
 

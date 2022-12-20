@@ -72,7 +72,6 @@ function DepartmentRequest() {
 
   const DepartmentList=()=>{
     axios.get('/request-departments/').then((res)=>{
-      console.log(res.data);
       setDepartmentl(res.data)
     })
   }
@@ -96,7 +95,6 @@ function DepartmentRequest() {
         category:category,
         department_name : dep,
     }).then((res)=>{
-        console.log(res.data);
         setOpen(false)
         refreshPage()
         naviagte('/requests')

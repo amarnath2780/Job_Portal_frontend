@@ -76,7 +76,6 @@ function Request() {
 
   const SkillList=()=>{
     axios.get('/request-skill/').then((res)=>{
-      console.log(res.data);
       
     })
   }
@@ -99,7 +98,6 @@ function Request() {
       axios.post(`/req-accept/?id=${passid}`,{
         category_name : category,
   }).then((res)=>{
-        console.log(res.data);
         setOpen(false)
         refreshPage()
         naviagte('/Skill')

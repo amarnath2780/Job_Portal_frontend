@@ -42,15 +42,12 @@ export default function DepartmentPopup({id}) {
   };
 
   const handleEdit=(cellvalues)=>{
-    console.log(cellvalues.row);
     axios.put(`edit-department/?id=${id}`,{
         department_name :department,
         category: dep,
   }).then((res)=>{
-      console.log(res.data);
       navigate('Skill/')
       if (res.data.error){
-        console.log(res.data.errors)
     }
   })
   }

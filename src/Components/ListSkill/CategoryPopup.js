@@ -35,14 +35,11 @@ export default function CategoryPopup({id}) {
   };
 
   const handleEdit=(cellvalues)=>{
-    console.log(cellvalues.row);
     axios.put(`edit-category/?id=${id}`,{
         category_name :category,
   }).then((res)=>{
-      console.log(res.data);
       navigate('Skill/')
       if (res.data.error){
-        console.log(res.data.errors)
     }
   })
   }

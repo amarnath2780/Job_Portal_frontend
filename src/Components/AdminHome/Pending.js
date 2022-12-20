@@ -23,7 +23,6 @@ function Pending() {
 
 
   const handleReject=(cellvalues)=>{
-    console.log(cellvalues.row);
     axios.put(`change-status/?id=${cellvalues.row.id}`,{
       first_name:cellvalues.row.first_name,
       last_name:cellvalues.row.last_name,
@@ -35,11 +34,9 @@ function Pending() {
       country:cellvalues.row.country,
       status:"Rejected"
   }).then((res)=>{
-      console.log(res.data);
       setShow(false)
       refreshPage()
       if (res.data.error){
-        console.log(res.data.errors)
     }
   })
   }
@@ -47,7 +44,6 @@ function Pending() {
 
 
   const handlePending=(cellvalues)=>{
-    console.log(cellvalues.row);
     axios.put(`change-status/?id=${cellvalues.row.id}`,{
       first_name:cellvalues.row.first_name,
       last_name:cellvalues.row.last_name,
@@ -59,11 +55,9 @@ function Pending() {
       country:cellvalues.row.country,
       status:"Approved"
   }).then((res)=>{
-      console.log(res.data);
       setShow(false)
       refreshPage()
       if (res.data.error){
-        console.log(res.data.errors)
     }
   })
   }

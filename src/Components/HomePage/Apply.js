@@ -82,7 +82,6 @@ export default function Apply({id , recruiter ,company}) {
     let url = 'apply-job/'
     axios.post(url , formData).then((res)=>{
         refreshPage()
-        console.log(res.data);
       })
 }
 

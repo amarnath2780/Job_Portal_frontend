@@ -34,11 +34,9 @@ const addCategory=(e)=>{
         skill_name :name,
         department_id:depart,
     }).then((res)=>{
-        console.log(res.data);
         setErrMsg(res.data.message)
         if (res.data.error){
           setErrMsg('User already exist')
-          console.log(res.data.errors)
       }
       setErrMsg('Category already exist')
     })
@@ -51,7 +49,6 @@ const listCompany=()=>{
 }
 
 const handleCategory=(e)=>{
-  console.log(e.target.value);
   setDepart(e.target.value)
 }
 

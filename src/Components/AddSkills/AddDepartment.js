@@ -34,11 +34,9 @@ const addCategory=(e)=>{
         department_name:name,
         category:cat,
     }).then((res)=>{
-        console.log(res.data);
         navigate('/Skill')
         if (res.data.error){
           setErrMsg('User already exist')
-          console.log(res.data.errors)
       }
       setErrMsg('Category already exist')
     })
@@ -46,7 +44,6 @@ const addCategory=(e)=>{
 
 
 const handleCategory=(e)=>{
-    console.log(e.target.value);
     setcat(e.target.value)
   }
 
@@ -55,7 +52,6 @@ const handleCategory=(e)=>{
 
 const listCompany=()=>{
   axios.get('/company-category/').then((res)=>{
-    console.log(res.data);
     setCategory(res.data)
   })
 }

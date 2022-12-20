@@ -51,7 +51,6 @@ function SkillRequest() {
         <button
         className='btn-pending'
         onClick={()=>{
-          console.log(cellvalues);
           setPassid(cellvalues.row.id)
           setDepatment(cellvalues.row.department_id)
           setSkill_name(cellvalues.row.skill_name)
@@ -97,7 +96,6 @@ function SkillRequest() {
         department : department,
         skill_name: skill_name,
   }).then((res)=>{
-        console.log(res.data);
         setOpen(false)
         refreshPage()
         naviagte('/requests')

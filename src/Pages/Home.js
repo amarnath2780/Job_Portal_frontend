@@ -26,6 +26,7 @@ function Home() {
   }
 
   const getFilter = (data) =>{
+    console.log(data.category);
     axios.get(`filter-job/?category=${data.category}&department=${data.department}&level=${data.level}&experience=&job_type=${data.type}`).then((res)=>{
       setJob(res.data)
   })

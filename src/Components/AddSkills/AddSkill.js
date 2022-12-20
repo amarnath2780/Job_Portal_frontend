@@ -34,7 +34,6 @@ const addCategory=(e)=>{
         skill_name:name,
         department:cat,
     }).then((res)=>{
-        console.log(res.data);
         navigate('/Skill')
         if (res.data.error){
           setErrMsg('User already exist')

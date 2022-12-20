@@ -25,7 +25,6 @@ function JobView({job}) {
 
     // const allJobs =()=> {
     //     axios.get(`search-filter/?search=${search}`).then((res)=>{
-    //         console.log(res.data);
     //         setJob(res.data)
     //         allJobs()
     //     })

@@ -27,12 +27,9 @@ const addCategory=(e)=>{
     axios.post('/req-cat/',{
         category_name:name,
     }).then((res)=>{
-        console.log(res.data);
-        console.log(res.data.message);
         setErrMsg(res.data.message)
         if (res.data.errors){
           setErrMsg('User already exist')
-          console.log(res.data.errors)
       }
     })
 }

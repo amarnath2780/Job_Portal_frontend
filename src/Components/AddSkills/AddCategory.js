@@ -27,11 +27,9 @@ const addCategory=(e)=>{
     axios.post('/add-category/',{
         category_name:name,
     }).then((res)=>{
-        console.log(res.data);
         navigate('/Skill')
         if (res.data.error){
           setErrMsg('User already exist')
-          console.log(res.data.errors)
       }
       setErrMsg('Category already exist')
     })

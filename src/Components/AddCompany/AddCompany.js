@@ -109,12 +109,10 @@ function AddCompany() {
         head_office_location : location,
         security_code : pass,
       }).then((res)=>{
-        console.log(res.data,'data is here');
         navigate('/application')
   
         if (res.data.error){
           setErrMsg('Data already exist')
-          console.log(res.data.error)
         }
       })
       setErrMsg('Data already exist')
@@ -127,13 +125,11 @@ function AddCompany() {
 
   const listCategory=()=>{
     axios.get('/company-category/').then((res)=>{
-      console.log(res.data);
       setCategoryList(res.data)
     })
   }
 
   const handleselect=(e)=>{
-    console.log(e.target.value);
     setCategory(e.target.value)
   }
   
