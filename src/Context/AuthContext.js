@@ -43,7 +43,6 @@ const handleClicks = () => {
 
     const Userlogin=async(email,password)=>{
        
-        console.log(email,password)
        await axios.post('user/login/',{email:email,password:password}).then((res)=>{
                 console.log(res.data)
                 

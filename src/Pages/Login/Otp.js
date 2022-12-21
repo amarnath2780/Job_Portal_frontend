@@ -53,7 +53,6 @@ function Otp() {
     useEffect(() => {
     const result = PWD_REGEX.test(pass);
     setValidPass(result)
-    console.log(pass);
     
     }, [pass]);
 
@@ -71,7 +70,6 @@ function Otp() {
                 phone_number:mobile,
                 otp:pass,
         }).then((res)=>{
-            console.log(res.data,'data')
             navigate('/')
             if (res.data.error){
               setErrMsg('User already exist')

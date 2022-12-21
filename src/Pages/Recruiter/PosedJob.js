@@ -12,7 +12,6 @@ function PosedJob() {
   const [jobState, setJobState] = useState([]);
 
   const getData = (data) =>{
-    console.log('data is here home',data);
     axios.get(`applied-job-seekers/?id=${data}`).then((res)=>{
         setJobState(res.data);
     })

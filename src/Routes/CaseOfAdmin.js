@@ -5,9 +5,6 @@ import {Navigate,Outlet,useNavigate}  from 'react-router-dom'
 function CaseOfAdmin() {
     let {admin}=useContext(AuthContext) 
 
-    useEffect(() => {
-        console.log(admin);
-       }, []);
    
     return admin ? <Outlet /> : <Navigate to="/login"/> 
     }

@@ -113,10 +113,10 @@ function ProfilePage() {
         formData.append('level' , level)
         formData.append('experince' , experince)
 
-
         e.preventDefault()
         let url = `/update-profile/?id=${profile_id}`
         axios.put(url , formData).then((res)=>{
+            console.log(res.data);
             refreshPage()
             setMessage(res.data.message)
             setsnack(true)
@@ -143,6 +143,7 @@ function ProfilePage() {
                     <img src={BASEURL} alt="" />   
                 <label htmlFor="upload-file"><PhotoCameraIcon/></label>
                 <input type="file" id='upload-file' onChange={(e)=>{
+                    console.log(e.target.files);
                     setImg(e.target.files[0])
                 }}  hidden/>
                 </div>

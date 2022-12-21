@@ -14,7 +14,6 @@ function Shortlist() {
   const [job_id, setjob_id] = useState('');
 
   const getData = (data) =>{
-    console.log('data is here home',data);
     axios.get(`shortlist-view/?id=${data}`).then((res)=>{
         setJobState(res.data);
         setjob_id(data)

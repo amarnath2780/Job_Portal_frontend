@@ -78,52 +78,38 @@ function Register() {
     
     useEffect(() => {
         const result = EMAIL_REGEX.test(email)
-        console.log(result);
-        console.log(email);
         setValidname(result)
     }, [email]);
 
     useEffect(() => {
         const result = USER_REGEX.test(fname)
-        console.log(result);
-        console.log(mname);
         setValidFname(result)
     }, [fname]);
     
     useEffect(() => {
         const result = USER_REGEX.test(mname)
-        console.log(result);
-        console.log(mname);
         setValidMname(result)
     }, [mname]);
 
 
     useEffect(() => {
         const result = USER_REGEX.test(lname)
-        console.log(result);
-        console.log(lname);
         setValidLname(result)
     }, [lname]);
 
 
     useEffect(() => {
         const result = MOBILE_REGEX.test(phone)
-        console.log(result);
-        console.log(phone);
         setValidPhone(result)
     }, [phone]);
 
     useEffect(() => {
         const result = USER_REGEX.test(role)
-        console.log(result);
-        console.log(role);
         setValidRole(role)
     }, [role]);
 
     useEffect(() => {
         const result = PWD_REGEX.test(pass);
-        console.log(result);
-        console.log(pass);
         setValidPass(result)
         const match = pass === matchPass;
         setValidMatch(match);
@@ -146,15 +132,12 @@ function Register() {
             password:pass,
             role:role,
         }).then((res)=>{
-            console.log(res.data,'data')
             navigate('/verify')
             if (res.data.error){
               setErrMsg('User already exist')
               console.log(res.data.error)
-             
             if(res.data.mobile){
               
-                console.log('get the mobile')
       
             }
             setErrMsg('User already exist')

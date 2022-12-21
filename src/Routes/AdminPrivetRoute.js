@@ -8,9 +8,6 @@ function AdminPrivetRoute() {
     let {adminAuthToken}=useContext(AuthContext) 
     let auth = localStorage.getItem("adminAuthToken")
     
-    useEffect(() => {
-     console.log(adminAuthToken);
-    }, []);
     return (
         adminAuthToken ? <Outlet/> : auth ? <Outlet/> : <Navigate to="/login"/>
     ) 
