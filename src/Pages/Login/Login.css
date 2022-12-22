@@ -70,16 +70,10 @@
 }
 
 .btn__tertiary--medium {
-    margin: 23px 0px;
+    margin: 12px 0px;
     font-size: 16px;
 }
 
-.btn__tertiary--medium  span:hover{
-    background: #000;
-    color: #fff;
-    padding: 4px 11px;
-    border-radius: 14px;
-}
 
 .card-layout .organic-div .login_form .login_form_action{
     display: flex;
@@ -123,6 +117,11 @@
     gap: 13px;
 }
 
+#errorMessage{
+    margin-top: 27px;
+    color: #e00;
+    text-align: center;
+}
 
 
 

@@ -13,7 +13,7 @@ import MuiAlert from '@mui/material/Alert';
 import {faCheck , faTimes , faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import logo from '../../Images/logo.png'
-
+import Snackbar from '@mui/material/Snackbar';
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -48,10 +48,21 @@ function Login() {
     const [forgot,setForgot]=useState(1)
     const [fshow,setForShow]=useState(false)
 
+    const [snack, setsnack] = useState(false);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
     userRef.current.focus();
     }, []);
+
+    const handleCloseSnack = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+        setsnack(false);
+    };
+
+    const handleClose = () => setOpen(false);
 
     useEffect(() => {
         const result = EMAIL_REGEX.test(email)
@@ -78,19 +89,21 @@ function Login() {
      
      if (email.trim().length ===0 ){
       setErrMsg('Invalid Email or Password')
+      setsnack(true)
+     }
+     else if ( pass.trim().length === 0) {
+        console.log('values') 
+        setErrMsg('Invalid Password')
+        setsnack(true)
      }
      else{
       if ( pass.trim().length !==0){
         console.log('finallll')
         Userlogin(email,pass)  
         setForgot(forgot+1)
+        setsnack(false)
         
       }
-    }
-    if ( pass.trim().length === 0){
-      console.log('values') 
-    }else{
-
     }
     }
 
@@ -111,7 +124,7 @@ function Login() {
                         <div className="header_content">
                             <h1 class="header__content__heading ">Sign in</h1>
                             <p class="header__content__subheading ">Stay updated on your professional world</p>
-                            <p style={{color:"#fa2121" , paddingTop: "1rem"}} ref={errRef} className={errMsg ? "" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                            {/* <p style={{color:"#fa2121" , paddingTop: "1rem"}} ref={errRef} className={errMsg ? "" : "offscreen"} aria-live="assertive">{errMsg}</p> */}
                         </div>
 
                         <form onSubmit={loginHandler} className="login_form">
@@ -127,7 +140,10 @@ function Login() {
                                     id='email'
                                     ref={userRef} 
                                     autoComplete="off"
-                                    onChange={(e) => setemail(e.target.value)}
+                                    onChange={(e) => {
+                                        setemail(e.target.value)
+                                        setsnack(false)
+                                    }}
                                     aria-invalid={validname ? "false" : "true"}
                                     aria-describedby="uidnote"
                                     onFocus={()=>setUserFocus(true)}
@@ -151,14 +167,17 @@ function Login() {
                                     id='pass'
                                     ref={userRef} 
                                     autoComplete="off"
-                                    onChange={(e) => setPass(e.target.value)}
+                                    onChange={(e) => {
+                                        setPass(e.target.value)
+                                        setsnack(false)
+                                    }}
                                     aria-invalid={validPass ? "false" : "true"}
                                     aria-describedby="uidnote"
                                     onFocus={()=>setPassFocus(true)}
                                     onBlur={()=> setPassFocus(false)}                           
                                 />
                             </div>
-                            <a href="" class="btn__tertiary--medium forgot-password" data-cie-control-urn="forgot-password-btn"><span>Forgot password?</span></a>
+                            <a href="" class="btn__tertiary--medium forgot-password" data-cie-control-urn="forgot-password-btn"><span></span></a>
                             <div className="login_form_action">
                                 <button class="btn__primary--large from__button--floating" data-litms-control-urn="login-submit" type="submit" aria-label="Sign in">Sign in</button>
                             </div>
@@ -181,6 +200,11 @@ function Login() {
                 </div>
 
             </main>
+            <Snackbar open={snack} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleCloseSnack} severity="error" sx={{ width: '100%' }}>
+            {errMsg}
+            </Alert>
+            </Snackbar>
         </div>
     </div>
   )

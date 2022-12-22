@@ -16,6 +16,8 @@ import logo from '../../Images/logo.png'
 import InputIcon from '@mui/icons-material/Input';
 import axios from '../../axios';
 import { useNavigate } from "react-router-dom";
+import Snackbar from '@mui/material/Snackbar';
+
 
 
 const USER_REGEX = /^[a-zA-Z]{2,80}$/;
@@ -24,6 +26,10 @@ const EMAIL_REGEX =  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-
 const MOBILE_REGEX = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/
 
 const REGISTER_URL = '/user/signup';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
 
 
 
@@ -71,6 +77,19 @@ function Register() {
   
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
+
+    const [snack, setsnack] = useState(false);
+    const [open, setOpen] = useState(false);
+
+
+    const handleCloseSnack = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+        setsnack(false);
+    };
+
+    const handleClose = () => setOpen(false);
 
     useEffect(() => {
         userRef.current.focus();
@@ -120,18 +139,30 @@ function Register() {
     }, [email , pass , fname , lname, mname ,role , phone , matchPass]);
 
 
+
     const registerHandler=(e)=>{
-        e.preventDefault()
+
+        if (email.trim().length ===0 || fname.trim().length === 0 || lname.trim().length === 0 || mname.trim().length === 0 || phone.trim().length === 0 || role.trim().length === 0){
+            setErrMsg('Invalid Email or Password');
+            e.preventDefault()
+            setsnack(true)
+            console.log('+91'.concat(phone));
+        }
+        else{
+            e.preventDefault()
+
+            const number = '+91'.concat(phone)
     
             axios.post('user/signup/',{
             first_name:fname,
             last_name:lname,
             middle_name : mname,
             email:email,
-            phone_number:phone,
+            phone_number:number,
             password:pass,
             role:role,
         }).then((res)=>{
+            console.log('successss')
             navigate('/verify')
             if (res.data.error){
               setErrMsg('User already exist')
@@ -143,10 +174,7 @@ function Register() {
             setErrMsg('User already exist')
           }
         })
-    
-    
-       
-          console.log('successss')
+        }
         }
 
   return (
@@ -161,7 +189,6 @@ function Register() {
                         <div className="header_content">
                             <h1 class="header__content__heading ">Sign Up</h1>
                             <p class="header__content__subheading ">Stay updated on your professional world</p>
-                            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         </div>
 
                         <form onSubmit={registerHandler} className="login_form">
@@ -178,7 +205,7 @@ function Register() {
                                     ref={userRef} 
                                     autoComplete="off"
                                     onChange={(e) => setfname(e.target.value)}
-                                    required
+                                    
                                     aria-invalid={validFname ? "false" : "true"}
                                     aria-describedby="uidnote"
                                     onFocus={()=>setFnameFocus(true)}
@@ -206,7 +233,7 @@ function Register() {
                                     ref={userRef} 
                                     autoComplete="off"
                                     onChange={(e) => setMname(e.target.value)}
-                                    required
+                                    
                                     aria-invalid={validMname ? "false" : "true"}
                                     aria-describedby="uidnote"
                                     onFocus={()=>setMnameFocus(true)}
@@ -234,7 +261,7 @@ function Register() {
                                     ref={userRef} 
                                     autoComplete="off"
                                     onChange={(e) => setLname(e.target.value)}
-                                    required
+                                    
                                     aria-invalid={validLname ? "false" : "true"}
                                     aria-describedby="uidnote"
                                     onFocus={()=>setLnameFocus(true)}
@@ -262,7 +289,7 @@ function Register() {
                                     ref={userRef} 
                                     autoComplete="off"
                                     onChange={(e) => setemail(e.target.value)}
-                                    required
+                                    
                                     aria-invalid={validname ? "false" : "true"}
                                     aria-describedby="uidnote"
                                     onFocus={()=>setUserFocus(true)}
@@ -293,7 +320,7 @@ function Register() {
                                         setPhone(e.target.value)
                                         setMobile(e.target.value)
                                     }}
-                                    required
+                                    
                                     aria-invalid={validPhone ? "false" : "true"}
                                     aria-describedby="uidnote"
                                     onFocus={()=>setPhoneFocus(true)}
@@ -301,7 +328,6 @@ function Register() {
                                 />
                                 <p id="uidnote" className={phoneFocus && phone && !validPhone ? "instructions" : "offscreen"}>
                                     <FontAwesomeIcon icon={faInfoCircle} />
-                                    Entre Your Country code (eg: +91) <br/>
                                     Only numbers allowed.<br/>
                                     must have 10 numbers
                                 </p>
@@ -335,7 +361,7 @@ function Register() {
                                     ref={userRef} 
                                     autoComplete="off"
                                     onChange={(e) => setPass(e.target.value)}
-                                    required
+                                    
                                     aria-invalid={validPass ? "false" : "true"}
                                     aria-describedby="uidnote"
                                     onFocus={()=>setPassFocus(true)}
@@ -362,7 +388,7 @@ function Register() {
                                     id="confirm_pwd"
                                     onChange={(e) => setMatchPass(e.target.value)}
                                     value={matchPass}
-                                    required
+                                    
                                     aria-invalid={validMatch ? "false" : "true"}
                                     aria-describedby="confirmnote"
                                     onFocus={() => setMatchFocus(true)}
@@ -376,7 +402,7 @@ function Register() {
                             {/* End Confor password */}
                             <a href="" class="btn__tertiary--medium forgot-password" data-cie-control-urn="forgot-password-btn"><span></span></a>
                             <div className="login_form_action">
-                                <button disabled={!validname || !validPass || !validMatch ||!validPhone || !validFname || !validMname ||!validLname ? true : false} class="btn__primary--large from__button--floating" data-litms-control-urn="login-submit" type="submit" aria-label="Sign in">Register</button>
+                                <button  class="btn__primary--large from__button--floating" data-litms-control-urn="login-submit" type="submit" aria-label="Sign in">Register</button>
                             </div>
                         </form>
 
@@ -395,6 +421,12 @@ function Register() {
                 </div>
 
             </main>
+            <Snackbar open={snack} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleCloseSnack} severity="error" sx={{ width: '100%' }}>
+            {errMsg}
+            </Alert>
+            </Snackbar>
+            
         </div>
     </div>
   )
