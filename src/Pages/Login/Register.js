@@ -164,9 +164,10 @@ function Register() {
         }).then((res)=>{
             console.log('successss')
             navigate('/verify')
-            if (res.data.error){
+            if (res.data.Uncaught){
               setErrMsg('User already exist')
-              console.log(res.data.error)
+              
+              console.log('eroor is here');
             if(res.data.mobile){
               
       
@@ -342,8 +343,8 @@ function Register() {
                             </label>
                             <select onChange={(e) => setRole(e.target.value)} name="role" id="role">
                                 <option key='' value='seeker'>Select</option>
-                                <option key='seeker' value='seeker'>Seeker</option>
-                                <option key='recruiter' value='recruiter'>Recruiter</option>
+                                <option key='seeker' value='seeker'>Searching For a Job</option>
+                                <option key='recruiter' value='recruiter'>Searching  employees</option>
                             </select>
                             </div>
                             {/* End Role */}
