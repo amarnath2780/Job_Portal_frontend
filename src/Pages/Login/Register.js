@@ -174,6 +174,12 @@ function Register() {
             }
             setErrMsg('User already exist')
           }
+        }).catch((error)=>{
+            if (error.response) {
+                e.preventDefault()
+                setErrMsg('Please Check the details') 
+                setsnack(true)
+            }
         })
         }
         }
