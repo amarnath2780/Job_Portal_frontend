@@ -14,6 +14,7 @@ import {faCheck , faTimes , faInfoCircle} from '@fortawesome/free-solid-svg-icon
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import logo from '../../Images/logo.png'
 import axios from '../../axios';
+import Snackbar from '@mui/material/Snackbar';
 
 
 const PWD_REGEX = /^[0-9]{1,6}$/
@@ -21,6 +22,8 @@ const PWD_REGEX = /^[0-9]{1,6}$/
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
+  
+
   
 
 
@@ -43,11 +46,24 @@ function Otp() {
     const [validPass, setValidPass] = useState(false);
     const [passFocus, setPassFocus] = useState(false);
 
+    const [snack, setsnack] = useState(false);
+    const [open, setOpen] = useState(false)
+
 
     useEffect(() => {
     userRef.current.focus();
-        console.log(mobile);
     }, []);
+
+
+    const handleCloseSnack = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+        setsnack(false);
+    };
+
+    const handleClose = () => setOpen(false);
+
 
       
     useEffect(() => {
@@ -64,21 +80,32 @@ function Otp() {
 
 
     const registerHandler=(e)=>{
-        e.preventDefault()
-    
+
+        if ( pass.trim().length ===0){
+            e.preventDefault()
+            setErrMsg('Please Enter OTP')   
+            setsnack(true)       
+        }
+        else{
+            e.preventDefault()
             axios.post('user/verify-otp/',{
                 phone_number:mobile,
                 otp:pass,
         }).then((res)=>{
             navigate('/')
-            if (res.data.error){
-              setErrMsg('User already exist')
-              console.log(res.data.error)
-          }
-          setErrMsg('Incorrect Otp')
+        }).catch((error)=>{
+            if (error.response) {
+                e.preventDefault()
+                setErrMsg('Incorrect OTP') 
+                setsnack(true)
+            }
+            else if (error.request) {
+            }
+            else {
+            }
         })
-       
-          console.log('successss')
+        console.log('successss') 
+        }
         }
 
   return (
@@ -93,7 +120,6 @@ function Otp() {
                         <div className="header_content">
                             <h1 class="header__content__heading ">Verify OTP</h1>
                             <p class="header__content__subheading ">Stay updated on your professional world</p>
-                            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                         </div>
 
                         <form onSubmit={registerHandler}  className="login_form">
@@ -106,7 +132,10 @@ function Otp() {
                                     id='pass'
                                     ref={userRef} 
                                     autoComplete="off"
-                                    onChange={(e) => setPass(e.target.value)}
+                                    onChange={(e) => {
+                                        setPass(e.target.value)
+                                        setsnack(false)
+                                    }}
                                     aria-invalid={validPass ? "false" : "true"}
                                     aria-describedby="uidnote"
                                     onFocus={()=>setPassFocus(true)}
@@ -130,6 +159,12 @@ function Otp() {
                 </div>
 
             </main>
+
+            <Snackbar open={snack} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleCloseSnack} severity="error" sx={{ width: '100%' }}>
+            {errMsg}
+            </Alert>
+            </Snackbar>
         </div>
     </div>
   )
