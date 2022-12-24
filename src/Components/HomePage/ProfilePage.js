@@ -116,7 +116,6 @@ function ProfilePage() {
         e.preventDefault()
         let url = `/update-profile/?id=${profile_id}`
         axios.put(url , formData).then((res)=>{
-            console.log(res.data);
             refreshPage()
             setMessage(res.data.message)
             setsnack(true)
