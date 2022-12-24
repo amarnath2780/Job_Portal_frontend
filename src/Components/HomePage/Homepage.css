@@ -363,6 +363,20 @@
     border: 2px solid #fff;
 }
 
+.no-job-found{
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-job-found span{
+    color: #f9b13e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media screen and (max-width: 602px) {
     #navbar-logo{
       display: none;

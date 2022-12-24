@@ -9,6 +9,7 @@ import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import DescriptionIcon from '@mui/icons-material/Description';
 import HistoryIcon from '@mui/icons-material/History';
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 
 
 
@@ -16,6 +17,7 @@ function JobView({job}) {
 
     // const [job, setJob] = useState([]);
 
+    console.log(job);
 
     // useEffect(() => {
     //     allJobs()
@@ -36,8 +38,7 @@ function JobView({job}) {
   return (
     <div className='job-view'>
       <div className='job-cards'>
-        
-            {job ? job.map((item ,key)=>
+            {job[0] ? job.map((item ,key)=>
             <>
             <Paper className='paper' elevation={8} >
                 <div className="jobTupleHeader">
@@ -91,7 +92,11 @@ function JobView({job}) {
                 
             </Paper>
             </>
-            ) : ''} 
+            ) : <>
+            <div className="no-job-found">
+                <h1><span id='errorLog'><ReportProblemIcon style={{fontSize:"63px"}}/></span> No Job Found</h1>
+            </div>
+            </>} 
       </div>
     </div>
   )
