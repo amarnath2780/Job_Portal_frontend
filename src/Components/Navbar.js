@@ -21,7 +21,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import JobView from '../Components/HomePage/JobView'
 
 
-const pages = ['Profile' , 'Job'];
+const pages = ['Profile' , 'Job','My-Jobs'];
 const settings = ['Profile', 'Account', 'Dashboard'];
 
 const Search = styled('div')(({ theme }) => ({
