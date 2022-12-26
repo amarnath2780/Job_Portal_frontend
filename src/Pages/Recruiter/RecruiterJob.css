@@ -14,9 +14,7 @@
     cursor: pointer;
 }
 
-#applied-job-table .MuiDataGrid-main {
-    width: 770px;
-}
+
 
 #resume{
     text-decoration: none;
@@ -46,7 +44,5 @@
 
 
 @media screen and (max-width: 1000px) {
-    #applied-job-table .MuiDataGrid-main {
-        width: 304px;
-    }
+
   }

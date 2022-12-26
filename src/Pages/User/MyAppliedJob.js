@@ -46,7 +46,7 @@ function MyAppliedJob() {
             
             {job[0] ? job.map((item ,key)=>
             <>
-            <Paper className='paper' elevation={8} >
+            <Paper style={{margin: "25px 20px"}} className='paper' elevation={8} >
                 <div className="jobTupleHeader">
                     <div className="job-info">
                         <a href="">{item.job_id.job_title}</a>

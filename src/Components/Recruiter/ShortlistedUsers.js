@@ -14,6 +14,11 @@ import Paper from '@mui/material/Paper';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import SendOfferletter from './SendOfferletter'
+import ChangeStatus from './ChangeStatus'
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 
 
@@ -39,6 +44,13 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 
 function ShortlistedUsers({job , job_id}) {
+
+
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
 
   
 
@@ -70,10 +82,20 @@ function ShortlistedUsers({job , job_id}) {
   { field: 'last_name', headerName: 'Last Name', width: 150 },
   { field: 'email', headerName: 'Last Name', width: 150 },
   { field: 'phone', headerName: 'Last Name', width: 150 },
-  {field: 'shortlist', headerName: 'Short-List', width: 250 , 
+    {field: 'Status', headerName: 'Status', width: 250 , 
     renderCell: (cellvalues) => {
       onclick=((e)=>{
-        console.log(cellvalues.row.id);
+        console.log(cellvalues.row.seeker);
+        setsetId(cellvalues.row.seeker_id);
+      })
+      return (
+          <ChangeStatus id={cellvalues.row.id} job_id={job_id} company={cellvalues.row.company} status={cellvalues.row.status} seeker_id={setId}/>
+      )
+    }
+    },
+    {field: 'Short-List', headerName: 'Short-List', width: 250 , 
+    renderCell: (cellvalues) => {
+      onclick=((e)=>{
         setsetId(cellvalues.row.seeker_id);
       })
       return (
@@ -126,6 +148,9 @@ function ShortlistedUsers({job , job_id}) {
         last_name: job?.seeker_id.last_name,
         phone: job?.seeker_id.phone_number,
         email: job?.seeker_id.email,
+        company : job?.company.id,
+        seeker : job?.seeker_id,
+        status : job?.status,
       }
     })
 
@@ -209,7 +234,7 @@ function ShortlistedUsers({job , job_id}) {
             </Fade>
       </Modal>
       <Paper elevation={12} >
-        <div id='applied-job-table' style={{ height: 500, width: 1300 , position:"fixed" }}>
+        <div id='applied-job-table' style={{ height: 500, width:"66%", position:"fixed" }}>
             <DataGrid
                 rows={rowData}
                 columns={columns}

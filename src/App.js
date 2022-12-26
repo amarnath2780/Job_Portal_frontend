@@ -51,10 +51,10 @@ function App() {
               </Route>
 
               <Route element={<CaseOfAdmin/>}>
-                  <Route path='/admin' element={<Admin/>} />
+                  <Route path='/applications' element={<Admin/>} />
                   <Route path='/Users' element={<AdmAdminUserView/>} />
                   <Route path='/add-view' element={<AdminAddSkill/>} />
-                  <Route path='/Skill' element={<ListSkill/>} />
+                  <Route path='/categories' element={<ListSkill/>} />
                   <Route path='/requests' element={<ListRequest/>}/>
               </Route>
 

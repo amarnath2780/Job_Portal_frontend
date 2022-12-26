@@ -16,7 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 
-const pages = ['Users', 'Admin', 'Skill'];
+const pages = ['Users', 'Applications', 'Categories'];
 const settings = ['Profile', 'Account', 'Dashboard'];
 
 function AdminNav() {

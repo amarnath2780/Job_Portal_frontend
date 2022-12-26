@@ -237,7 +237,7 @@ function ListAppliedUsers({job}) {
             </Fade>
       </Modal>
       <Paper elevation={12} >
-        <div id='applied-job-table' style={{ height: 500, width: 1300 , position:"fixed" }}>
+        <div id='applied-job-table' style={{ height: 500 , width:"66%" , position:"fixed" }}>
             <DataGrid
                 rows={rowData}
                 columns={columns}
