@@ -40,8 +40,10 @@
 }
 
 .btn-pending{
-    padding: 0 11px;
+    padding: 9px 21px;
     margin: 0;
+    color: #fff;
+    background: #000;
 }
 
 

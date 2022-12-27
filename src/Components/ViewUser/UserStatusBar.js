@@ -46,6 +46,10 @@ function UserStatusBar() {
       </div>
 
 
+      <div id="admin-title">
+        <h5>All Users View  Section</h5>
+      </div>
+
 
       <div className='status-table'>
         {seeker ? <Allseekers/> : ''}

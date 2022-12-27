@@ -61,7 +61,9 @@ function ListSkillStatusBar() {
         </div>
       </div>
 
-
+      <div id="admin-title">
+        <h5>All Category  Section</h5>
+      </div>
 
       <div className='status-table'>
         {skill ? <AllSkills/> : ''}

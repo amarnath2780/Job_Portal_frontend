@@ -45,7 +45,9 @@ function StatusBar() {
         </div>
       </div>
 
-
+      <div id="admin-title">
+        <h5>Application Section</h5>
+      </div>
 
       <div className='status-table'>
         {pending ? <Pending/> : ''}

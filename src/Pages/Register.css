@@ -254,3 +254,11 @@ label, button {
     }
 
 }
+
+
+#admin-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px
+}
