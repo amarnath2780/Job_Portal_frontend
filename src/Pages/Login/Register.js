@@ -143,7 +143,7 @@ function Register() {
     const registerHandler=(e)=>{
 
         if (email.trim().length ===0 || fname.trim().length === 0 || lname.trim().length === 0 || mname.trim().length === 0 || phone.trim().length === 0 || role.trim().length === 0){
-            setErrMsg('Invalid Email or Password');
+            setErrMsg('Please Check the details');
             e.preventDefault()
             setsnack(true)
             console.log('+91'.concat(phone));
