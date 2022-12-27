@@ -76,7 +76,7 @@ const handleClicks = () => {
                     setadminToken(res.data)
                     setAdmin(res.data.token)                      
                     SetError(res.data.message)
-                    navigate('/admin')
+                    navigate('/Applications')
                   };
                 }
              
